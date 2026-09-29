@@ -1,0 +1,3 @@
+DefaultIncs.mak file in this directory is required for DLM builds, as well as dlm_jmptable.s.
+These two files should be present in every build target "inc" directory.
+DO NOT REMOVE.

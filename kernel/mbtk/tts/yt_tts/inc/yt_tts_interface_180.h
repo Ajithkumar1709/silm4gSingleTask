@@ -1,0 +1,557 @@
+#ifndef __YT_TTS_INTERFACE_180_HEADER__
+#define __YT_TTS_INTERFACE_180_HEADER__
+
+///////////////////////////////////////////////////////////////////////////
+// VERSION SECTION  START
+// 2011/04/20~      V2.0
+
+
+// VERSION SECTION  END
+///////////////////////////////////////////////////////////////////////////
+
+
+//LANGUAGE ID PART: START
+
+#define YT_LANG_ID_RESERVED_180 0
+
+#define YT_LANG_ID_MANDARIN_180 1 //Chinese Mandarin(Pu Tong hua)
+#define YT_LANG_ID_CANTONESE_180 2 //Cantonese(Guang Dong hua)
+
+#define YT_LANG_ID_US_ENGLISH_180 3//US English
+#define YT_LANG_ID_UK_ENGLISH_180 4//UK English
+
+
+//LANGUAGE ID PART: END
+///////////////////////////////////////////////////////////////////////////
+
+
+
+///////////////////////////////////////////////////////////////////////////
+//VOICE ID PART: START
+#define YT_VOICE_ID_RESERVED_180 0
+#define YT_VOICE_ID_FEMALE_180 1
+#define YT_VOICE_ID_MALE_180 2
+//VOICE ID PART: END
+///////////////////////////////////////////////////////////////////////////
+
+
+
+///////////////////////////////////////////////////////////////////////////
+//DATE FORMAT PART: START
+#define YT_DATE_MM_DD_YYYY_180 0
+#define YT_DATE_YYYY_MM_DD_180 1
+#define YT_DATE_DD_MM_YYYY_180 2
+
+//DATE FORMAT PART: END
+///////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////
+//TEXT TYPE PART: START
+#define YT_TEXT_TYPE_DEFAULT_180 0
+#define YT_TEXT_TYPE_NAME_180 1
+#define YT_TEXT_TYPE_NAME_APPENDIX_180 2
+#define YT_TEXT_TYPE_MESSAGE_CONTENT_180 3
+#define YT_TEXT_TYPE_MESSAGE_TITLE_180 4
+#define YT_TEXT_TYPE_ICON_CAPTION_180 5
+#define YT_TEXT_TYPE_DATE_180 6
+#define YT_TEXT_TYPE_TIME_180 7
+#define YT_TEXT_TYPE_TELEPHONE_NO_180 8
+#define YT_TEXT_TYPE_DIGIT_180 9
+#define YT_TEXT_TYPE_NUMBER_180 10
+#define YT_TEXT_TYPE_HELP_180 11
+#define YT_TEXT_TYPE_GPS_180 20
+//TEXT TYPE PART: END
+///////////////////////////////////////////////////////////////////////////
+
+
+#define YT_TTS_MEM_SIZE_IN_BYTE 180*1024//200*1024
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////
+//API SPECIFICATIONS: START
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+
+
+
+
+/*-------------------------------------------------------------------------------
+ |yt_set_cb_for_fopen_read_180(...)
+ |PURPOSE
+ |	This API intends to set a callback function for opening file like fopen(...)
+ |
+ |INPUT
+ |	open_file_for_read: callback function address, say function name. Here is its definition.
+ |				int open_file_for_read(strFileName);
+ |OUTPUT
+ |	none
+ |
+ |RETURN VALUE
+ |	none
+ |
+ |CODING
+ |	Shanghai YoungTone Tech.
+ *-------------------------------------------------------------------------------*/
+void yt_set_cb_for_fopen_read_180(int (*open_file_for_read)(unsigned char *strFileName));
+
+
+
+
+/*-------------------------------------------------------------------------------
+ |yt_set_cb_for_fopen_write_180(...)
+ |PURPOSE
+ |	This API intends to set a callback function for opening file like fopen(...)
+ |
+ |INPUT
+ |	open_file_for_read: callback function address, say function name. Here is its definition.
+ |				void* open_file_for_read(strFileName);
+ |OUTPUT
+ |	none
+ |
+ |RETURN VALUE
+ |	none
+ |
+ |CODING
+ |	Shanghai YoungTone Tech.
+ *-------------------------------------------------------------------------------*/
+void yt_set_cb_for_fopen_write_180(int (*open_file_for_write)(unsigned char *strFileName));
+
+
+
+
+/*-------------------------------------------------------------------------------
+ |yt_set_cb_for_fseek_180(...)
+ |PURPOSE
+ |	This API intends to set a callback function for seeking file pos like fseek(...)
+ |
+ |INPUT
+ |	seek_file: callback function address, say function name. Here is its definition.
+ |				unsigned int seek_file(int file_handle, unsigned int nOffset, unsigned int whence)
+ |
+ |OUTPUT
+ |	none
+ |
+ |RETURN VALUE
+ |	none
+ |
+ |CODING
+ |	Shanghai YoungTone Tech.
+ *-------------------------------------------------------------------------------*/
+void yt_set_cb_for_fseek_180(int (*seek_file)(int file_handle, unsigned int offset));
+
+
+
+/*-------------------------------------------------------------------------------
+ |yt_set_cb_for_fread_180(...)
+ |PURPOSE
+ |	This API intends to set a callback function for reading file like fread(...)
+ |
+ |INPUT
+ |	read_file: callback function address, say function name. Here is its definition.
+ |				unsigned int read_file(int file_handle, void * ptr, unsigned int size);
+ |
+ |OUTPUT
+ |	none
+ |
+ |RETURN VALUE
+ |	none
+ |
+ |CODING
+ |	Shanghai YoungTone Tech.
+ *-------------------------------------------------------------------------------*/
+void yt_set_cb_for_fread_180(unsigned int (*read_file)(int file_handle, void *ptr, unsigned int size));
+
+
+
+
+
+
+/*-------------------------------------------------------------------------------
+ |yt_set_cb_for_fwrite_180(...)
+ |PURPOSE
+ |	This API intends to set a callback function for writing file like fwrite(...)
+ |
+ |INPUT
+ |	read_file: callback function address, say function name. Here is its definition.
+ |				unsigned int write_file(int file_handle, void * ptr, unsigned int size);
+ |
+ |OUTPUT
+ |	none
+ |
+ |RETURN VALUE
+ |	none
+ |
+ |CODING
+ |	Shanghai YoungTone Tech.
+ *-------------------------------------------------------------------------------*/
+void yt_set_cb_for_fwrite_180(unsigned int (*write_file)(int file_handle, void * ptr, unsigned int size));
+
+
+
+
+/*-------------------------------------------------------------------------------
+ |yt_set_cb_for_fclose_180(...)
+ |PURPOSE
+ |	This API intends to set a callback function for reading file like fclose(...)
+ |
+ |INPUT
+ |	close_file: callback function address, say function name. Here is its definition.
+ |				int close_file(int file_handle);
+ |
+ |OUTPUT
+ |	none
+ |
+ |RETURN VALUE
+ |	none
+ |
+ |CODING
+ |	Shanghai YoungTone Tech.
+ *-------------------------------------------------------------------------------*/
+void yt_set_cb_for_fclose_180(int (*close_file)(int file_handle));
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+//5 APIs for Networking
+int yt_tts_set_cb_gethostbyname_180(char* (*yt_gethostbyname)(char *strHostName));
+int yt_tts_set_cb_socket_180(int (*yt_socket)(char *dstIpAddr, char *hostname, int port));
+int yt_tts_set_cb_send_180(int (*yt_send)(int sockfd, int timeout, char *httpPkg, int pkgLen));
+int yt_tts_set_cb_recv_180(int (*yt_recv)(int sockfd, int timeout, char **ppStrPkg, int pkgLen));
+int yt_tts_set_cb_closesocket_180(int (*yt_closesocket)(int s));
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+//1 API for ChipID
+int yt_tts_set_cb_getChipID_180(int (*yt_get_chip_info)(void));
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+/*-------------------------------------------------------------------------------
+ |yt_tts_set_memory_buffer_180(...)
+ |PURPOSE
+ |	This API intends to set memory for TTS engine...
+ |
+ |BACKGROUND
+ |	memory manangement is subtle under embedded OS. 
+ |	So we avoid memory allocation if user can provide a global memory heap...
+ |
+ |INPUT
+ |	pBufferForTTSEngine: buffer for memory
+ |	nMemSize: memory size in byte, say YT_TTS_MEM_SIZE_IN_BYTE(300KB) defined in the header file
+ |
+ |OUTPUT
+ |	none
+ |
+ |RETURN VALUE
+ |		It returns 0;
+ |CODING
+ |	YoungTone Inc.
+ *-------------------------------------------------------------------------------*/
+int yt_tts_set_memory_buffer_180(char *pBufferForTTSEngine,unsigned int nMemSize);
+
+
+
+
+/*---------------------------------------------------------------------------------------
+ |yt_tts_initialize_180(...)
+ |PURPOSE
+ |	This API intends to initialize TTS engine.
+ |INPUT
+ |	strReserved: reserved string variable...
+ |	nLangID: language ID, which is defined in language ID section
+ |	strArgOne: the first data argument, which can be a front-end file name or a data buffer
+ |	nVoiceID: voice ID, which is defined in voice ID section
+ |	strArgTwo: the second data argument, which can be a back-end file name or a data buffer
+ |
+ |OUTPUT
+ |	none
+ |
+ |RETURN VALUE
+ |	It returns 0 if successful; else it returns -1.
+ |CODING
+ |	YoungTone Inc.
+ *--------------------------------------------------------------------------------------*/
+int  yt_tts_initialize_180( char *strReserved,
+												  int nLangID,
+												  char *strArgOne, 
+												  int nVoiceID, 
+												  char *strArgTwo);
+						    
+
+
+
+/*-------------------------------------------------------------------------------
+ |yt_tts_input_text_utf16_180(...)
+ |PURPOSE
+ |	This API intends to feed text in Unicode(UCS16) to TTS engine.
+ |INPUT
+ |	strText_U16: buffer for holding UTF16 text
+ |	nTextLen_U16: number of character in strText_U16
+ |	DATE_FORMAT: date format, which is defined in date format section
+ |	nTextType: text type,which is defined in date format section. 
+ |			    In general, user can set it to default value, 0
+ |
+ |
+ |OUTPUT
+ |	none
+ |
+ |RETURN VALUE
+ |	It returns 0 if successful; else it returns -1.
+ |
+ |CODING
+ |	YoungTone Inc.
+ *-------------------------------------------------------------------------------*/
+int  yt_tts_input_text_utf16_180(unsigned short *strText_U16,//[in]
+													  unsigned int nTextLen_U16,//[in]
+													  unsigned int DATE_FORMAT,
+													  unsigned int nTextType);	
+					
+
+/*-------------------------------------------------------------------------------
+ |yt_tts_input_text_mbcs_180(...)
+ |PURPOSE
+ |	This API intends to feed text in MBCS/ANSI to TTS engine.
+ |INPUT
+ |	strText: buffer for holding  text
+ |	nTextLen: number of character in strText_U16
+ |	DATE_FORMAT: date format, which is defined in date format section
+ |	nTextType: text type,which is defined in date format section. 
+ |			    In general, user can set it to default value, 0
+ |
+ |
+ |OUTPUT
+ |	none
+ |
+ |RETURN VALUE
+ |	It returns 0 if successful; else it returns -1.
+ |
+ |CODING
+ |	YoungTone Inc.
+ *-------------------------------------------------------------------------------*/
+int  yt_tts_input_text_mbcs_180(char *strText,//[in]
+													  unsigned int nTextLen,//[in]
+													  unsigned int DATE_FORMAT,
+													  unsigned int nTextType);
+
+
+
+
+
+/*-------------------------------------------------------------------------------
+ |yt_tts_free_resource_180(...)
+ |PURPOSE
+ |	This API intends to free resources occupied by TTS engine
+ |	in most cases.
+ |
+ |INPUT
+ | none
+ |
+ |OUTPUT
+ |	none
+ |
+ |RETURN VALUE
+ |	none
+ |
+ |CODING
+ |	YoungTone Inc.
+ *-------------------------------------------------------------------------------*/
+void yt_tts_free_resource_180();
+
+
+
+
+
+
+/*-------------------------------------------------------------------------------
+ |yt_tts_set_rate_180(...)
+ |PURPOSE
+ |	This API intends to set speech rate(speed).
+ |
+ |INPUT
+ | nRateFactor: the target speech rate, which ranges 50~200. 
+ |				100 is the normal rate. 50 is the fastest speed while 200 is the slowest one.
+ |
+ |OUTPUT
+ |	none
+ |
+ |RETURN VALUE
+ |	the acutal speech rate.
+ |
+ |CODING
+ |	YoungTone Inc.
+ *-------------------------------------------------------------------------------*/
+int yt_tts_set_rate_180(int nRateFactor);
+
+
+
+
+
+/*-------------------------------------------------------------------------------
+ |yt_tts_set_pitch_180(...)
+ |PURPOSE
+ |	This API intends to set pitch.
+ |
+ |INPUT
+ | nPitchFactor: the target pitch factor, which ranges 50~200. 
+ |				100 is the normal pitch. 50 is the lowest pitch while 200 is the highest one.
+ |
+ |OUTPUT
+ |	none
+ |
+ |RETURN VALUE
+ |	the acutal pitch.
+ |
+ |CODING
+ |	YoungTone Inc.
+ *-------------------------------------------------------------------------------*/
+int yt_tts_set_pitch_180(int nPitchFactor);
+
+
+
+
+/*-------------------------------------------------------------------------------
+ |yt_tts_set_volume_180(...)
+ |PURPOSE
+ |	This API intends to set volume.
+ |
+ |INPUT
+ |nMaxVolume: the target volume factor, which ranges 0~32768. 
+ |				32768 means the loudest speech while 0 means silence
+ |
+ |OUTPUT
+ |	none
+ |
+ |RETURN VALUE
+ |	the acutal volume
+ |
+ |CODING
+ |	YoungTone Inc.
+ *-------------------------------------------------------------------------------*/
+int yt_tts_set_volume_180(int nMaxVolume);
+
+
+
+
+
+/*-------------------------------------------------------------------------------
+ |yt_tts_utf8_to_utf16_180(...)
+ |PURPOSE
+ |	This API intends to conduct encoding conversion from UTF8 to UTF16
+ |
+ |INPUT
+ |	strText_UTF8: buffer for the input text string in UTF8 encoding
+ |	nTextLen_UTF8: length of strText_UTF8 in byte
+ |
+ |OUTPUT
+ |	strText_U16: buffer for holding text in UTF16 encoding
+ |	pTextLen_U16: pointer to character number of strText_U16
+ |
+ |RETURN VALUE
+ |	none
+ |
+ |CODING
+ |	YoungTone Inc.
+ *-------------------------------------------------------------------------------*/
+void  yt_tts_utf8_to_utf16_180(char *strText_UTF8,
+														unsigned int nTextLen_UTF8,
+														unsigned short *strText_U16,
+														unsigned int  *pTextLen_U16);
+
+
+
+
+
+/*-------------------------------------------------------------------------------
+ |yt_tts_get_speech_frame_180(...)
+ |PURPOSE
+ |	This API intends to get speech frame from TTS engine...
+ |
+ |BACKGROUND
+ |	Several customers need to return speech frame by frame,  
+ |	So we need to provide such kind of API.
+ |
+ |INPUT
+ |	none
+ |
+ |OUTPUT
+ |	pSpeechFrame: buffer for holding speech samples, which should be writable
+ |				  Typical  pSpeechFrame contains 1000 short integer
+ |	pSampleNumber: pointer to sample number of pSpeechFrame
+ |
+ |RETURN VALUE
+ |	It returns a flag indicating TTS engine status.
+ |		0: indicates the engine reaches text end, say all the text has been processed...
+ |		1: indicates a sentence has been completed
+ |		2: indicates the engine needs to continue
+ |		10: indicates the engine reaches phrase boundary.
+ |
+ |CODING
+ |	YoungTone Inc.
+ *-------------------------------------------------------------------------------*/
+int yt_tts_get_speech_frame_180(short *pSpeechFrame, unsigned int *pSampleNumber);
+												  
+
+
+
+
+
+
+void yt_tts_stop_play_180();
+void yt_tts_start_play_180();
+
+
+int yt_tts_get_sampling_rate_180(void);
+
+
+
+/*-------------------------------------------------------------------------------
+ |yt_tts_set_cb_print_info_180(...)
+ |PURPOSE
+ |	This API intends to print debugging information from TTS engine...
+ |
+ |INPUT
+ |	print_info: a callback function for printing message.
+ |              This function uses two arguments, where 
+ |					strMessage is an input string while pTime is a output pointer to an integer 
+ |
+ |OUTPUT
+ |	none
+ |
+ |RETURN VALUE
+ |  none
+ |
+ |CODING
+ |	Shanghai YoungTone Tech.
+ *-------------------------------------------------------------------------------*/
+void yt_tts_set_cb_print_info_180(void (*print_info)(char *strMessage,unsigned int *pTime));
+
+
+
+
+
+int yt_tts_is_active_180(void); //0: activated; others for inactivated
+int yt_tts_start_activation_180(void);//0: activated; -1: not activated
+
+
+
+
+#ifdef __cplusplus
+}
+#endif
+
+
+#endif

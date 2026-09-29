@@ -1,0 +1,91 @@
+# 1 "\\mbtk\\init\\mbtk_project_ssp_define.c"
+
+
+
+
+
+
+int mbtk_get_ssp_dma_tx_channel(void)
+{
+
+
+
+		return (10);
+
+}
+int mbtk_get_ssp_dma_rx_channel(void)
+{
+
+
+
+		return (11);
+
+}
+
+int mbtk_get_ext_flash_ssp_port(void)
+{
+	int port = 0;//default
+
+
+		port = 0;
+
+
+
+
+
+
+	return port;
+}
+
+int mbtk_get_auido_pwm_ssp_port(void)
+{
+	int port = 0;//default
+
+
+		port = 0;
+
+
+
+
+
+
+	return port;
+}
+
+
+int mbtk_get_ext_flash_ssp_clk(void)
+{
+	int clk = 1;//default 26M
+
+
+		clk = 0;//SSP_CLOCK_13M
+
+
+
+
+
+	
+	return clk;
+}
+
+extern int mbtk_ssp_sclk_gpio_mode_config(int port,int mfpr_value);
+extern int mbtk_ssp_sfrm_gpio_mode_config(int port,int mfpr_value);
+extern int mbtk_ssp_rxd_gpio_mode_config(int port,int mfpr_value);
+extern int mbtk_ssp_txd_gpio_mode_config(int port,int mfpr_value);
+
+
+
+void mbtk_config_ssp0_gpio_mode(void)
+{
+# 91 "\\mbtk\\init\\mbtk_project_ssp_define.c"
+}
+
+void mbtk_config_ssp1_gpio_mode(void)
+{
+# 107 "\\mbtk\\init\\mbtk_project_ssp_define.c"
+}
+
+void mbtk_config_ssp2_gpio_mode(void)
+{
+# 123 "\\mbtk\\init\\mbtk_project_ssp_define.c"
+}

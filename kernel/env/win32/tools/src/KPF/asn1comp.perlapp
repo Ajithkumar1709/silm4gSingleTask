@@ -1,0 +1,33 @@
+#!C:\Program Files\ActiveState Perl Dev Kit 8.0\bin\perlapp-gui.exe
+PAP-Version: 1.0
+Packer: C:\Program Files\ActiveState Perl Dev Kit 8.0\bin\perlapp.exe
+Script: ..\asn1comp.pl
+Cwd: G:\env\win32\tools\src\KPF
+Clean: 0
+Date: 2010-04-12 16:38:26
+Debug: 
+Dependent: 0
+Dyndll: 1
+Exe: ..\..\asn1comp.exe
+Force: 1
+Gui: 0
+Hostname: KIRILS-MOBL
+Lib: lib:..\ASN.1
+No-Compress: 0
+No-Logo: 1
+Runlib: 
+Shared: none
+Tmpdir: 
+Verbose: 1
+Version-Comments: 
+Version-CompanyName: Marvell
+Version-FileDescription: ASN.1 Compiler
+Version-FileVersion: 0.9.102
+Version-InternalName: 
+Version-LegalCopyright: (C) Copyright [2009, 2010] Marvell International Ltd. All Rights Reserved.
+Version-LegalTrademarks: 
+Version-OriginalFilename: 
+Version-ProductName: ASN.1 Compiler
+Version-ProductVersion: 0.9.102
+Warnings: 0
+Xclude: 0

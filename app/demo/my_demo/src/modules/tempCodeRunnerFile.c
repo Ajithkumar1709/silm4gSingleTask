@@ -1,0 +1,1 @@
+memoryHandle_calcChecksum

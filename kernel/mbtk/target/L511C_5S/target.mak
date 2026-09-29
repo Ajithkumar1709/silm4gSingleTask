@@ -1,0 +1,50 @@
+# Define crane platform version
+#
+#  Copyright Statement:
+#  ---------------------------
+#  MBTK 添加整体项目宏
+#
+# *************************************************************************
+
+MBTK_PRODUCT = L511C_5S
+
+MBTK_PRODUCT_BSP = L511_5
+
+MBTK_PRODUCT_SCATT_FILE = CraneLR_DS_4M_Ram_4M_Flash_XIP_CIPSRAM_Common
+
+MBTK_FOTA_SUPPORT = y
+
+MBTK_CDC_UART_SUPPORT = y
+
+MBTK_NOAUDIO_SUPPORT = y
+
+MBTK_SPI_SUPPORT = y
+
+#open TTS set = ivtts_ch / ivtts_en / ivtts_little    #close set = n
+MBTK_TTS_SUPPORT = n
+
+#open POC set = BND / HAWK / CHAYU / ZZD    #close set = n
+MBTK_POC_SUPPORT = n
+
+MBTK_MP3_SUPPORT = n
+
+MBTK_FTP_ENABLE = y
+
+MBTK_MQTT_SUPPORT = y
+
+MBTK_SMS_SUPPORT = y
+
+#open GNSS set = int    #close set = n
+MBTK_GNSS_SUPPORT = n
+
+MBTK_MINI_APP_FOTA = n
+
+MBTK_FOAT_NORMAL = y
+
+MBTK_FTP_FOTA_SUPPORT = y
+
+MBTK_SPINOR_SUPPORT = n
+
+LFS_SUPPORT_V2 = y
+
+

@@ -1,0 +1,98 @@
+______________________________________________________________________
+
+RELEASE SUMMARY
+ TAVOR08.162
+
+	- Release date:     Wednesday, November 28, 2007 10:13:27 AM
+	- Configuration of Environment:
+		csw => HTP04.48.6874
+		tavor => TAVOR_ENV_01.61
+		hermon (/hermon/misc) => HERMON_MISC_18
+		hermon => H03.01.134
+		Video_SW => VP_00.80
+		l1tw => L1P.Rel5.17.S005.4807
+		genlib => GENLIB_1.2.0
+		softutil => HTP04.48.5220
+		CRD => L1P.Rel5.17.S005.4810
+		aplp_etc (/aplp_etc/DLM) => DLM_00.01.38
+		os => NU1.15.09
+		IPP => VP_00.80
+		bootloader => OV_BootloaderBulverde10.00_BinFile
+		CrossPlatformSW => HTP04.48.7386
+		tools => HTP04.48.6878
+		tavor (/tavor/env) => TAVOR08.162
+		pcac (/pcac/pcac_test) => PCAC_MIGRATION_13.0.2
+		tavor_rtos => HTP04.48.1304
+		hermon (/hermon/env) => C8.35.15
+		gplc => L1P.Rel5.17.S005.8778
+		trustedboot => WTPTP_TAVOR_3_0_07_RC2
+		sac => SAC_7.16
+		aplp => L1P.Rel5.17.S005.3610
+		hal => HTP04.48.2961
+		drat => L1P.Rel5.17.S005.9641
+		aud_sw => HTA.00.053
+		os (/os/osx) => OSX_01.02
+		hop => HTP04.48.2958
+		pcac => PCAC_04.018
+		tavor_obm => PTK_WTPTP_TAVOR_B0_00.17
+		hal (/hal/ME) => VP_00.80
+		l1p_fw_rls => CCS.Rel5.17.F003.1671
+
+______________________________________________________________________
+
+BRIEF DESCRIPTION
+	- Total changesets in this release 1:
+		 - tavor_env-V2.60--yeshet-72 (1 files changed)
+______________________________________________________________________
+
+DETAILED DESCRIPTION
+	- Name:             tavor_env-V2.60--yeshet-72
+	- StartDate:        Wednesday, November 28, 2007 9:40:27 AM
+	- User:             Yoram Eshet
+	- Files:
+		\tavor\env\conf\environment.cs
+	- Comments:         
+		NEW FEATURE / CHANGE REQUEST
+
+(M) Description        
+	<please, explain what feature/capability you implement>
+	
+(O) Variants Affected     
+	<list all relevant>
+	
+(O) Rollback options
+	<non code-intervention disabling>
+_____________________________________________________________________
+
+BUG FIX
+
+(M) Issues resolved     
+	<please, explain what problem you fix + SCR# and title>
+
+(M) Diagnosis           
+	<please, explain what is the issue in the code that result in the above problem>
+
+(M) Solution          
+	<please, explain which changes in the code you apply and how this solves the problem>
+
+_____________________________________________________________________
+
+COMMON PART
+
+Other changes                     : 
+Affected configurations           : 
+Conditional compilation switches  :
+Performance impact                :
+Power saving impact               :
+Resources                         :
+BSP implementation notes          :
+Known issues                      :
+
+_____________________________________________________________________
+
+RISK ESTIMATION
+
+(M) Pick up one: LOW/MEDIUM/HIGH
+
+______________________________________________________________________
+

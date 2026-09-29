@@ -1,0 +1,20 @@
+/* Template for mqtt_device_certs.h (per-device MQTT TLS identity).
+ * Copy to mqtt_device_certs.h and paste the device's cert.pem / key.pem,
+ * one PEM line per C string, each ending in \r\n.
+ * mqtt_device_certs.h is git-ignored - never commit a real key. */
+#ifndef MQTT_DEVICE_CERTS_H
+#define MQTT_DEVICE_CERTS_H
+
+static const char *cli_crt = {
+"-----BEGIN CERTIFICATE-----\r\n"
+"<device cert.pem lines here>\r\n"
+"-----END CERTIFICATE-----\r\n"
+};
+
+static const char *cli_key = {
+"-----BEGIN PRIVATE KEY-----\r\n"
+"<device key.pem lines here>\r\n"
+"-----END PRIVATE KEY-----\r\n"
+};
+
+#endif /* MQTT_DEVICE_CERTS_H */

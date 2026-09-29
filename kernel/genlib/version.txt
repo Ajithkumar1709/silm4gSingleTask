@@ -1,0 +1,66 @@
+_______________Start Report : Thu Jan  8 12:18:02 2009 _______
+Release Summary
+GENLIB_1.2.1
+	 - Release Date:	Thu Jan  8 12:18:02 2009
+	 - Release Comments:
+		(from activity "Release_Sunmmary_genlib" CQ00025992)
+		(from activity "Copyright Fix January 7 2009" CQ00065722)
+----------------------------------------------------------
+BRIEF DESCRIPTION
+*********************
+	 - Total Integration activities in this release : 1
+	 - Total activities in this release : 2
+Activities Details:
+*******************
+		 - Release_Sunmmary_genlib(CQ00025992)(2 files changed)
+		 - Copyright Fix January 7 2009(CQ00065722)(22 files changed)
+----------------------------------------------------------
+DETAILED DESCRIPTION
+*********************
+---------------------------------------------------
+- Activity Name: Release_Sunmmary_genlib (ID : CQ00025992)
+- Activate Date: 2007-10-16 17:48:56
+- Owner : yjungman
+- Files:
+	\genlib\.
+	\genlib\version.txt
+- Comments:
+		Diagnosis:
+		Resolution Details:
+---------------------------------------------------
+---------------------------------------------------
+- Activity Name: Copyright Fix January 7 2009 (ID : CQ00065722)
+- Activate Date: 2009-01-07 18:09:01
+- Owner : kirils
+- Files:
+	\genlib\genlib\build\genlib.mak
+	\genlib\fsm\build\fsm_dep.mak
+	\genlib\qmgr\build\qmgr.mak
+	\genlib\min_max\build\min_max.mak
+	\genlib\genlib\build\genlib_dep.mak
+	\genlib\fsm\build\fsm.mak
+	\genlib\qmgr\build\qmgr_dep.mak
+	\genlib\min_max\build\min_max_dep.mak
+	\genlib\fsm\inc\fsm_app.h
+	\genlib\qmgr\inc\qmgr.h
+	\genlib\fsm\inc\fsm_sys.h
+	\genlib\fsm\inc\fsm_types.h
+	\genlib\env\genlib_version.h
+	\genlib\fsm\src\fsm_trace.h
+	\genlib\fsm\inc\fsm_config.h
+	\genlib\min_max\inc\min_max.h
+	\genlib\fsm\src\fsm_app.c
+	\genlib\min_max\src\min_max.c
+	\genlib\qmgr\src\qmgr.c
+	\genlib\fsm\src\SOURCES
+	\genlib\fsm\DIRS
+	\genlib\env\LabelGenlib.bat
+- Comments:
+		Diagnosis:
+		Resolution Details:
+---------------------------------------------------
+Integration Activities:
+***********************
+Activity "deliver COPYRIGHT-AFFIRM.GLIB-02 on 20090108.120858." (CQ00065792) contains:
+	Copyright Fix January 7 2009 (CQ00065722)
+________________________END Baseline : GENLIB_1.2.1 ____________________________

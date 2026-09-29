@@ -1,0 +1,168 @@
+# Kconfig - general configuration options
+
+mainmenu "MobileTek OpenCPU APP Configuration"
+
+menu "APP Target Configurations"
+
+choice 
+	prompt "Kernal Chip Type Selection" 
+	default CHIP_1603
+	
+	config CHIP_1602
+	bool "Krenal Chip Type Is 1602"
+	
+	config CHIP_1603
+	bool "Krenal Chip Type Is 1603"
+	
+	config CHIP_1606
+	bool "Krenal Chip Type Is 1606"
+	
+	config CHIP_1607
+	bool "Krenal Chip Type Is 1607"
+	
+	config CHIP_1605
+	bool "Krenal Chip Type Is 1605"
+
+endchoice
+
+if CHIP_1602
+source "config/1602/Kconfig"
+endif
+
+if CHIP_1603
+source "config/1603/Kconfig"
+endif
+
+if CHIP_1606
+source "config/1606/Kconfig"
+endif
+
+if CHIP_1607
+source "config/1607/Kconfig"
+endif
+
+if CHIP_1605
+source "config/1605/Kconfig"
+endif
+
+endmenu
+
+menu "APP Function Configurations"
+
+config AUDIO_SUPPORT
+	bool "enable audio"
+	default y
+	help
+	  Select this option if you build app with auido demo.
+	  	
+	config RECORD_SUPPORT
+	depends on AUDIO_SUPPORT
+	bool "enable record"
+	default n
+	help
+	  Select this option if you build app with auido record demo.
+	  
+	config AMR_SUPPORT
+	depends on AUDIO_SUPPORT
+	bool "enable amr audio"
+	default n
+	help
+	  Select this option if you build app with auido amr demo.
+	  
+	config MP3_SUPPORT
+	depends on AUDIO_SUPPORT
+	bool "enable mp3 audio"
+	default n
+	help
+	  Select this option if you build app with auido mp3 demo.
+	  
+config LCD_SUPPORT
+	bool "enable lcd"
+	default n
+	help
+	  Select this option if you build app with lcd demo.
+	  
+config CAM_SUPPORT
+	bool "enable camera"
+	default n
+	help
+	  Select this option if you build app with camera demo.	
+	  
+config AIDIALOG_SUPPORT
+	depends on AUDIO_SUPPORT
+	bool "enable aidialog support"
+	default n
+	help
+	  Select this option if you build app with aidialog demo.	  
+	  
+endmenu
+
+menu "Third Party Function Configurations"
+	  
+config MAAS_SUPPORT
+	bool "maas lib support"
+	default n
+	help
+	  Select this option if you want to add mass to app.
+
+config AZURE_SUPPORT
+	bool "azure lib support"
+	default n
+	help
+	  Select this option if you want to add azure to app.
+	  
+config QCLOUD_SUPPORT
+	bool "qcloud lib support"
+	default n
+	help
+	  Select this option if you want to add qcloud to app.
+
+config TTS_SUPPORT
+	bool "enable TTS"
+	depends on AUDIO_SUPPORT
+	default n
+	help
+	  Select this option if you want to build app with TTS demo.
+	  
+config CJSON_SUPPORT
+	bool "enable CJSON"
+	default n
+	help
+	  Select this option if you want to build app with CJSON demo.	  
+	  
+config AMAZON_SUPPORT
+    bool "enable amazon"
+	default n
+	help
+	  Select this option if you want to build app with AMAZON demo.
+
+config SIMCOM_SUPPORT
+	bool "enable simcom"
+	default n
+	help
+	  Select this option if you want to build app with SIMCOM demo.
+
+	if SIMCOM_SUPPORT
+	source "config/3rdparty/simcom/Kconfig"
+	endif
+endmenu
+
+
+
+menu "Other Configurations"
+	  
+config IS_XIP
+	bool "enable XIP mode"
+	depends on CHIP_1602 || CHIP_1606 || CHIP_1607 || CHIP_1605
+	default y
+	help
+	  Select this option if you want to run app in XIP mode.
+
+config IS_COMPRESS
+	bool "enable compress app image"
+	depends on CHIP_1603
+	default n
+	help
+	  Select this option if you want to compress app image.
+	  
+endmenu

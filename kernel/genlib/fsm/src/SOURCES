@@ -1,0 +1,55 @@
+!if 0
+------------------------------------------------------------
+(C) Copyright [2006-2008] Marvell International Ltd.
+All Rights Reserved
+------------------------------------------------------------
+!endif
+
+!if 0
+
+ Copyright (C) 2002 Intel Corp. 
+!endif
+
+!if "$(PLAT_NOMSL)" == "1"
+SKIPBUILD=1
+!endif
+
+TARGETNAME=fsm
+RELEASETYPE=PLATFORM
+TARGETTYPE=LIBRARY
+SYNCHRONIZE_BLOCK=1
+SYNCHRONIZE_DRAIN=1
+
+TARGETLIBS=\
+   $(_TARGETPLATROOT)\lib\$(_CPUINDPATH)\osa.lib    
+
+!IFDEF BSP_ZOARMON
+INCLUDES=$(_PUBLICROOT)\common\sdk\inc; \
+         $(_PUBLICROOT)\common\ddk\inc; \
+         $(_PUBLICROOT)\common\oak\inc; \
+         ..\inc; \
+         ..\..\..\inc; \
+         ..\..\osa\inc;
+!ENDIF
+
+!IFDEF BSP_P305_PCA_COMPONENTS	# Asus P305
+INCLUDES=$(_PUBLICROOT)\common\sdk\inc; \
+         $(_PUBLICROOT)\common\ddk\inc; \
+         $(_PUBLICROOT)\common\oak\inc; \
+         $(_TARGETPLATROOT)\public\csp\arm\intel\pxa27x\inc; \
+         $(_TARGETPLATROOT)\public\csp\arm\intel\pxa27x\msl\fsm\inc; \
+         $(_TARGETPLATROOT)\public\csp\arm\intel\pxa27x\osa\inc;
+!ENDIF
+
+!IFDEF BSP_TAVOR
+INCLUDES=$(_PUBLICROOT)\common\sdk\inc; \
+         $(_PUBLICROOT)\common\ddk\inc; \
+         $(_PUBLICROOT)\common\oak\inc; \
+         $(_TARGETPLATROOT)\public\csp\arm\intel\TAVOR\inc; \
+         $(_TARGETPLATROOT)\public\csp\arm\intel\TAVOR\fsm\inc; \
+         $(_TARGETPLATROOT)\public\csp\arm\intel\TAVOR\osa\inc;
+!ENDIF
+
+CDEFINES=$(CDEFINES) -DOSA_WINCE -DOSA_DEBUG -DENV_STINGER
+
+SOURCES= fsm_app.c

@@ -1,0 +1,13 @@
+# Kconfig - app target configuration options
+
+choice 
+	prompt "APP Target Selection" 
+	default L511CN_7S
+
+	#####################
+	#L511CN_7S
+	#####################
+	config L511CN_7S
+		bool "L511CN_7S"
+		
+endchoice

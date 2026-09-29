@@ -1,0 +1,12 @@
+
+choice 
+	prompt "Build Type Selection" 
+	default SIMCOM_BUILD_WITH_LIB 
+	
+	config SIMCOM_BUILD_WITH_LIB
+		bool "SIMCOM_BUILD_WITH_LIB"
+	
+	config SIMCOM_BUILD_WITH_SOURCE
+		bool "SIMCOM_BUILD_WITH_SOURCE"
+
+endchoice

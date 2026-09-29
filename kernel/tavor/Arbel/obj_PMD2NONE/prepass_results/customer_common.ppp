@@ -1,0 +1,1096 @@
+# 1 "\\mbtk\\cust_api\\\\.\\customer_common.c"
+
+
+
+
+# 1 "\\pcac\\atparser\\inc\\utlTime.h"
+/*****************************************************************************
+ * Utility Library
+ * 
+ * Time utilities header file
+ *
+ *****************************************************************************/
+
+
+
+
+# 1 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdlib.h"
+/* stdlib.h: ANSI draft (X3J11 May 88) library header, section 4.10 */
+/* Copyright (C) Codemist Ltd., 1988-1993.                          */
+/* Copyright 1991-1998,2014 ARM Limited. All rights reserved.       */
+/*
+ * RCS $Revision$
+ * Checkin $Date$
+ * Revising $Author: agrant $
+ */
+ 
+/*
+ * stdlib.h declares four types, several general purpose functions,
+ * and defines several macros.
+ */
+
+
+
+
+
+
+  /* armclang and non-strict armcc allow 'long long' in system headers */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*
+   * Some of these declarations are new in C99.  To access them in C++
+   * you can use -D__USE_C99_STDLIB (or -D__USE_C99ALL).
+   */
+
+
+
+
+
+
+
+
+# 54 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdlib.h"
+
+
+ /* unconditional in C++ and non-strict C for consistency of debug info */
+
+
+
+    typedef unsigned int size_t;   /* see <stddef.h> */
+# 70 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdlib.h"
+
+
+
+
+
+
+   /* unconditional in non-strict C for consistency of debug info */
+
+
+
+    typedef unsigned short wchar_t; /* see <stddef.h> */
+# 91 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdlib.h"
+
+typedef struct div_t { int quot, rem; } div_t;
+   /* type of the value returned by the div function. */
+typedef struct ldiv_t { long int quot, rem; } ldiv_t;
+   /* type of the value returned by the ldiv function. */
+
+typedef struct lldiv_t { long long quot, rem; } lldiv_t;
+   /* type of the value returned by the lldiv function. */
+
+
+# 112 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdlib.h"
+   /*
+    * an integral expression which may be used as an argument to the exit
+    * function to return successful termination status to the host
+    * environment.
+    */
+
+   /*
+    * Defining __USE_ANSI_EXAMPLE_RAND at compile time switches to
+    * the example implementation of rand() and srand() provided in
+    * the ANSI C standard. This implementation is very poor, but is
+    * provided for completeness.
+    */
+# 131 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdlib.h"
+   /*
+    * RAND_MAX: an integral constant expression, the value of which
+    * is the maximum value returned by the rand function.
+    */
+extern __declspec(__nothrow) int __aeabi_MB_CUR_MAX(void);
+
+   /*
+    * a positive integer expression whose value is the maximum number of bytes
+    * in a multibyte character for the extended character set specified by the
+    * current locale (category LC_CTYPE), and whose value is never greater
+    * than MB_LEN_MAX.
+    */
+
+   /*
+    * If the compiler supports signalling nans as per N965 then it
+    * will define __SUPPORT_SNAN__, in which case a user may define
+    * _WANT_SNAN in order to obtain a compliant version of the strtod
+    * family of functions.
+    */
+
+
+
+
+extern __declspec(__nothrow) double atof(const char * /*nptr*/) __attribute__((__nonnull__(1)));
+   /*
+    * converts the initial part of the string pointed to by nptr to double
+    * representation.
+    * Returns: the converted value.
+    */
+extern __declspec(__nothrow) int atoi(const char * /*nptr*/) __attribute__((__nonnull__(1)));
+   /*
+    * converts the initial part of the string pointed to by nptr to int
+    * representation.
+    * Returns: the converted value.
+    */
+extern __declspec(__nothrow) long int atol(const char * /*nptr*/) __attribute__((__nonnull__(1)));
+   /*
+    * converts the initial part of the string pointed to by nptr to long int
+    * representation.
+    * Returns: the converted value.
+    */
+
+extern __declspec(__nothrow) long long atoll(const char * /*nptr*/) __attribute__((__nonnull__(1)));
+   /*
+    * converts the initial part of the string pointed to by nptr to
+    * long long int representation.
+    * Returns: the converted value.
+    */
+
+
+extern __declspec(__nothrow) double strtod(const char * __restrict /*nptr*/, char ** __restrict /*endptr*/) __attribute__((__nonnull__(1)));
+   /*
+    * converts the initial part of the string pointed to by nptr to double
+    * representation. First it decomposes the input string into three parts:
+    * an initial, possibly empty, sequence of white-space characters (as
+    * specified by the isspace function), a subject sequence resembling a
+    * floating point constant; and a final string of one or more unrecognised
+    * characters, including the terminating null character of the input string.
+    * Then it attempts to convert the subject sequence to a floating point
+    * number, and returns the result. A pointer to the final string is stored
+    * in the object pointed to by endptr, provided that endptr is not a null
+    * pointer.
+    * Returns: the converted value if any. If no conversion could be performed,
+    *          zero is returned. If the correct value is outside the range of
+    *          representable values, plus or minus HUGE_VAL is returned
+    *          (according to the sign of the value), and the value of the macro
+    *          ERANGE is stored in errno. If the correct value would cause
+    *          underflow, zero is returned and the value of the macro ERANGE is
+    *          stored in errno.
+    */
+
+extern __declspec(__nothrow) float strtof(const char * __restrict /*nptr*/, char ** __restrict /*endptr*/) __attribute__((__nonnull__(1)));
+extern __declspec(__nothrow) long double strtold(const char * __restrict /*nptr*/, char ** __restrict /*endptr*/) __attribute__((__nonnull__(1)));
+   /*
+    * same as strtod, but return float and long double respectively.
+    */
+
+extern __declspec(__nothrow) long int strtol(const char * __restrict /*nptr*/,
+                        char ** __restrict /*endptr*/, int /*base*/) __attribute__((__nonnull__(1)));
+   /*
+    * converts the initial part of the string pointed to by nptr to long int
+    * representation. First it decomposes the input string into three parts:
+    * an initial, possibly empty, sequence of white-space characters (as
+    * specified by the isspace function), a subject sequence resembling an
+    * integer represented in some radix determined by the value of base, and a
+    * final string of one or more unrecognised characters, including the
+    * terminating null character of the input string. Then it attempts to
+    * convert the subject sequence to an integer, and returns the result.
+    * If the value of base is 0, the expected form of the subject sequence is
+    * that of an integer constant (described in ANSI Draft, section 3.1.3.2),
+    * optionally preceded by a '+' or '-' sign, but not including an integer
+    * suffix. If the value of base is between 2 and 36, the expected form of
+    * the subject sequence is a sequence of letters and digits representing an
+    * integer with the radix specified by base, optionally preceded by a plus
+    * or minus sign, but not including an integer suffix. The letters from a
+    * (or A) through z (or Z) are ascribed the values 10 to 35; only letters
+    * whose ascribed values are less than that of the base are permitted. If
+    * the value of base is 16, the characters 0x or 0X may optionally precede
+    * the sequence of letters and digits following the sign if present.
+    * A pointer to the final string is stored in the object
+    * pointed to by endptr, provided that endptr is not a null pointer.
+    * Returns: the converted value if any. If no conversion could be performed,
+    *          zero is returned and nptr is stored in *endptr.
+    *          If the correct value is outside the range of
+    *          representable values, LONG_MAX or LONG_MIN is returned
+    *          (according to the sign of the value), and the value of the
+    *          macro ERANGE is stored in errno.
+    */
+extern __declspec(__nothrow) unsigned long int strtoul(const char * __restrict /*nptr*/,
+                                       char ** __restrict /*endptr*/, int /*base*/) __attribute__((__nonnull__(1)));
+   /*
+    * converts the initial part of the string pointed to by nptr to unsigned
+    * long int representation. First it decomposes the input string into three
+    * parts: an initial, possibly empty, sequence of white-space characters (as
+    * determined by the isspace function), a subject sequence resembling an
+    * unsigned integer represented in some radix determined by the value of
+    * base, and a final string of one or more unrecognised characters,
+    * including the terminating null character of the input string. Then it
+    * attempts to convert the subject sequence to an unsigned integer, and
+    * returns the result. If the value of base is zero, the expected form of
+    * the subject sequence is that of an integer constant (described in ANSI
+    * Draft, section 3.1.3.2), optionally preceded by a '+' or '-' sign, but
+    * not including an integer suffix. If the value of base is between 2 and
+    * 36, the expected form of the subject sequence is a sequence of letters
+    * and digits representing an integer with the radix specified by base,
+    * optionally preceded by a '+' or '-' sign, but not including an integer
+    * suffix. The letters from a (or A) through z (or Z) stand for the values
+    * 10 to 35; only letters whose ascribed values are less than that of the
+    * base are permitted. If the value of base is 16, the characters 0x or 0X
+    * may optionally precede the sequence of letters and digits following the
+    * sign, if present. A pointer to the final string is stored in the object
+    * pointed to by endptr, provided that endptr is not a null pointer.
+    * Returns: the converted value if any. If no conversion could be performed,
+    *          zero is returned and nptr is stored in *endptr.
+    *          If the correct value is outside the range of
+    *          representable values, ULONG_MAX is returned, and the value of
+    *          the macro ERANGE is stored in errno.
+    */
+
+/* C90 reserves all names beginning with 'str' */
+extern __declspec(__nothrow) long long strtoll(const char * __restrict /*nptr*/,
+                                  char ** __restrict /*endptr*/, int /*base*/)
+                          __attribute__((__nonnull__(1)));
+   /*
+    * as strtol but returns a long long int value.  If the correct value is
+    * outside the range of representable values,  LLONG_MAX or LLONG_MIN is
+    * returned (according to the sign of the value), and the value of the
+    * macro ERANGE is stored in errno.
+    */
+extern __declspec(__nothrow) unsigned long long strtoull(const char * __restrict /*nptr*/,
+                                            char ** __restrict /*endptr*/, int /*base*/)
+                                   __attribute__((__nonnull__(1)));
+   /*
+    * as strtoul but returns an unsigned long long int value.  If the correct
+    * value is outside the range of representable values, ULLONG_MAX is returned,
+    * and the value of the macro ERANGE is stored in errno.
+    */
+
+extern __declspec(__nothrow) int rand(void);
+   /*
+    * Computes a sequence of pseudo-random integers in the range 0 to RAND_MAX.
+    * Uses an additive generator (Mitchell & Moore) of the form:
+    *   Xn = (X[n-24] + X[n-55]) MOD 2^31
+    * This is described in section 3.2.2 of Knuth, vol 2. It's period is
+    * in excess of 2^55 and its randomness properties, though unproven, are
+    * conjectured to be good. Empirical testing since 1958 has shown no flaws.
+    * Returns: a pseudo-random integer.
+    */
+extern __declspec(__nothrow) void srand(unsigned int /*seed*/);
+   /*
+    * uses its argument as a seed for a new sequence of pseudo-random numbers
+    * to be returned by subsequent calls to rand. If srand is then called with
+    * the same seed value, the sequence of pseudo-random numbers is repeated.
+    * If rand is called before any calls to srand have been made, the same
+    * sequence is generated as when srand is first called with a seed value
+    * of 1.
+    */
+
+struct _rand_state { int __x[57]; };
+extern __declspec(__nothrow) int _rand_r(struct _rand_state *);
+extern __declspec(__nothrow) void _srand_r(struct _rand_state *, unsigned int);
+struct _ANSI_rand_state { int __x[1]; };
+extern __declspec(__nothrow) int _ANSI_rand_r(struct _ANSI_rand_state *);
+extern __declspec(__nothrow) void _ANSI_srand_r(struct _ANSI_rand_state *, unsigned int);
+   /*
+    * Re-entrant variants of both flavours of rand, which operate on
+    * an explicitly supplied state buffer.
+    */
+
+extern __declspec(__nothrow) void *calloc(size_t /*nmemb*/, size_t /*size*/);
+   /*
+    * allocates space for an array of nmemb objects, each of whose size is
+    * 'size'. The space is initialised to all bits zero.
+    * Returns: either a null pointer or a pointer to the allocated space.
+    */
+extern __declspec(__nothrow) void free(void * /*ptr*/);
+   /*
+    * causes the space pointed to by ptr to be deallocated (i.e., made
+    * available for further allocation). If ptr is a null pointer, no action
+    * occurs. Otherwise, if ptr does not match a pointer earlier returned by
+    * calloc, malloc or realloc or if the space has been deallocated by a call
+    * to free or realloc, the behaviour is undefined.
+    */
+extern __declspec(__nothrow) void *malloc(size_t /*size*/);
+   /*
+    * allocates space for an object whose size is specified by 'size' and whose
+    * value is indeterminate.
+    * Returns: either a null pointer or a pointer to the allocated space.
+    */
+extern __declspec(__nothrow) void *realloc(void * /*ptr*/, size_t /*size*/);
+   /*
+    * changes the size of the object pointed to by ptr to the size specified by
+    * size. The contents of the object shall be unchanged up to the lesser of
+    * the new and old sizes. If the new size is larger, the value of the newly
+    * allocated portion of the object is indeterminate. If ptr is a null
+    * pointer, the realloc function behaves like a call to malloc for the
+    * specified size. Otherwise, if ptr does not match a pointer earlier
+    * returned by calloc, malloc or realloc, or if the space has been
+    * deallocated by a call to free or realloc, the behaviour is undefined.
+    * If the space cannot be allocated, the object pointed to by ptr is
+    * unchanged. If size is zero and ptr is not a null pointer, the object it
+    * points to is freed.
+    * Returns: either a null pointer or a pointer to the possibly moved
+    *          allocated space.
+    */
+
+extern __declspec(__nothrow) int posix_memalign(void ** /*ret*/, size_t /*alignment*/, size_t /*size*/);
+   /*
+    * allocates space for an object of size 'size', aligned to a
+    * multiple of 'alignment' (which must be a power of two and at
+    * least 4).
+    *
+    * On success, a pointer to the allocated object is stored in
+    * *ret, and zero is returned. On failure, the return value is
+    * either ENOMEM (allocation failed because no suitable piece of
+    * memory was available) or EINVAL (the 'alignment' parameter was
+    * invalid).
+    */
+
+typedef int (*__heapprt)(void *, char const *, ...);
+extern __declspec(__nothrow) void __heapstats(int (* /*dprint*/)(void * /*param*/,
+                                           char const * /*format*/, ...),
+                        void * /*param*/) __attribute__((__nonnull__(1)));
+   /*
+    * reports current heap statistics (eg. number of free blocks in
+    * the free-list). Output is as implementation-defined free-form
+    * text, provided via the dprint function. `param' gives an
+    * extra data word to pass to dprint. You can call
+    * __heapstats(fprintf,stdout) by casting fprintf to the above
+    * function type; the typedef `__heapprt' is provided for this
+    * purpose.
+    *
+    * `dprint' will not be called while the heap is being examined,
+    * so it can allocate memory itself without trouble.
+    */
+extern __declspec(__nothrow) int __heapvalid(int (* /*dprint*/)(void * /*param*/,
+                                           char const * /*format*/, ...),
+                       void * /*param*/, int /*verbose*/) __attribute__((__nonnull__(1)));
+   /*
+    * performs a consistency check on the heap. Errors are reported
+    * through dprint, like __heapstats. If `verbose' is nonzero,
+    * full diagnostic information on the heap state is printed out.
+    *
+    * This routine probably won't work if the heap isn't a
+    * contiguous chunk (for example, if __user_heap_extend has been
+    * overridden).
+    *
+    * `dprint' may be called while the heap is being examined or
+    * even in an invalid state, so it must perform no memory
+    * allocation. In particular, if `dprint' calls (or is) a stdio
+    * function, the stream it outputs to must already have either
+    * been written to or been setvbuf'ed, or else the system will
+    * allocate buffer space for it on the first call to dprint.
+    */
+extern __declspec(__nothrow) __declspec(__noreturn) void abort(void);
+   /*
+    * causes abnormal program termination to occur, unless the signal SIGABRT
+    * is being caught and the signal handler does not return. Whether open
+    * output streams are flushed or open streams are closed or temporary
+    * files removed is implementation-defined.
+    * An implementation-defined form of the status 'unsuccessful termination'
+    * is returned to the host environment by means of a call to
+    * raise(SIGABRT).
+    */
+
+extern __declspec(__nothrow) int atexit(void (* /*func*/)(void)) __attribute__((__nonnull__(1)));
+   /*
+    * registers the function pointed to by func, to be called without its
+    * arguments at normal program termination. It is possible to register at
+    * least 32 functions.
+    * Returns: zero if the registration succeeds, nonzero if it fails.
+    */
+# 436 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdlib.h"
+
+
+extern __declspec(__nothrow) __declspec(__noreturn) void exit(int /*status*/);
+   /*
+    * causes normal program termination to occur. If more than one call to the
+    * exit function is executed by a program, the behaviour is undefined.
+    * First, all functions registered by the atexit function are called, in the
+    * reverse order of their registration.
+    * Next, all open output streams are flushed, all open streams are closed,
+    * and all files created by the tmpfile function are removed.
+    * Finally, control is returned to the host environment. If the value of
+    * status is zero or EXIT_SUCCESS, an implementation-defined form of the
+    * status 'successful termination' is returned. If the value of status is
+    * EXIT_FAILURE, an implementation-defined form of the status
+    * 'unsuccessful termination' is returned. Otherwise the status returned
+    * is implementation-defined.
+    */
+
+extern __declspec(__nothrow) __declspec(__noreturn) void _Exit(int /*status*/);
+   /*
+    * causes normal program termination to occur. No functions registered
+    * by the atexit function are called.
+    * In this implementation, all open output streams are flushed, all
+    * open streams are closed, and all files created by the tmpfile function
+    * are removed.
+    * Control is returned to the host environment. The status returned to
+    * the host environment is determined in the same way as for 'exit'.
+    */     
+
+extern __declspec(__nothrow) char *getenv(const char * /*name*/) __attribute__((__nonnull__(1)));
+   /*
+    * searches the environment list, provided by the host environment, for a
+    * string that matches the string pointed to by name. The set of environment
+    * names and the method for altering the environment list are
+    * implementation-defined.
+    * Returns: a pointer to a string associated with the matched list member.
+    *          The array pointed to shall not be modified by the program, but
+    *          may be overwritten by a subsequent call to the getenv function.
+    *          If the specified name cannot be found, a null pointer is
+    *          returned.
+    */
+
+extern __declspec(__nothrow) int  system(const char * /*string*/);
+   /*
+    * passes the string pointed to by string to the host environment to be
+    * executed by a command processor in an implementation-defined manner.
+    * A null pointer may be used for string, to inquire whether a command
+    * processor exists.
+    *
+    * Returns: If the argument is a null pointer, the system function returns
+    *          non-zero only if a command processor is available. If the
+    *          argument is not a null pointer, the system function returns an
+    *          implementation-defined value.
+    */
+
+extern  void *bsearch(const void * /*key*/, const void * /*base*/,
+              size_t /*nmemb*/, size_t /*size*/,
+              int (* /*compar*/)(const void *, const void *)) __attribute__((__nonnull__(1,2,5)));
+   /*
+    * searches an array of nmemb objects, the initial member of which is
+    * pointed to by base, for a member that matches the object pointed to by
+    * key. The size of each member of the array is specified by size.
+    * The contents of the array shall be in ascending sorted order according to
+    * a comparison function pointed to by compar, which is called with two
+    * arguments that point to the key object and to an array member, in that
+    * order. The function shall return an integer less than, equal to, or
+    * greater than zero if the key object is considered, respectively, to be
+    * less than, to match, or to be greater than the array member.
+    * Returns: a pointer to a matching member of the array, or a null pointer
+    *          if no match is found. If two members compare as equal, which
+    *          member is matched is unspecified.
+    */
+# 524 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdlib.h"
+
+
+extern  void qsort(void * /*base*/, size_t /*nmemb*/, size_t /*size*/,
+           int (* /*compar*/)(const void *, const void *)) __attribute__((__nonnull__(1,4)));
+   /*
+    * sorts an array of nmemb objects, the initial member of which is pointed
+    * to by base. The size of each object is specified by size.
+    * The contents of the array shall be in ascending order according to a
+    * comparison function pointed to by compar, which is called with two
+    * arguments that point to the objects being compared. The function shall
+    * return an integer less than, equal to, or greater than zero if the first
+    * argument is considered to be respectively less than, equal to, or greater
+    * than the second. If two members compare as equal, their order in the
+    * sorted array is unspecified.
+    */
+
+# 553 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdlib.h"
+
+extern __declspec(__nothrow) __attribute__((const)) int abs(int /*j*/);
+   /*
+    * computes the absolute value of an integer j. If the result cannot be
+    * represented, the behaviour is undefined.
+    * Returns: the absolute value.
+    */
+
+extern __declspec(__nothrow) __attribute__((const)) div_t div(int /*numer*/, int /*denom*/);
+   /*
+    * computes the quotient and remainder of the division of the numerator
+    * numer by the denominator denom. If the division is inexact, the resulting
+    * quotient is the integer of lesser magnitude that is the nearest to the
+    * algebraic quotient. If the result cannot be represented, the behaviour is
+    * undefined; otherwise, quot * denom + rem shall equal numer.
+    * Returns: a structure of type div_t, comprising both the quotient and the
+    *          remainder. the structure shall contain the following members,
+    *          in either order.
+    *          int quot; int rem;
+    */
+extern __declspec(__nothrow) __attribute__((const)) long int labs(long int /*j*/);
+   /*
+    * computes the absolute value of an long integer j. If the result cannot be
+    * represented, the behaviour is undefined.
+    * Returns: the absolute value.
+    */
+
+
+
+
+extern __declspec(__nothrow) __attribute__((const)) ldiv_t ldiv(long int /*numer*/, long int /*denom*/);
+   /*
+    * computes the quotient and remainder of the division of the numerator
+    * numer by the denominator denom. If the division is inexact, the sign of
+    * the resulting quotient is that of the algebraic quotient, and the
+    * magnitude of the resulting quotient is the largest integer less than the
+    * magnitude of the algebraic quotient. If the result cannot be represented,
+    * the behaviour is undefined; otherwise, quot * denom + rem shall equal
+    * numer.
+    * Returns: a structure of type ldiv_t, comprising both the quotient and the
+    *          remainder. the structure shall contain the following members,
+    *          in either order.
+    *          long int quot; long int rem;
+    */
+
+
+
+
+
+
+
+extern __declspec(__nothrow) __attribute__((const)) long long llabs(long long /*j*/);
+   /*
+    * computes the absolute value of a long long integer j. If the
+    * result cannot be represented, the behaviour is undefined.
+    * Returns: the absolute value.
+    */
+
+
+
+
+extern __declspec(__nothrow) __attribute__((const)) lldiv_t lldiv(long long /*numer*/, long long /*denom*/);
+   /*
+    * computes the quotient and remainder of the division of the numerator
+    * numer by the denominator denom. If the division is inexact, the sign of
+    * the resulting quotient is that of the algebraic quotient, and the
+    * magnitude of the resulting quotient is the largest integer less than the
+    * magnitude of the algebraic quotient. If the result cannot be represented,
+    * the behaviour is undefined; otherwise, quot * denom + rem shall equal
+    * numer.
+    * Returns: a structure of type lldiv_t, comprising both the quotient and the
+    *          remainder. the structure shall contain the following members,
+    *          in either order.
+    *          long long quot; long long rem;
+    */
+# 634 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdlib.h"
+
+
+/*
+ * ARM real-time divide functions for guaranteed performance
+ */
+typedef struct __sdiv32by16 { int quot, rem; } __sdiv32by16;
+typedef struct __udiv32by16 { unsigned int quot, rem; } __udiv32by16;
+   /* used int so that values return in separate regs, although 16-bit */
+typedef struct __sdiv64by32 { int rem, quot; } __sdiv64by32;
+
+__value_in_regs extern __declspec(__nothrow) __attribute__((const)) __sdiv32by16 __rt_sdiv32by16(
+     int /*numer*/,
+     short int /*denom*/);
+   /*
+    * Signed divide: (16-bit quot), (16-bit rem) = (32-bit) / (16-bit)
+    */
+__value_in_regs extern __declspec(__nothrow) __attribute__((const)) __udiv32by16 __rt_udiv32by16(
+     unsigned int /*numer*/,
+     unsigned short /*denom*/);
+   /*
+    * Unsigned divide: (16-bit quot), (16-bit rem) = (32-bit) / (16-bit)
+    */
+__value_in_regs extern __declspec(__nothrow) __attribute__((const)) __sdiv64by32 __rt_sdiv64by32(
+     int /*numer_h*/, unsigned int /*numer_l*/,
+     int /*denom*/);
+   /*
+    * Signed divide: (32-bit quot), (32-bit rem) = (64-bit) / (32-bit)
+    */
+
+
+/*
+ * ARM floating-point mask/status function (for both hardfp and softfp)
+ */
+extern __declspec(__nothrow) unsigned int __fp_status(unsigned int /*mask*/, unsigned int /*flags*/);
+   /*
+    * mask and flags are bit-fields which correspond directly to the
+    * floating point status register in the FPE/FPA and fplib.  
+    * __fp_status returns the current value of the status register,
+    * and also sets the writable bits of the word
+    * (the exception control and flag bytes) to:
+    *
+    *     new = (old & ~mask) ^ flags;
+    */
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * Multibyte Character Functions.
+ * The behaviour of the multibyte character functions is affected by the
+ * LC_CTYPE category of the current locale. For a state-dependent encoding,
+ * each function is placed into its initial state by a call for which its
+ * character pointer argument, s, is a null pointer. Subsequent calls with s
+ * as other than a null pointer cause the internal state of the function to be
+ * altered as necessary. A call with s as a null pointer causes these functions
+ * to return a nonzero value if encodings have state dependency, and a zero
+ * otherwise. After the LC_CTYPE category is changed, the shift state of these
+ * functions is indeterminate.
+ */
+extern __declspec(__nothrow) int mblen(const char * /*s*/, size_t /*n*/);
+   /*
+    * If s is not a null pointer, the mblen function determines the number of
+    * bytes compromising the multibyte character pointed to by s. Except that
+    * the shift state of the mbtowc function is not affected, it is equivalent
+    * to   mbtowc((wchar_t *)0, s, n);
+    * Returns: If s is a null pointer, the mblen function returns a nonzero or
+    *          zero value, if multibyte character encodings, respectively, do
+    *          or do not have state-dependent encodings. If s is not a null
+    *          pointer, the mblen function either returns a 0 (if s points to a
+    *          null character), or returns the number of bytes that compromise
+    *          the multibyte character (if the next n of fewer bytes form a
+    *          valid multibyte character), or returns -1 (they do not form a
+    *          valid multibyte character).
+    */
+extern __declspec(__nothrow) int mbtowc(wchar_t * __restrict /*pwc*/,
+                   const char * __restrict /*s*/, size_t /*n*/);
+   /*
+    * If s is not a null pointer, the mbtowc function determines the number of
+    * bytes that compromise the multibyte character pointed to by s. It then
+    * determines the code for value of type wchar_t that corresponds to that
+    * multibyte character. (The value of the code corresponding to the null
+    * character is zero). If the multibyte character is valid and pwc is not a
+    * null pointer, the mbtowc function stores the code in the object pointed
+    * to by pwc. At most n bytes of the array pointed to by s will be examined.
+    * Returns: If s is a null pointer, the mbtowc function returns a nonzero or
+    *          zero value, if multibyte character encodings, respectively, do
+    *          or do not have state-dependent encodings. If s is not a null
+    *          pointer, the mbtowc function either returns a 0 (if s points to
+    *          a null character), or returns the number of bytes that
+    *          compromise the converted multibyte character (if the next n of
+    *          fewer bytes form a valid multibyte character), or returns -1
+    *          (they do not form a valid multibyte character).
+    */
+extern __declspec(__nothrow) int wctomb(char * /*s*/, wchar_t /*wchar*/);
+   /*
+    * determines the number of bytes need to represent the multibyte character
+    * corresponding to the code whose value is wchar (including any change in
+    * shift state). It stores the multibyte character representation in the
+    * array object pointed to by s (if s is not a null pointer). At most
+    * MB_CUR_MAX characters are stored. If the value of wchar is zero, the
+    * wctomb function is left in the initial shift state).
+    * Returns: If s is a null pointer, the wctomb function returns a nonzero or
+    *          zero value, if multibyte character encodings, respectively, do
+    *          or do not have state-dependent encodings. If s is not a null
+    *          pointer, the wctomb function returns a -1 if the value of wchar
+    *          does not correspond to a valid multibyte character, or returns
+    *          the number of bytes that compromise the multibyte character
+    *          corresponding to the value of wchar.
+    */
+
+/*
+ * Multibyte String Functions.
+ * The behaviour of the multibyte string functions is affected by the LC_CTYPE
+ * category of the current locale.
+ */
+extern __declspec(__nothrow) size_t mbstowcs(wchar_t * __restrict /*pwcs*/,
+                      const char * __restrict /*s*/, size_t /*n*/) __attribute__((__nonnull__(2)));
+   /*
+    * converts a sequence of multibyte character that begins in the initial
+    * shift state from the array pointed to by s into a sequence of
+    * corresponding codes and stores not more than n codes into the array
+    * pointed to by pwcs. No multibyte character that follow a null character
+    * (which is converted into a code with value zero) will be examined or
+    * converted. Each multibyte character is converted as if by a call to
+    * mbtowc function, except that the shift state of the mbtowc function is
+    * not affected. No more than n elements will be modified in the array
+    * pointed to by pwcs. If copying takes place between objects that overlap,
+    * the behaviour is undefined.
+    * Returns: If an invalid multibyte character is encountered, the mbstowcs
+    *          function returns (size_t)-1. Otherwise, the mbstowcs function
+    *          returns the number of array elements modified, not including
+    *          a terminating zero code, if any.
+    */
+extern __declspec(__nothrow) size_t wcstombs(char * __restrict /*s*/,
+                      const wchar_t * __restrict /*pwcs*/, size_t /*n*/) __attribute__((__nonnull__(2)));
+   /*
+    * converts a sequence of codes that correspond to multibyte characters
+    * from the array pointed to by pwcs into a sequence of multibyte
+    * characters that begins in the initial shift state and stores these
+    * multibyte characters into the array pointed to by s, stopping if a
+    * multibyte character would exceed the limit of n total bytes or if a
+    * null character is stored. Each code is converted as if by a call to the
+    * wctomb function, except that the shift state of the wctomb function is
+    * not affected. No more than n elements will be modified in the array
+    * pointed to by s. If copying takes place between objects that overlap,
+    * the behaviour is undefined.
+    * Returns: If a code is encountered that does not correspond to a valid
+    *          multibyte character, the wcstombs function returns (size_t)-1.
+    *          Otherwise, the wcstombs function returns the number of bytes
+    *          modified, not including a terminating null character, if any.
+    */
+
+extern __declspec(__nothrow) void __use_realtime_heap(void);
+extern __declspec(__nothrow) void __use_realtime_division(void);
+extern __declspec(__nothrow) void __use_two_region_memory(void);
+extern __declspec(__nothrow) void __use_no_heap(void);
+extern __declspec(__nothrow) void __use_no_heap_region(void);
+
+extern __declspec(__nothrow) char const *__C_library_version_string(void);
+extern __declspec(__nothrow) int __C_library_version_number(void);
+
+
+
+
+
+
+
+
+
+
+
+# 892 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdlib.h"
+
+
+
+
+
+/* end of stdlib.h */
+# 12 "\\pcac\\atparser\\inc\\utlTime.h"
+
+# 1 "\\hop\\telephony\\atparser\\inc\\utlTypes.h"
+/*****************************************************************************
+ * Utility Library
+ *
+ * Common Data Types Header File
+ *
+ *****************************************************************************/
+
+
+
+
+# 1 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\ctype.h"
+/* ctype.h: ANSI 'C' (X3J11 Oct 88) library header, section 4.3 */
+/* Copyright (C) Codemist Ltd. 1988-1993.                       */
+/* Copyright 1991-1993 ARM Limited. All rights reserved.        */
+/* version 0.03 */
+
+/*
+ * RCS $Revision$
+ * Checkin $Date$
+ * Revising $Author: agrant $
+ */
+
+/*
+ * ctype.h declares several functions useful for testing and mapping
+ * characters. In all cases the argument is an int, the value of which shall
+ * be representable as an unsigned char or shall equal the value of the
+ * macro EOF. If the argument has any other value, the behaviour is undefined.
+ */
+
+
+
+
+
+
+
+
+# 35 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\ctype.h"
+
+
+
+
+
+
+# 49 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\ctype.h"
+
+/* AEABI portable ctype flag bits */
+# 59 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\ctype.h"
+
+/* ARM internal ctype flag bits */
+/* N.B. - keep in step with <ctype.c> */
+
+/*
+ * __ARM_CT_A (alphabetic) is required because characters in some locales
+ * (e.g. Japanese) can be alphabetic but neither uppercase nor
+ * lowercase. Unfortunately there wasn't a bit free for this, so
+ * instead we've defined __ARM_CT_A as __ARM_CT_N+__ARM_CT_X (on the grounds that this
+ * was a previously unused combination). Hence some of the ctype
+ * predicates below are slightly less than obvious in
+ * implementation.
+ */
+# 81 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\ctype.h"
+
+
+
+
+
+# 133 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\ctype.h"
+
+extern __declspec(__nothrow) __attribute__((const)) unsigned char **__rt_ctype_table(void);
+
+
+
+
+
+
+
+    extern int (isalnum)(int /*c*/);
+
+    /* non-0 iff c is alphabetic or numeric */
+
+
+
+
+
+    extern int (isalpha)(int /*c*/);
+
+    /* non-0 iff c is alphabetic */
+
+
+
+
+
+    extern int (iscntrl)(int /*c*/);
+
+    /* non-0 iff c is a control character - in the "C" locale */
+    /*       this means (c < ' ') || (c > '~')                */
+
+/* isdigit must test for the presence of _only_ __ARM_CT_N, not just __ARM_CT_N at all. */
+
+
+
+
+    extern int (isdigit)(int /*c*/);
+
+    /* non-0 iff c is a decimal digit */
+
+    extern int (isblank)(int /*c*/);
+    /* non-0 iff c is ' ', '\t' or some other locale-specific, */
+    /* word-separating character (there are no others in "C"   */
+    /* locale) */
+
+
+
+
+
+    extern int (isgraph)(int /*c*/);
+
+    /* non-0 iff c is any printing character other than ' ' */
+
+
+
+
+
+    extern int (islower)(int /*c*/);
+
+    /* non-0 iff c is a lower-case letter */
+
+
+
+
+
+    extern int (isprint)(int /*c*/);
+
+    /* non-0 iff c is a printing character - in the "C" locale */
+    /*       this means 0x20 (space) -> 0x7E (tilde)           */
+
+
+
+
+
+    extern int (ispunct)(int /*c*/);
+
+    /* non-0 iff c is a non-space, non-alpha-numeric, printing character */
+
+
+
+
+
+    extern int (isspace)(int /*c*/);
+
+    /* non-0 iff c is a white-space char: ' ', '\f', '\n', '\r', '\t', '\v'. */
+
+
+
+
+
+    extern int (isupper)(int /*c*/);
+
+    /* non-0 iff c is an upper-case letter */
+
+/* isxdigit must test for the presence of __ARM_CT_N or __ARM_CT_X but not both. */
+/* This helper function avoids needing to evaluate c twice. */
+
+static inline int __isxdigit_helper(int __t) { return (__t ^ (__t << 2)); }
+
+
+
+
+    extern int (isxdigit)(int /*c*/);
+
+    /* non-0 iff c is a digit, in 'a'..'f', or in 'A'..'F' */
+
+
+
+extern int tolower(int /*c*/);
+    /* if c is an upper-case letter then return the corresponding */
+    /* lower-case letter, otherwise return c.                     */
+
+extern int toupper(int /*c*/);
+    /* if c is an lower-case letter then return the corresponding */
+    /* upper-case letter, otherwise return c.                     */
+
+
+
+
+
+
+
+# 272 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\ctype.h"
+
+
+
+/* end of ctype.h */
+
+# 12 "\\hop\\telephony\\atparser\\inc\\utlTypes.h"
+# 1 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdbool.h"
+/* stdbool.h: ISO/IEC 9899:1999 (C99), section 7.16 */
+
+/* Copyright (C) ARM Ltd., 2002
+ * All rights reserved
+ * RCS $Revision$
+ * Checkin $Date$
+ * Revising $Author: drodgman $
+ */
+
+
+
+
+
+# 25 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdbool.h"
+
+
+
+# 13 "\\hop\\telephony\\atparser\\inc\\utlTypes.h"
+
+
+/*--- Data Types ------------------------------------------------------------*/
+
+/*--- function return codes ---*/
+typedef int   utlReturnCode_T, *utlReturnCode_P;
+typedef const utlReturnCode_T  *utlReturnCode_P2c;
+
+
+
+
+/*--- data identifiers ---*/
+typedef unsigned int utlDataId_T, *utlDataId_P;
+
+typedef unsigned int size_t, ssize_t;
+
+
+
+typedef const        utlDataId_T  *utlDataId_P2c;
+
+typedef enum {
+    utlDATA_PARITY_UNKNOWN,
+    utlDATA_PARITY_NONE,
+    utlDATA_PARITY_ODD,
+    utlDATA_PARITY_EVEN,
+    utlDATA_PARITY_MARK,
+    utlDATA_PARITY_SPACE
+} utlDataParity_T, *utlDataParity_P;
+
+/*--- macros ----------------------------------------------------------------*/
+
+
+
+
+
+
+/*--- versions of ctype.h routines that properly handle 8-bit-per-character signed integers ---*/
+# 62 "\\hop\\telephony\\atparser\\inc\\utlTypes.h"
+
+
+
+
+
+
+# 14 "\\pcac\\atparser\\inc\\utlTime.h"
+
+
+/*--- Data Types ------------------------------------------------------------*/
+
+/*--- time ---*/
+typedef int utlSecond_T;
+typedef int utlNanosecond_T;
+
+/*--- relative time ---*/
+typedef struct utlRelativeTime_S {
+    utlSecond_T     seconds;
+    utlNanosecond_T nanoseconds;
+}             utlRelativeTime_T, *utlRelativeTime_P;
+typedef const utlRelativeTime_T  *utlRelativeTime_P2c;
+
+/*--- epoch-referenced absolute time ---*/
+typedef struct utlAbsoluteTime_S {
+    utlSecond_T     seconds;
+    utlNanosecond_T nanoseconds;
+}             utlAbsoluteTime_T, *utlAbsoluteTime_P;
+typedef const utlAbsoluteTime_T  *utlAbsoluteTime_P2c;
+
+struct timeval { 
+	int tv_sec; 
+	int tv_usec;
+};
+
+struct itimerval { 
+struct timeval it_interval; 
+struct timeval it_value; 
+} ;
+
+
+
+
+
+
+
+
+
+
+
+
+/*--- Prototypes ------------------------------------------------------------*/
+
+
+
+
+	
+extern utlReturnCode_T utlCurrentTime   (const utlAbsoluteTime_P    time_p);
+extern utlReturnCode_T utlFormatTime    (      char                *buf_p,
+                                         const size_t               n,
+                                         const utlAbsoluteTime_P2c  time_p);
+extern utlReturnCode_T utlFormatDate    (      char                *buf_p,
+                                         const size_t               n,
+                                         const utlAbsoluteTime_P2c  time_p);
+extern utlReturnCode_T utlFormatDateTime(      char                *buf_p,
+                                         const size_t               n,
+                                         const utlAbsoluteTime_P2c  time_p);
+extern utlReturnCode_T utlPause         (const utlRelativeTime_P2c  time_p);
+
+
+
+
+
+
+
+# 6 "\\mbtk\\cust_api\\\\.\\customer_common.c"
+
+
+
+void mbtk_set_default_time()
+{
+
+# 29 "\\mbtk\\cust_api\\\\.\\customer_common.c"
+}/*******************************************************************************
+ * Copyright (c) mbtk Corp.
+ *
+ *******************************************************************************/
+
+

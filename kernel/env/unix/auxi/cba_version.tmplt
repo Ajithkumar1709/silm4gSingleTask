@@ -1,0 +1,17 @@
+#------------------------------------------------------------
+# (C) Copyright [2006-2008] Marvell International Ltd.
+# All Rights Reserved
+#------------------------------------------------------------
+
+#------------------------------------------------------------
+#
+# cba_version.mak
+#
+# This file automaticly generated
+#
+# Contains data regarding CBA release
+#
+#------------------------------------------------------------
+
+CBA_RELEASE         := FIELD#RELEASE_NAME
+CBA_RELEASE_DATE    := FIELD#DATE

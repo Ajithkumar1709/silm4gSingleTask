@@ -1,0 +1,49 @@
+ SYSTEM.DOWN
+ SYSTEM.CPU CORTEXR4
+ SYS.UP
+ 
+ &psd=os.psd()
+ ;Add some extra buttons to the toolbar
+
+ task.config  &psd\threadx\threadx
+ menu.rp     "&psd\threadx\threadx.men"
+ 
+ ;mode.hll
+  
+ D.Load *.axf
+ data.copy   Load$$DDR_ITCM$$Base++0x00010000    0x00000000 
+
+ &PS_Base=v.value("&(Image$$PS_CODE_IN_PSRAM$$Base)")
+ &PS_Length=v.value("&(Image$$PS_CODE_IN_PSRAM$$Length)")
+ PRINT "PS_Base: &PS_Base, PS_Length: &PS_Length"
+ data.copy   Load$$PS_CODE_IN_PSRAM$$Base++&PS_Length    &PS_Base
+ 
+ &PSB_Base=v.value("&(Image$$PSB_CODE_IN_PSRAM$$Base)")
+ &PSB_Length=v.value("&(Image$$PSB_CODE_IN_PSRAM$$Length)")
+ PRINT "PSB_Base: &PSB_Base, PSB_Length: &PSB_Length"
+ data.copy   Load$$PSB_CODE_IN_PSRAM$$Base++&PSB_Length   &PSB_Base
+ 
+ &PL_Base=v.value("&(Image$$PL_CODE_IN_PSRAM$$Base)")
+ &PL_Length=v.value("&(Image$$PL_CODE_IN_PSRAM$$Length)")
+ PRINT "PL_Base: &PL_Base, PL_Length: &PL_Length" 
+ data.copy   Load$$PL_CODE_IN_PSRAM$$Base++&PL_Length    &PL_Base
+ 
+ &NON_OTA_Base=v.value("&(Image$$NON_OTA_CODE_IN_PSRAM$$Base)")
+ &NON_OTA_Length=v.value("&(Image$$NON_OTA_CODE_IN_PSRAM$$Length)") 
+ PRINT "NON_OTA_Base: &NON_OTA_Base, NON_OTA_Length: &NON_OTA_Length"
+ data.copy   Load$$NON_OTA_CODE_IN_PSRAM$$Base++&NON_OTA_Length    &NON_OTA_Base 
+  
+ AREA.CREATE CONTEXT
+ AREA.VIEW CONTEXT
+ AREA.SELECT CONTEXT
+ PRINT "AXF and Code load successfully!" 
+
+ ;r.s pc 0
+ ;d.l
+ ;symbol.browse.source 
+ 
+ enddo
+
+
+
+

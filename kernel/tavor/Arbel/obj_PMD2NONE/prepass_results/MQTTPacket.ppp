@@ -1,0 +1,2169 @@
+# 1 "\\mbtk\\mqtt\\mqtt\\MQTTPacket.c"
+/*******************************************************************************
+ * Copyright (c) 2014 IBM Corp.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v1.0 which accompany this distribution.
+ *
+ * The Eclipse Public License is available at
+ *    http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ *   http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *    Ian Craggs - initial API and implementation and/or initial documentation
+ *    Sergio R. Caprile - non-blocking packet read functions for stream transport
+ *******************************************************************************/
+
+# 1 "\\mbtk\\mqtt\\mqtt\\StackTrace.h"
+/*******************************************************************************
+ * Copyright (c) 2014 IBM Corp.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v1.0 which accompany this distribution.
+ *
+ * The Eclipse Public License is available at
+ *    http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ *   http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *    Ian Craggs - initial API and implementation and/or initial documentation
+ *    Ian Craggs - fix for bug #434081
+ *******************************************************************************/
+
+
+
+
+# 1 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdio.h"
+/* stdio.h: ANSI 'C' (X3J11 Oct 88) library header, section 4.9 */
+/* Copyright (C) Codemist Ltd., 1988-1993                       */
+/* Copyright 1991-1998 ARM Limited. All rights reserved.        */
+
+/*
+ * RCS $Revision$
+ * Checkin $Date$
+ * Revising $Author: sdouglas $
+ */
+
+/*
+ * stdio.h declares two types, several macros, and many functions for
+ * performing input and output. For a discussion on Streams and Files
+ * refer to sections 4.9.2 and 4.9.3 in the above ANSI draft, or to a
+ * modern textbook on C.
+ */
+
+
+
+
+
+/*
+ * Depending on compiler version __int64 or __INT64_TYPE__ should be defined.
+ */
+
+
+
+
+  /* On some architectures neither of these may be defined - if so, fall
+     through and error out if used. */
+
+
+
+
+
+
+
+
+# 47 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdio.h"
+
+
+ /* always defined in C++ and non-strict C for consistency of debug info */
+
+
+
+    typedef unsigned int size_t;   /* see <stddef.h> */
+
+
+
+
+
+
+
+
+
+/* ANSI forbids va_list to be defined here */
+/* keep in step with <stdarg.h> and <wchar.h> */
+
+/* always defined in C++ and non-strict C for consistency of debug info */
+
+
+
+    typedef struct __va_list __va_list;
+
+
+
+
+
+
+   /*
+    * If the compiler supports signalling nans as per N965 then it
+    * will define __SUPPORT_SNAN__, in which case a user may define
+    * _WANT_SNAN in order to obtain compliant versions of the printf
+    * and scanf families of functions
+    */
+
+
+
+
+typedef struct __fpos_t_struct {
+    unsigned __int64 __pos;
+    /*
+     * this structure is equivalent to an mbstate_t, but we're not
+     * allowed to actually define the type name `mbstate_t' within
+     * stdio.h
+     */
+    struct {
+        unsigned int __state1, __state2;
+    } __mbstate;
+} fpos_t;
+   /*
+    * fpos_t is an object capable of recording all information needed to
+    * specify uniquely every position within a file.
+    */
+
+
+   /* _SYS_OPEN defines a limit on the number of open files that is imposed
+    * by this C library
+    */
+
+typedef struct __FILE FILE;
+   /*
+    * FILE is an object capable of recording all information needed to control
+    * a stream, such as its file position indicator, a pointer to its
+    * associated buffer, an error indicator that records whether a read/write
+    * error has occurred and an end-of-file indicator that records whether the
+    * end-of-file has been reached.
+    * Its structure is not made known to library clients.
+    */
+
+# 136 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdio.h"
+
+
+extern FILE __stdin, __stdout, __stderr;
+extern FILE *__aeabi_stdin, *__aeabi_stdout, *__aeabi_stderr;
+
+# 166 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdio.h"
+   /* pointer to a FILE object associated with standard input stream */
+
+   /* pointer to a FILE object associated with standard output stream */
+
+   /* pointer to a FILE object associated with standard error stream */
+
+
+
+
+
+    /* Various default file IO buffer sizes */
+
+
+
+   /*
+    * an integral constant expression that is the minimum number of files that
+    * this implementation guarantees can be open simultaneously.
+    */
+
+
+   /*
+    * an integral constant expression that is the size of an array of char
+    * large enough to hold the longest filename string
+    */
+
+   /*
+    * an integral constant expression that is the size of an array of char
+    * large enough to hold a temporary file name string generated by the
+    * tmpnam function.
+    */
+
+   /*
+    * an integral constant expression that is the minimum number of unique
+    * file names that shall be generated by the tmpnam function.
+    */
+
+
+
+
+   /*
+    * negative integral constant, indicates end-of-file, that is, no more input
+    * from a stream.
+    */
+
+
+
+
+
+    /*
+     * _IOBIN is the flag passed to _sys_write to denote a binary
+     * file.
+     */
+
+
+
+
+
+
+extern __declspec(__nothrow) int remove(const char * /*filename*/) __attribute__((__nonnull__(1)));
+   /*
+    * causes the file whose name is the string pointed to by filename to be
+    * removed. Subsequent attempts to open the file will fail, unless it is
+    * created anew. If the file is open, the behaviour of the remove function
+    * is implementation-defined.
+    * Returns: zero if the operation succeeds, nonzero if it fails.
+    */
+extern __declspec(__nothrow) int rename(const char * /*old*/, const char * /*new*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * causes the file whose name is the string pointed to by old to be
+    * henceforth known by the name given by the string pointed to by new. The
+    * file named old is effectively removed. If a file named by the string
+    * pointed to by new exists prior to the call of the rename function, the
+    * behaviour is implementation-defined.
+    * Returns: zero if the operation succeeds, nonzero if it fails, in which
+    *          case if the file existed previously it is still known by its
+    *          original name.
+    */
+extern __declspec(__nothrow) FILE *tmpfile(void);
+   /*
+    * creates a temporary binary file that will be automatically removed when
+    * it is closed or at program termination. The file is opened for update.
+    * Returns: a pointer to the stream of the file that it created. If the file
+    *          cannot be created, a null pointer is returned.
+    */
+extern __declspec(__nothrow) char *tmpnam(char * /*s*/);
+   /*
+    * generates a string that is not the same as the name of an existing file.
+    * The tmpnam function generates a different string each time it is called,
+    * up to TMP_MAX times. If it is called more than TMP_MAX times, the
+    * behaviour is implementation-defined.
+    * Returns: If the argument is a null pointer, the tmpnam function leaves
+    *          its result in an internal static object and returns a pointer to
+    *          that object. Subsequent calls to the tmpnam function may modify
+    *          the same object. if the argument is not a null pointer, it is
+    *          assumed to point to an array of at least L_tmpnam characters;
+    *          the tmpnam function writes its result in that array and returns
+    *          the argument as its value.
+    */
+
+extern __declspec(__nothrow) int fclose(FILE * /*stream*/) __attribute__((__nonnull__(1)));
+   /*
+    * causes the stream pointed to by stream to be flushed and the associated
+    * file to be closed. Any unwritten buffered data for the stream are
+    * delivered to the host environment to be written to the file; any unread
+    * buffered data are discarded. The stream is disassociated from the file.
+    * If the associated buffer was automatically allocated, it is deallocated.
+    * Returns: zero if the stream was succesfully closed, or nonzero if any
+    *          errors were detected or if the stream was already closed.
+    */
+extern __declspec(__nothrow) int fflush(FILE * /*stream*/);
+   /*
+    * If the stream points to an output or update stream in which the most
+    * recent operation was output, the fflush function causes any unwritten
+    * data for that stream to be delivered to the host environment to be
+    * written to the file. If the stream points to an input or update stream,
+    * the fflush function undoes the effect of any preceding ungetc operation
+    * on the stream.
+    * Returns: nonzero if a write error occurs.
+    */
+extern __declspec(__nothrow) FILE *fopen(const char * __restrict /*filename*/,
+                           const char * __restrict /*mode*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * opens the file whose name is the string pointed to by filename, and
+    * associates a stream with it.
+    * The argument mode points to a string beginning with one of the following
+    * sequences:
+    * "r"         open text file for reading
+    * "w"         create text file for writing, or truncate to zero length
+    * "a"         append; open text file or create for writing at eof
+    * "rb"        open binary file for reading
+    * "wb"        create binary file for writing, or truncate to zero length
+    * "ab"        append; open binary file or create for writing at eof
+    * "r+"        open text file for update (reading and writing)
+    * "w+"        create text file for update, or truncate to zero length
+    * "a+"        append; open text file or create for update, writing at eof
+    * "r+b"/"rb+" open binary file for update (reading and writing)
+    * "w+b"/"wb+" create binary file for update, or truncate to zero length
+    * "a+b"/"ab+" append; open binary file or create for update, writing at eof
+    *
+    * Opening a file with read mode ('r' as the first character in the mode
+    * argument) fails if the file does not exist or cannot be read.
+    * Opening a file with append mode ('a' as the first character in the mode
+    * argument) causes all subsequent writes to be forced to the current end of
+    * file, regardless of intervening calls to the fseek function. In some
+    * implementations, opening a binary file with append mode ('b' as the
+    * second or third character in the mode argument) may initially position
+    * the file position indicator beyond the last data written, because of the
+    * NUL padding.
+    * When a file is opened with update mode ('+' as the second or third
+    * character in the mode argument), both input and output may be performed
+    * on the associated stream. However, output may not be directly followed
+    * by input without an intervening call to the fflush fuction or to a file
+    * positioning function (fseek, fsetpos, or rewind), and input be not be
+    * directly followed by output without an intervening call to the fflush
+    * fuction or to a file positioning function, unless the input operation
+    * encounters end-of-file. Opening a file with update mode may open or
+    * create a binary stream in some implementations. When opened, a stream
+    * is fully buffered if and only if it does not refer to an interactive
+    * device. The error and end-of-file indicators for the stream are
+    * cleared.
+    * Returns: a pointer to the object controlling the stream. If the open
+    *          operation fails, fopen returns a null pointer.
+    */
+extern __declspec(__nothrow) FILE *freopen(const char * __restrict /*filename*/,
+                    const char * __restrict /*mode*/,
+                    FILE * __restrict /*stream*/) __attribute__((__nonnull__(2,3)));
+   /*
+    * opens the file whose name is the string pointed to by filename and
+    * associates the stream pointed to by stream with it. The mode argument is
+    * used just as in the fopen function.
+    * The freopen function first attempts to close any file that is associated
+    * with the specified stream. Failure to close the file successfully is
+    * ignored. The error and end-of-file indicators for the stream are cleared.
+    * Returns: a null pointer if the operation fails. Otherwise, freopen
+    *          returns the value of the stream.
+    */
+extern __declspec(__nothrow) void setbuf(FILE * __restrict /*stream*/,
+                    char * __restrict /*buf*/) __attribute__((__nonnull__(1)));
+   /*
+    * Except that it returns no value, the setbuf function is equivalent to the
+    * setvbuf function invoked with the values _IOFBF for mode and BUFSIZ for
+    * size, or (if buf is a null pointer), with the value _IONBF for mode.
+    * Returns: no value.
+    */
+extern __declspec(__nothrow) int setvbuf(FILE * __restrict /*stream*/,
+                   char * __restrict /*buf*/,
+                   int /*mode*/, size_t /*size*/) __attribute__((__nonnull__(1)));
+   /*
+    * may be used after the stream pointed to by stream has been associated
+    * with an open file but before it is read or written. The argument mode
+    * determines how stream will be buffered, as follows: _IOFBF causes
+    * input/output to be fully buffered; _IOLBF causes output to be line
+    * buffered (the buffer will be flushed when a new-line character is
+    * written, when the buffer is full, or when input is requested); _IONBF
+    * causes input/output to be completely unbuffered. If buf is not the null
+    * pointer, the array it points to may be used instead of an automatically
+    * allocated buffer (the buffer must have a lifetime at least as great as
+    * the open stream, so the stream should be closed before a buffer that has
+    * automatic storage duration is deallocated upon block exit). The argument
+    * size specifies the size of the array. The contents of the array at any
+    * time are indeterminate.
+    * Returns: zero on success, or nonzero if an invalid value is given for
+    *          mode or size, or if the request cannot be honoured.
+    */
+#pragma __printf_args
+extern __declspec(__nothrow) int fprintf(FILE * __restrict /*stream*/,
+                    const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1,2)));
+   /*
+    * writes output to the stream pointed to by stream, under control of the
+    * string pointed to by format that specifies how subsequent arguments are
+    * converted for output. If there are insufficient arguments for the format,
+    * the behaviour is undefined. If the format is exhausted while arguments
+    * remain, the excess arguments are evaluated but otherwise ignored. The
+    * fprintf function returns when the end of the format string is reached.
+    * The format shall be a multibyte character sequence, beginning and ending
+    * in its initial shift state. The format is composed of zero or more
+    * directives: ordinary multibyte characters (not %), which are copied
+    * unchanged to the output stream; and conversion specifiers, each of which
+    * results in fetching zero or more subsequent arguments. Each conversion
+    * specification is introduced by the character %. For a description of the
+    * available conversion specifiers refer to section 4.9.6.1 in the ANSI
+    * draft mentioned at the start of this file or to any modern textbook on C.
+    * The minimum value for the maximum number of characters producable by any
+    * single conversion is at least 509.
+    * Returns: the number of characters transmitted, or a negative value if an
+    *          output error occurred.
+    */
+#pragma __printf_args
+extern __declspec(__nothrow) int _fprintf(FILE * __restrict /*stream*/,
+                     const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1,2)));
+   /*
+    * is equivalent to fprintf, but does not support floating-point formats.
+    * You can use instead of fprintf to improve code size.
+    * Returns: as fprintf.
+    */
+#pragma __printf_args
+extern __declspec(__nothrow) int printf(const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1)));
+   /*
+    * is equivalent to fprintf with the argument stdout interposed before the
+    * arguments to printf.
+    * Returns: the number of characters transmitted, or a negative value if an
+    *          output error occurred.
+    */
+#pragma __printf_args
+extern __declspec(__nothrow) int _printf(const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1)));
+   /*
+    * is equivalent to printf, but does not support floating-point formats.
+    * You can use instead of printf to improve code size.
+    * Returns: as printf.
+    */
+#pragma __printf_args
+extern __declspec(__nothrow) int sprintf(char * __restrict /*s*/, const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1,2)));
+   /*
+    * is equivalent to fprintf, except that the argument s specifies an array
+    * into which the generated output is to be written, rather than to a
+    * stream. A null character is written at the end of the characters written;
+    * it is not counted as part of the returned sum.
+    * Returns: the number of characters written to the array, not counting the
+    *          terminating null character.
+    */
+#pragma __printf_args
+extern __declspec(__nothrow) int _sprintf(char * __restrict /*s*/, const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1,2)));
+   /*
+    * is equivalent to sprintf, but does not support floating-point formats.
+    * You can use instead of sprintf to improve code size.
+    * Returns: as sprintf.
+    */
+
+#pragma __printf_args
+extern __declspec(__nothrow) int __ARM_snprintf(char * __restrict /*s*/, size_t /*n*/,
+                     const char * __restrict /*format*/, ...) __attribute__((__nonnull__(3)));
+
+
+#pragma __printf_args
+extern __declspec(__nothrow) int snprintf(char * __restrict /*s*/, size_t /*n*/,
+                     const char * __restrict /*format*/, ...) __attribute__((__nonnull__(3)));
+   /*
+    * is equivalent to fprintf, except that the argument s specifies an array
+    * into which the generated output is to be written, rather than to a
+    * stream. The argument n specifies the size of the output array, so as to
+    * avoid overflowing the buffer.
+    * A null character is written at the end of the characters written, even
+    * if the formatting was not completed; it is not counted as part of the
+    * returned sum. At most n characters of the output buffer are used,
+    * _including_ the null character.
+    * Returns: the number of characters that would have been written to the
+    *          array, not counting the terminating null character, if the
+    *          array had been big enough. So if the return is >=0 and <n, then
+    *          the entire string was successfully formatted; if the return is
+    *          >=n, the string was truncated (but there is still a null char
+    *          at the end of what was written); if the return is <0, there was
+    *          an error.
+    */
+
+#pragma __printf_args
+extern __declspec(__nothrow) int _snprintf(char * __restrict /*s*/, size_t /*n*/,
+                      const char * __restrict /*format*/, ...) __attribute__((__nonnull__(3)));
+   /*
+    * is equivalent to snprintf, but does not support floating-point formats.
+    * You can use instead of snprintf to improve code size.
+    * Returns: as snprintf.
+    */
+#pragma __scanf_args
+extern __declspec(__nothrow) int fscanf(FILE * __restrict /*stream*/,
+                    const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1,2)));
+   /*
+    * reads input from the stream pointed to by stream, under control of the
+    * string pointed to by format that specifies the admissible input sequences
+    * and how thay are to be converted for assignment, using subsequent
+    * arguments as pointers to the objects to receive the converted input. If
+    * there are insufficient arguments for the format, the behaviour is
+    * undefined. If the format is exhausted while arguments remain, the excess
+    * arguments are evaluated but otherwise ignored.
+    * The format is composed of zero or more directives: one or more
+    * white-space characters; an ordinary character (not %); or a conversion
+    * specification. Each conversion specification is introduced by the
+    * character %. For a description of the available conversion specifiers
+    * refer to section 4.9.6.2 in the ANSI draft mentioned at the start of this
+    * file, or to any modern textbook on C.
+    * If end-of-file is encountered during input, conversion is terminated. If
+    * end-of-file occurs before any characters matching the current directive
+    * have been read (other than leading white space, where permitted),
+    * execution of the current directive terminates with an input failure;
+    * otherwise, unless execution of the current directive is terminated with a
+    * matching failure, execution of the following directive (if any) is
+    * terminated with an input failure.
+    * If conversions terminates on a conflicting input character, the offending
+    * input character is left unread in the input strem. Trailing white space
+    * (including new-line characters) is left unread unless matched by a
+    * directive. The success of literal matches and suppressed asignments is
+    * not directly determinable other than via the %n directive.
+    * Returns: the value of the macro EOF if an input failure occurs before any
+    *          conversion. Otherwise, the fscanf function returns the number of
+    *          input items assigned, which can be fewer than provided for, or
+    *          even zero, in the event of an early conflict between an input
+    *          character and the format.
+    */
+#pragma __scanf_args
+extern __declspec(__nothrow) int _fscanf(FILE * __restrict /*stream*/,
+                     const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1,2)));
+   /*
+    * is equivalent to fscanf, but does not support floating-point formats.
+    * You can use instead of fscanf to improve code size.
+    * Returns: as fscanf.
+    */
+#pragma __scanf_args
+extern __declspec(__nothrow) int scanf(const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1)));
+   /*
+    * is equivalent to fscanf with the argument stdin interposed before the
+    * arguments to scanf.
+    * Returns: the value of the macro EOF if an input failure occurs before any
+    *          conversion. Otherwise, the scanf function returns the number of
+    *          input items assigned, which can be fewer than provided for, or
+    *          even zero, in the event of an early matching failure.
+    */
+#pragma __scanf_args
+extern __declspec(__nothrow) int _scanf(const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1)));
+   /*
+    * is equivalent to scanf, but does not support floating-point formats.
+    * You can use instead of scanf to improve code size.
+    * Returns: as scanf.
+    */
+#pragma __scanf_args
+extern __declspec(__nothrow) int sscanf(const char * __restrict /*s*/,
+                    const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1,2)));
+   /*
+    * is equivalent to fscanf except that the argument s specifies a string
+    * from which the input is to be obtained, rather than from a stream.
+    * Reaching the end of the string is equivalent to encountering end-of-file
+    * for the fscanf function.
+    * Returns: the value of the macro EOF if an input failure occurs before any
+    *          conversion. Otherwise, the scanf function returns the number of
+    *          input items assigned, which can be fewer than provided for, or
+    *          even zero, in the event of an early matching failure.
+    */
+#pragma __scanf_args
+extern __declspec(__nothrow) int _sscanf(const char * __restrict /*s*/,
+                     const char * __restrict /*format*/, ...) __attribute__((__nonnull__(1,2)));
+   /*
+    * is equivalent to sscanf, but does not support floating-point formats.
+    * You can use instead of sscanf to improve code size.
+    * Returns: as sscanf.
+    */
+
+/* C99 additions */
+extern __declspec(__nothrow) int vfscanf(FILE * __restrict /*stream*/, const char * __restrict /*format*/, __va_list) __attribute__((__nonnull__(1,2)));
+extern __declspec(__nothrow) int vscanf(const char * __restrict /*format*/, __va_list) __attribute__((__nonnull__(1)));
+extern __declspec(__nothrow) int vsscanf(const char * __restrict /*s*/, const char * __restrict /*format*/, __va_list) __attribute__((__nonnull__(1,2)));
+
+extern __declspec(__nothrow) int _vfscanf(FILE * __restrict /*stream*/, const char * __restrict /*format*/, __va_list) __attribute__((__nonnull__(1,2)));
+extern __declspec(__nothrow) int _vscanf(const char * __restrict /*format*/, __va_list) __attribute__((__nonnull__(1)));
+extern __declspec(__nothrow) int _vsscanf(const char * __restrict /*s*/, const char * __restrict /*format*/, __va_list) __attribute__((__nonnull__(1,2)));
+extern __declspec(__nothrow) int __ARM_vsscanf(const char * __restrict /*s*/, const char * __restrict /*format*/, __va_list) __attribute__((__nonnull__(1,2)));
+
+extern __declspec(__nothrow) int vprintf(const char * __restrict /*format*/, __va_list /*arg*/) __attribute__((__nonnull__(1)));
+   /*
+    * is equivalent to printf, with the variable argument list replaced by arg,
+    * which has been initialised by the va_start macro (and possibly subsequent
+    * va_arg calls). The vprintf function does not invoke the va_end function.
+    * Returns: the number of characters transmitted, or a negative value if an
+    *          output error occurred.
+    */
+extern __declspec(__nothrow) int _vprintf(const char * __restrict /*format*/, __va_list /*arg*/) __attribute__((__nonnull__(1)));
+   /*
+    * is equivalent to vprintf, but does not support floating-point formats.
+    * You can use instead of vprintf to improve code size.
+    * Returns: as vprintf.
+    */
+extern __declspec(__nothrow) int vfprintf(FILE * __restrict /*stream*/,
+                    const char * __restrict /*format*/, __va_list /*arg*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * is equivalent to fprintf, with the variable argument list replaced by
+    * arg, which has been initialised by the va_start macro (and possibly
+    * subsequent va_arg calls). The vfprintf function does not invoke the
+    * va_end function.
+    * Returns: the number of characters transmitted, or a negative value if an
+    *          output error occurred.
+    */
+extern __declspec(__nothrow) int vsprintf(char * __restrict /*s*/,
+                     const char * __restrict /*format*/, __va_list /*arg*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * is equivalent to sprintf, with the variable argument list replaced by
+    * arg, which has been initialised by the va_start macro (and possibly
+    * subsequent va_arg calls). The vsprintf function does not invoke the
+    * va_end function.
+    * Returns: the number of characters written in the array, not counting the
+    *          terminating null character.
+    */
+extern __declspec(__nothrow) int __ARM_vsnprintf(char * __restrict /*s*/, size_t /*n*/,
+                     const char * __restrict /*format*/, __va_list /*arg*/) __attribute__((__nonnull__(3)));
+
+extern __declspec(__nothrow) int vsnprintf(char * __restrict /*s*/, size_t /*n*/,
+                     const char * __restrict /*format*/, __va_list /*arg*/) __attribute__((__nonnull__(3)));
+   /*
+    * is equivalent to snprintf, with the variable argument list replaced by
+    * arg, which has been initialised by the va_start macro (and possibly
+    * subsequent va_arg calls). The vsprintf function does not invoke the
+    * va_end function.
+    * Returns: the number of characters that would have been written in the
+    *          array, not counting the terminating null character. As
+    *          snprintf.
+    */
+
+extern __declspec(__nothrow) int _vsprintf(char * __restrict /*s*/,
+                      const char * __restrict /*format*/, __va_list /*arg*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * is equivalent to vsprintf, but does not support floating-point formats.
+    * You can use instead of vsprintf to improve code size.
+    * Returns: as vsprintf.
+    */
+extern __declspec(__nothrow) int _vfprintf(FILE * __restrict /*stream*/,
+                     const char * __restrict /*format*/, __va_list /*arg*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * is equivalent to vfprintf, but does not support floating-point formats.
+    * You can use instead of vfprintf to improve code size.
+    * Returns: as vfprintf.
+    */
+extern __declspec(__nothrow) int _vsnprintf(char * __restrict /*s*/, size_t /*n*/,
+                      const char * __restrict /*format*/, __va_list /*arg*/) __attribute__((__nonnull__(3)));
+   /*
+    * is equivalent to vsnprintf, but does not support floating-point formats.
+    * You can use instead of vsnprintf to improve code size.
+    * Returns: as vsnprintf.
+    */
+
+#pragma __printf_args
+extern __declspec(__nothrow) int asprintf(char ** /*strp*/, const char * __restrict /*format*/, ...) __attribute__((__nonnull__(2)));
+extern __declspec(__nothrow) int vasprintf(char ** /*strp*/, const char * __restrict /*format*/, __va_list /*arg*/) __attribute__((__nonnull__(2)));
+
+#pragma __printf_args
+extern __declspec(__nothrow) int __ARM_asprintf(char ** /*strp*/, const char * __restrict /*format*/, ...) __attribute__((__nonnull__(2)));
+extern __declspec(__nothrow) int __ARM_vasprintf(char ** /*strp*/, const char * __restrict /*format*/, __va_list /*arg*/) __attribute__((__nonnull__(2)));
+   /*
+    * dynamically allocates a buffer of the right size for the
+    * formatted string, and returns it in (*strp). Formal return value
+    * is the same as any other printf variant, except that it returns
+    * -1 if the buffer could not be allocated.
+    *
+    * (The functions with __ARM_ prefixed names are identical to the
+    * ones without, but are available in all compilation modes without
+    * violating user namespace.)
+    */
+
+extern __declspec(__nothrow) int fgetc(FILE * /*stream*/) __attribute__((__nonnull__(1)));
+   /*
+    * obtains the next character (if present) as an unsigned char converted to
+    * an int, from the input stream pointed to by stream, and advances the
+    * associated file position indicator (if defined).
+    * Returns: the next character from the input stream pointed to by stream.
+    *          If the stream is at end-of-file, the end-of-file indicator is
+    *          set and fgetc returns EOF. If a read error occurs, the error
+    *          indicator is set and fgetc returns EOF.
+    */
+extern __declspec(__nothrow) char *fgets(char * __restrict /*s*/, int /*n*/,
+                    FILE * __restrict /*stream*/) __attribute__((__nonnull__(1,3)));
+   /*
+    * reads at most one less than the number of characters specified by n from
+    * the stream pointed to by stream into the array pointed to by s. No
+    * additional characters are read after a new-line character (which is
+    * retained) or after end-of-file. A null character is written immediately
+    * after the last character read into the array.
+    * Returns: s if successful. If end-of-file is encountered and no characters
+    *          have been read into the array, the contents of the array remain
+    *          unchanged and a null pointer is returned. If a read error occurs
+    *          during the operation, the array contents are indeterminate and a
+    *          null pointer is returned.
+    */
+extern __declspec(__nothrow) int fputc(int /*c*/, FILE * /*stream*/) __attribute__((__nonnull__(2)));
+   /*
+    * writes the character specified by c (converted to an unsigned char) to
+    * the output stream pointed to by stream, at the position indicated by the
+    * asociated file position indicator (if defined), and advances the
+    * indicator appropriately. If the file position indicator is not defined,
+    * the character is appended to the output stream.
+    * Returns: the character written. If a write error occurs, the error
+    *          indicator is set and fputc returns EOF.
+    */
+extern __declspec(__nothrow) int fputs(const char * __restrict /*s*/, FILE * __restrict /*stream*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * writes the string pointed to by s to the stream pointed to by stream.
+    * The terminating null character is not written.
+    * Returns: EOF if a write error occurs; otherwise it returns a nonnegative
+    *          value.
+    */
+extern __declspec(__nothrow) int getc(FILE * /*stream*/) __attribute__((__nonnull__(1)));
+   /*
+    * is equivalent to fgetc except that it may be implemented as an unsafe
+    * macro (stream may be evaluated more than once, so the argument should
+    * never be an expression with side-effects).
+    * Returns: the next character from the input stream pointed to by stream.
+    *          If the stream is at end-of-file, the end-of-file indicator is
+    *          set and getc returns EOF. If a read error occurs, the error
+    *          indicator is set and getc returns EOF.
+    */
+
+
+
+
+    extern __declspec(__nothrow) int (getchar)(void);
+
+   /*
+    * is equivalent to getc with the argument stdin.
+    * Returns: the next character from the input stream pointed to by stdin.
+    *          If the stream is at end-of-file, the end-of-file indicator is
+    *          set and getchar returns EOF. If a read error occurs, the error
+    *          indicator is set and getchar returns EOF.
+    */
+extern __declspec(__nothrow) char *gets(char * /*s*/) __attribute__((__nonnull__(1)));
+   /*
+    * reads characters from the input stream pointed to by stdin into the array
+    * pointed to by s, until end-of-file is encountered or a new-line character
+    * is read. Any new-line character is discarded, and a null character is
+    * written immediately after the last character read into the array.
+    * Returns: s if successful. If end-of-file is encountered and no characters
+    *          have been read into the array, the contents of the array remain
+    *          unchanged and a null pointer is returned. If a read error occurs
+    *          during the operation, the array contents are indeterminate and a
+    *          null pointer is returned.
+    */
+extern __declspec(__nothrow) int putc(int /*c*/, FILE * /*stream*/) __attribute__((__nonnull__(2)));
+   /*
+    * is equivalent to fputc except that it may be implemented as aan unsafe
+    * macro (stream may be evaluated more than once, so the argument should
+    * never be an expression with side-effects).
+    * Returns: the character written. If a write error occurs, the error
+    *          indicator is set and putc returns EOF.
+    */
+
+
+
+
+    extern __declspec(__nothrow) int (putchar)(int /*c*/);
+
+   /*
+    * is equivalent to putc with the second argument stdout.
+    * Returns: the character written. If a write error occurs, the error
+    *          indicator is set and putc returns EOF.
+    */
+extern __declspec(__nothrow) int puts(const char * /*s*/) __attribute__((__nonnull__(1)));
+   /*
+    * writes the string pointed to by s to the stream pointed to by stdout, and
+    * appends a new-line character to the output. The terminating null
+    * character is not written.
+    * Returns: EOF if a write error occurs; otherwise it returns a nonnegative
+    *          value.
+    */
+extern __declspec(__nothrow) int ungetc(int /*c*/, FILE * /*stream*/) __attribute__((__nonnull__(2)));
+   /*
+    * pushes the character specified by c (converted to an unsigned char) back
+    * onto the input stream pointed to by stream. The character will be
+    * returned by the next read on that stream. An intervening call to the
+    * fflush function or to a file positioning function (fseek, fsetpos,
+    * rewind) discards any pushed-back characters. The extern _ARMABIal storage
+    * corresponding to the stream is unchanged.
+    * One character pushback is guaranteed. If the unget function is called too
+    * many times on the same stream without an intervening read or file
+    * positioning operation on that stream, the operation may fail.
+    * If the value of c equals that of the macro EOF, the operation fails and
+    * the input stream is unchanged.
+    * A successful call to the ungetc function clears the end-of-file
+    * indicator. The value of the file position indicator after reading or
+    * discarding all pushed-back characters shall be the same as it was before
+    * the characters were pushed back. For a text stream, the value of the file
+    * position indicator after a successful call to the ungetc function is
+    * unspecified until all pushed-back characters are read or discarded. For a
+    * binary stream, the file position indicator is decremented by each
+    * successful call to the ungetc function; if its value was zero before a
+    * call, it is indeterminate after the call.
+    * Returns: the character pushed back after conversion, or EOF if the
+    *          operation fails.
+    */
+
+extern __declspec(__nothrow) size_t fread(void * __restrict /*ptr*/,
+                    size_t /*size*/, size_t /*nmemb*/, FILE * __restrict /*stream*/) __attribute__((__nonnull__(1,4)));
+   /*
+    * reads into the array pointed to by ptr, up to nmemb members whose size is
+    * specified by size, from the stream pointed to by stream. The file
+    * position indicator (if defined) is advanced by the number of characters
+    * successfully read. If an error occurs, the resulting value of the file
+    * position indicator is indeterminate. If a partial member is read, its
+    * value is indeterminate. The ferror or feof function shall be used to
+    * distinguish between a read error and end-of-file.
+    * Returns: the number of members successfully read, which may be less than
+    *          nmemb if a read error or end-of-file is encountered. If size or
+    *          nmemb is zero, fread returns zero and the contents of the array
+    *          and the state of the stream remain unchanged.
+    */
+
+extern __declspec(__nothrow) size_t __fread_bytes_avail(void * __restrict /*ptr*/,
+                    size_t /*count*/, FILE * __restrict /*stream*/) __attribute__((__nonnull__(1,3)));
+   /*
+    * reads into the array pointed to by ptr, up to count characters from the
+    * stream pointed to by stream. The file position indicator (if defined)
+    * is advanced by the number of characters successfully read. If an error
+    * occurs, the resulting value of the file position indicator is
+    * indeterminate. The ferror or feof function shall be used to
+    * distinguish between a read error and end-of-file.  The call will block
+    * only if no characters are available.
+    * Returns: the number of characters successfully read, which may be less than
+    *          count. If count is zero, __fread_bytes_avail returns zero and
+    *          the contents of the array and the state of the stream remain
+    *          unchanged.
+    */
+
+extern __declspec(__nothrow) size_t fwrite(const void * __restrict /*ptr*/,
+                    size_t /*size*/, size_t /*nmemb*/, FILE * __restrict /*stream*/) __attribute__((__nonnull__(1,4)));
+   /*
+    * writes, from the array pointed to by ptr up to nmemb members whose size
+    * is specified by size, to the stream pointed to by stream. The file
+    * position indicator (if defined) is advanced by the number of characters
+    * successfully written. If an error occurs, the resulting value of the file
+    * position indicator is indeterminate.
+    * Returns: the number of members successfully written, which will be less
+    *          than nmemb only if a write error is encountered.
+    */
+
+extern __declspec(__nothrow) int fgetpos(FILE * __restrict /*stream*/, fpos_t * __restrict /*pos*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * stores the current value of the file position indicator for the stream
+    * pointed to by stream in the object pointed to by pos. The value stored
+    * contains unspecified information usable by the fsetpos function for
+    * repositioning the stream to its position at the time  of the call to the
+    * fgetpos function.
+    * Returns: zero, if successful. Otherwise nonzero is returned and the
+    *          integer expression errno is set to an implementation-defined
+    *          nonzero value.
+    */
+extern __declspec(__nothrow) int fseek(FILE * /*stream*/, long int /*offset*/, int /*whence*/) __attribute__((__nonnull__(1)));
+   /*
+    * sets the file position indicator for the stream pointed to by stream.
+    * For a binary stream, the new position is at the signed number of
+    * characters specified by offset away from the point specified by whence.
+    * The specified point is the beginning of the file for SEEK_SET, the
+    * current position in the file for SEEK_CUR, or end-of-file for SEEK_END.
+    * A binary stream need not meaningfully support fseek calls with a whence
+    * value of SEEK_END.
+    * For a text stream, either offset shall be zero, or offset shall be a
+    * value returned by an earlier call to the ftell function on the same
+    * stream and whence shall be SEEK_SET.
+    * The fseek function clears the end-of-file indicator and undoes any
+    * effects of the ungetc function on the same stream. After an fseek call,
+    * the next operation on an update stream may be either input or output.
+    * Returns: nonzero only for a request that cannot be satisfied.
+    */
+extern __declspec(__nothrow) int fsetpos(FILE * __restrict /*stream*/, const fpos_t * __restrict /*pos*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * sets  the file position indicator for the stream pointed to by stream
+    * according to the value of the object pointed to by pos, which shall be a
+    * value returned by an earlier call to the fgetpos function on the same
+    * stream.
+    * The fsetpos function clears the end-of-file indicator and undoes any
+    * effects of the ungetc function on the same stream. After an fsetpos call,
+    * the next operation on an update stream may be either input or output.
+    * Returns: zero, if successful. Otherwise nonzero is returned and the
+    *          integer expression errno is set to an implementation-defined
+    *          nonzero value.
+    */
+extern __declspec(__nothrow) long int ftell(FILE * /*stream*/) __attribute__((__nonnull__(1)));
+   /*
+    * obtains the current value of the file position indicator for the stream
+    * pointed to by stream. For a binary stream, the value is the number of
+    * characters from the beginning of the file. For a text stream, the file
+    * position indicator contains unspecified information, usable by the fseek
+    * function for returning the file position indicator to its position at the
+    * time of the ftell call; the difference between two such return values is
+    * not necessarily a meaningful measure of the number of characters written
+    * or read.
+    * Returns: if successful, the current value of the file position indicator.
+    *          On failure, the ftell function returns -1L and sets the integer
+    *          expression errno to an implementation-defined nonzero value.
+    */
+extern __declspec(__nothrow) void rewind(FILE * /*stream*/) __attribute__((__nonnull__(1)));
+   /*
+    * sets the file position indicator for the stream pointed to by stream to
+    * the beginning of the file. It is equivalent to
+    *          (void)fseek(stream, 0L, SEEK_SET)
+    * except that the error indicator for the stream is also cleared.
+    * Returns: no value.
+    */
+
+extern __declspec(__nothrow) void clearerr(FILE * /*stream*/) __attribute__((__nonnull__(1)));
+   /*
+    * clears the end-of-file and error indicators for the stream pointed to by
+    * stream. These indicators are cleared only when the file is opened or by
+    * an explicit call to the clearerr function or to the rewind function.
+    * Returns: no value.
+    */
+
+extern __declspec(__nothrow) int feof(FILE * /*stream*/) __attribute__((__nonnull__(1)));
+   /*
+    * tests the end-of-file indicator for the stream pointed to by stream.
+    * Returns: nonzero iff the end-of-file indicator is set for stream.
+    */
+extern __declspec(__nothrow) int ferror(FILE * /*stream*/) __attribute__((__nonnull__(1)));
+   /*
+    * tests the error indicator for the stream pointed to by stream.
+    * Returns: nonzero iff the error indicator is set for stream.
+    */
+extern __declspec(__nothrow) void perror(const char * /*s*/);
+   /*
+    * maps the error number  in the integer expression errno to an error
+    * message. It writes a sequence of characters to the standard error stream
+    * thus: first (if s is not a null pointer and the character pointed to by
+    * s is not the null character), the string pointed to by s followed by a
+    * colon and a space; then an appropriate error message string followed by
+    * a new-line character. The contents of the error message strings are the
+    * same as those returned by the strerror function with argument errno,
+    * which are implementation-defined.
+    * Returns: no value.
+    */
+
+extern __declspec(__nothrow) int _fisatty(FILE * /*stream*/ ) __attribute__((__nonnull__(1)));
+    /* Returns 1 if the stream is tty (stdin), 0 otherwise. Not ANSI compliant.
+     */
+
+extern __declspec(__nothrow) void __use_no_semihosting_swi(void);
+extern __declspec(__nothrow) void __use_no_semihosting(void);
+    /*
+     * Referencing either of these symbols will cause a link-time
+     * error if any library functions that use semihosting SWI
+     * calls are also present in the link, i.e. you define it if
+     * you want to make sure you haven't accidentally used any such
+     * SWIs.
+     */
+
+
+
+
+
+
+
+
+
+
+
+# 1021 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\stdio.h"
+
+
+
+/* end of stdio.h */
+
+# 22 "\\mbtk\\mqtt\\mqtt\\StackTrace.h"
+
+
+# 36 "\\mbtk\\mqtt\\mqtt\\StackTrace.h"
+
+# 74 "\\mbtk\\mqtt\\mqtt\\StackTrace.h"
+
+
+
+
+# 19 "\\mbtk\\mqtt\\mqtt\\MQTTPacket.c"
+# 1 "\\mbtk\\mqtt\\mqtt\\MQTTPacket.h"
+/*******************************************************************************
+ * Copyright (c) 2014 IBM Corp.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v1.0 which accompany this distribution.
+ *
+ * The Eclipse Public License is available at
+ *    http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ *   http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *    Ian Craggs - initial API and implementation and/or initial documentation
+ *    Xiang Rong - 442039 Add makefile to Embedded C client
+ *******************************************************************************/
+
+
+
+
+
+
+
+
+# 35 "\\mbtk\\mqtt\\mqtt\\MQTTPacket.h"
+
+enum errors
+{
+	MQTTPACKET_BUFFER_TOO_SHORT = -2,
+	MQTTPACKET_READ_ERROR = -1,
+	MQTTPACKET_READ_COMPLETE
+};
+
+enum msgTypes
+{
+	CONNECT = 1, CONNACK, PUBLISH, PUBACK, PUBREC, PUBREL,
+	PUBCOMP, SUBSCRIBE, SUBACK, UNSUBSCRIBE, UNSUBACK,
+	PINGREQ, PINGRESP, DISCONNECT
+};
+
+/**
+ * Bitfields for the MQTT header byte.
+ */
+typedef union
+{
+	unsigned char byte;	                /**< the whole byte */
+# 65 "\\mbtk\\mqtt\\mqtt\\MQTTPacket.h"
+	struct
+	{
+		unsigned int retain : 1;		/**< retained flag bit */
+		unsigned int qos : 2;				/**< QoS value, 0, 1 or 2 */
+		unsigned int dup : 1;				/**< DUP flag bit */
+		unsigned int type : 4;			/**< message type nibble */
+	} bits;
+
+} MQTTHeader;
+
+typedef struct
+{
+	int len;
+	char* data;
+} MQTTLenString;
+
+typedef struct
+{
+	char* cstring;
+	MQTTLenString lenstring;
+} MQTTString;
+
+
+
+int MQTTstrlen(MQTTString mqttstring);
+
+# 1 "\\mbtk\\mqtt\\mqtt\\MQTTConnect.h"
+/*******************************************************************************
+ * Copyright (c) 2014, 2017 IBM Corp.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v1.0 which accompany this distribution.
+ *
+ * The Eclipse Public License is available at
+ *    http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ *   http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *    Ian Craggs - initial API and implementation and/or initial documentation
+ *    Ian Craggs - add connack return code definitions 
+ *    Xiang Rong - 442039 Add makefile to Embedded C client
+ *    Ian Craggs - fix for issue #64, bit order in connack response
+ *******************************************************************************/
+
+
+
+
+enum connack_return_codes
+{
+    KAWAII_MQTT_CONNECTION_ACCEPTED = 0,
+    KAWAII_MQTT_UNNACCEPTABLE_PROTOCOL = 1,
+    KAWAII_MQTT_CLIENTID_REJECTED = 2,
+    KAWAII_MQTT_SERVER_UNAVAILABLE = 3,
+    KAWAII_MQTT_BAD_USERNAME_OR_PASSWORD = 4,
+    KAWAII_MQTT_NOT_AUTHORIZED = 5,
+};
+
+# 39 "\\mbtk\\mqtt\\mqtt\\MQTTConnect.h"
+
+
+typedef union
+{
+	unsigned char all;	/**< all connect flags */
+# 56 "\\mbtk\\mqtt\\mqtt\\MQTTConnect.h"
+	struct
+	{
+		unsigned int : 1;	     					/**< unused */
+		unsigned int cleansession : 1;	  /**< cleansession flag */
+		unsigned int will : 1;			    /**< will flag */
+		unsigned int willQoS : 2;				/**< will QoS value */
+		unsigned int willRetain : 1;		/**< will retain setting */
+		unsigned int password : 1; 			/**< 3.1 password */
+		unsigned int username : 1;			/**< 3.1 user name */
+	} bits;
+
+} MQTTConnectFlags;	/**< connect flags byte */
+
+
+
+/**
+ * Defines the MQTT "Last Will and Testament" (LWT) settings for
+ * the connect packet.
+ */
+typedef struct
+{
+	/** The eyecatcher for this structure.  must be MQTW. */
+	char struct_id[4];
+	/** The version number of this structure.  Must be 0 */
+	int struct_version;
+	/** The LWT topic to which the LWT message will be published. */
+	MQTTString topicName;
+	/** The LWT payload. */
+	MQTTString message;
+	/**
+      * The retained flag for the LWT message (see MQTTAsync_message.retained).
+      */
+	unsigned char retained;
+	/**
+      * The quality of service setting for the LWT message (see
+      * MQTTAsync_message.qos and @ref qos).
+      */
+	char qos;
+} MQTTPacket_willOptions;
+
+
+
+
+
+typedef struct
+{
+	/** The eyecatcher for this structure.  must be MQTC. */
+	char struct_id[4];
+	/** The version number of this structure.  Must be 0 */
+	int struct_version;
+	/** Version of MQTT to be used.  3 = 3.1 4 = 3.1.1
+	  */
+	unsigned char MQTTVersion;
+	MQTTString clientID;
+	unsigned short keepAliveInterval;
+	unsigned char cleansession;
+	unsigned char willFlag;
+	MQTTPacket_willOptions will;
+	MQTTString username;
+	MQTTString password;
+} MQTTPacket_connectData;
+
+typedef union
+{
+	unsigned char all;	/**< all connack flags */
+# 128 "\\mbtk\\mqtt\\mqtt\\MQTTConnect.h"
+	struct
+	{
+		unsigned int sessionpresent : 1;    /**< session present flag */
+    unsigned int reserved: 7;	     			/**< unused */
+	} bits;
+
+} MQTTConnackFlags;	/**< connack flags byte */
+
+
+
+
+ int MQTTSerialize_connect(unsigned char* buf, int buflen, MQTTPacket_connectData* options);
+ int MQTTDeserialize_connect(MQTTPacket_connectData* data, unsigned char* buf, int len);
+
+ int MQTTSerialize_connack(unsigned char* buf, int buflen, unsigned char connack_rc, unsigned char sessionPresent);
+ int MQTTDeserialize_connack(unsigned char* sessionPresent, unsigned char* connack_rc, unsigned char* buf, int buflen);
+
+ int MQTTSerialize_disconnect(unsigned char* buf, int buflen);
+ int MQTTSerialize_pingreq(unsigned char* buf, int buflen);
+
+# 92 "\\mbtk\\mqtt\\mqtt\\MQTTPacket.h"
+# 1 "\\mbtk\\mqtt\\mqtt\\MQTTPublish.h"
+/*******************************************************************************
+ * Copyright (c) 2014 IBM Corp.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v1.0 which accompany this distribution.
+ *
+ * The Eclipse Public License is available at
+ *    http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ *   http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *    Ian Craggs - initial API and implementation and/or initial documentation
+ *    Xiang Rong - 442039 Add makefile to Embedded C client
+ *******************************************************************************/
+
+
+
+
+# 27 "\\mbtk\\mqtt\\mqtt\\MQTTPublish.h"
+
+ int MQTTSerialize_publish(unsigned char* buf, int buflen, unsigned char dup, int qos, unsigned char retained, unsigned short packetid,
+		MQTTString topicName, unsigned char* payload, int payloadlen);
+
+ int MQTTDeserialize_publish(unsigned char* dup, int* qos, unsigned char* retained, unsigned short* packetid, MQTTString* topicName,
+		unsigned char** payload, int* payloadlen, unsigned char* buf, int len);
+
+ int MQTTSerialize_puback(unsigned char* buf, int buflen, unsigned short packetid);
+ int MQTTSerialize_pubrel(unsigned char* buf, int buflen, unsigned char dup, unsigned short packetid);
+ int MQTTSerialize_pubcomp(unsigned char* buf, int buflen, unsigned short packetid);
+
+# 93 "\\mbtk\\mqtt\\mqtt\\MQTTPacket.h"
+# 1 "\\mbtk\\mqtt\\mqtt\\MQTTSubscribe.h"
+/*
+ * @Author: jiejie
+ * @Github: https://github.com/jiejieTop
+ * @Date: 2019-12-09 20:15:32
+ * @LastEditTime: 2019-12-20 20:37:31
+ * @Description: the code belongs to jiejie, please keep the author information and source code according to the license.
+ */
+/*******************************************************************************
+ * Copyright (c) 2014 IBM Corp.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v1.0 which accompany this distribution.
+ *
+ * The Eclipse Public License is available at
+ *    http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ *   http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *    Ian Craggs - initial API and implementation and/or initial documentation
+ *    Xiang Rong - 442039 Add makefile to Embedded C client
+ *******************************************************************************/
+
+
+
+
+# 34 "\\mbtk\\mqtt\\mqtt\\MQTTSubscribe.h"
+
+ int MQTTSerialize_subscribe(unsigned char* buf, int buflen, unsigned char dup, unsigned short packetid,
+		int count, MQTTString topicFilters[], int requestedQoSs[]);
+
+ int MQTTDeserialize_subscribe(unsigned char* dup, unsigned short* packetid,
+		int maxcount, int* count, MQTTString topicFilters[], int requestedQoSs[], unsigned char* buf, int len);
+
+ int MQTTSerialize_suback(unsigned char* buf, int buflen, unsigned short packetid, int count, int* grantedQoSs);
+
+ int MQTTDeserialize_suback(unsigned short* packetid, int maxcount, int* count, int grantedQoSs[], unsigned char* buf, int len);
+
+
+# 94 "\\mbtk\\mqtt\\mqtt\\MQTTPacket.h"
+# 1 "\\mbtk\\mqtt\\mqtt\\MQTTUnsubscribe.h"
+/*******************************************************************************
+ * Copyright (c) 2014 IBM Corp.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v1.0 which accompany this distribution.
+ *
+ * The Eclipse Public License is available at
+ *    http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ *   http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *    Ian Craggs - initial API and implementation and/or initial documentation
+ *    Xiang Rong - 442039 Add makefile to Embedded C client
+ *******************************************************************************/
+
+
+
+
+# 27 "\\mbtk\\mqtt\\mqtt\\MQTTUnsubscribe.h"
+
+ int MQTTSerialize_unsubscribe(unsigned char* buf, int buflen, unsigned char dup, unsigned short packetid,
+		int count, MQTTString topicFilters[]);
+
+ int MQTTDeserialize_unsubscribe(unsigned char* dup, unsigned short* packetid, int max_count, int* count, MQTTString topicFilters[],
+		unsigned char* buf, int len);
+
+ int MQTTSerialize_unsuback(unsigned char* buf, int buflen, unsigned short packetid);
+
+ int MQTTDeserialize_unsuback(unsigned short* packetid, unsigned char* buf, int len);
+
+# 95 "\\mbtk\\mqtt\\mqtt\\MQTTPacket.h"
+# 1 "\\mbtk\\mqtt\\mqtt\\MQTTFormat.h"
+/*******************************************************************************
+ * Copyright (c) 2014 IBM Corp.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v1.0 which accompany this distribution.
+ *
+ * The Eclipse Public License is available at
+ *    http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ *   http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *    Ian Craggs - initial API and implementation and/or initial documentation
+ *******************************************************************************/
+
+
+
+
+# 21 "\\mbtk\\mqtt\\mqtt\\MQTTFormat.h"
+# 1 "\\mbtk\\mqtt\\mqtt\\MQTTPacket.h"
+/*******************************************************************************
+ * Copyright (c) 2014 IBM Corp.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * and Eclipse Distribution License v1.0 which accompany this distribution.
+ *
+ * The Eclipse Public License is available at
+ *    http://www.eclipse.org/legal/epl-v10.html
+ * and the Eclipse Distribution License is available at
+ *   http://www.eclipse.org/org/documents/edl-v10.php.
+ *
+ * Contributors:
+ *    Ian Craggs - initial API and implementation and/or initial documentation
+ *    Xiang Rong - 442039 Add makefile to Embedded C client
+ *******************************************************************************/
+
+# 22 "\\mbtk\\mqtt\\mqtt\\MQTTFormat.h"
+
+const char* MQTTPacket_getName(unsigned short packetid);
+int MQTTStringFormat_connect(char* strbuf, int strbuflen, MQTTPacket_connectData* data);
+int MQTTStringFormat_connack(char* strbuf, int strbuflen, unsigned char connack_rc, unsigned char sessionPresent);
+int MQTTStringFormat_publish(char* strbuf, int strbuflen, unsigned char dup, int qos, unsigned char retained,
+		unsigned short packetid, MQTTString topicName, unsigned char* payload, int payloadlen);
+int MQTTStringFormat_ack(char* strbuf, int strbuflen, unsigned char packettype, unsigned char dup, unsigned short packetid);
+int MQTTStringFormat_subscribe(char* strbuf, int strbuflen, unsigned char dup, unsigned short packetid, int count,
+		MQTTString topicFilters[], int requestedQoSs[]);
+int MQTTStringFormat_suback(char* strbuf, int strbuflen, unsigned short packetid, int count, int* grantedQoSs);
+int MQTTStringFormat_unsubscribe(char* strbuf, int strbuflen, unsigned char dup, unsigned short packetid,
+		int count, MQTTString topicFilters[]);
+char* MQTTFormat_toClientString(char* strbuf, int strbuflen, unsigned char* buf, int buflen);
+char* MQTTFormat_toServerString(char* strbuf, int strbuflen, unsigned char* buf, int buflen);
+
+# 96 "\\mbtk\\mqtt\\mqtt\\MQTTPacket.h"
+
+ int MQTTSerialize_ack(unsigned char* buf, int buflen, unsigned char type, unsigned char dup, unsigned short packetid);
+ int MQTTDeserialize_ack(unsigned char* packettype, unsigned char* dup, unsigned short* packetid, unsigned char* buf, int buflen);
+
+int MQTTPacket_len(int rem_len);
+ int MQTTPacket_equals(MQTTString* a, char* b);
+
+ int MQTTPacket_encode(unsigned char* buf, int length);
+int MQTTPacket_decode(int (*getcharfn)(unsigned char*, int), int* value);
+int MQTTPacket_decodeBuf(unsigned char* buf, int* value);
+
+int readInt(unsigned char** pptr);
+char readChar(unsigned char** pptr);
+void writeChar(unsigned char** pptr, char c);
+void writeInt(unsigned char** pptr, int anInt);
+int readMQTTLenString(MQTTString* mqttstring, unsigned char** pptr, unsigned char* enddata);
+void writeCString(unsigned char** pptr, const char* string);
+void writeMQTTString(unsigned char** pptr, MQTTString mqttstring);
+
+ int MQTTPacket_read(unsigned char* buf, int buflen, int (*getfn)(unsigned char*, int));
+
+typedef struct {
+	int (*getfn)(void *, unsigned char*, int); /* must return -1 for error, 0 for call again, or the number of bytes read */
+	void *sck;	/* pointer to whatever the system may use to identify the transport */
+	int multiplier;
+	int rem_len;
+	int len;
+	char state;
+}MQTTTransport;
+
+int MQTTPacket_readnb(unsigned char* buf, int buflen, MQTTTransport *trp);
+
+
+
+
+
+
+# 20 "\\mbtk\\mqtt\\mqtt\\MQTTPacket.c"
+
+# 1 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\string.h"
+/* string.h: ANSI 'C' (X3J11 Oct 88) library header, section 4.11 */
+/* Copyright (C) Codemist Ltd., 1988-1993.                        */
+/* Copyright 1991-1993 ARM Limited. All rights reserved.          */
+/* version 0.04 */
+
+/*
+ * RCS $Revision$
+ * Checkin $Date$
+ */
+
+/*
+ * string.h declares one type and several functions, and defines one macro
+ * useful for manipulating character arrays and other objects treated as
+ * character arrays. Various methods are used for determining the lengths of
+ * the arrays, but in all cases a char * or void * argument points to the
+ * initial (lowest addresses) character of the array. If an array is written
+ * beyond the end of an object, the behaviour is undefined.
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+# 38 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\string.h"
+
+
+ /* unconditional in C++ and non-strict C for consistency of debug info */
+
+
+
+    typedef unsigned int size_t;   /* see <stddef.h> */
+# 54 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\string.h"
+
+
+
+
+extern __declspec(__nothrow) void *memcpy(void * __restrict /*s1*/,
+                    const void * __restrict /*s2*/, size_t /*n*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * copies n characters from the object pointed to by s2 into the object
+    * pointed to by s1. If copying takes place between objects that overlap,
+    * the behaviour is undefined.
+    * Returns: the value of s1.
+    */
+extern __declspec(__nothrow) void *memmove(void * /*s1*/,
+                    const void * /*s2*/, size_t /*n*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * copies n characters from the object pointed to by s2 into the object
+    * pointed to by s1. Copying takes place as if the n characters from the
+    * object pointed to by s2 are first copied into a temporary array of n
+    * characters that does not overlap the objects pointed to by s1 and s2,
+    * and then the n characters from the temporary array are copied into the
+    * object pointed to by s1.
+    * Returns: the value of s1.
+    */
+extern __declspec(__nothrow) char *strcpy(char * __restrict /*s1*/, const char * __restrict /*s2*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * copies the string pointed to by s2 (including the terminating nul
+    * character) into the array pointed to by s1. If copying takes place
+    * between objects that overlap, the behaviour is undefined.
+    * Returns: the value of s1.
+    */
+extern __declspec(__nothrow) char *strncpy(char * __restrict /*s1*/, const char * __restrict /*s2*/, size_t /*n*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * copies not more than n characters (characters that follow a null
+    * character are not copied) from the array pointed to by s2 into the array
+    * pointed to by s1. If copying takes place between objects that overlap,
+    * the behaviour is undefined.
+    * Returns: the value of s1.
+    */
+
+extern __declspec(__nothrow) char *strcat(char * __restrict /*s1*/, const char * __restrict /*s2*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * appends a copy of the string pointed to by s2 (including the terminating
+    * null character) to the end of the string pointed to by s1. The initial
+    * character of s2 overwrites the null character at the end of s1.
+    * Returns: the value of s1.
+    */
+extern __declspec(__nothrow) char *strncat(char * __restrict /*s1*/, const char * __restrict /*s2*/, size_t /*n*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * appends not more than n characters (a null character and characters that
+    * follow it are not appended) from the array pointed to by s2 to the end of
+    * the string pointed to by s1. The initial character of s2 overwrites the
+    * null character at the end of s1. A terminating null character is always
+    * appended to the result.
+    * Returns: the value of s1.
+    */
+
+/*
+ * The sign of a nonzero value returned by the comparison functions is
+ * determined by the sign of the difference between the values of the first
+ * pair of characters (both interpreted as unsigned char) that differ in the
+ * objects being compared.
+ */
+
+extern __declspec(__nothrow) int memcmp(const void * /*s1*/, const void * /*s2*/, size_t /*n*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * compares the first n characters of the object pointed to by s1 to the
+    * first n characters of the object pointed to by s2.
+    * Returns: an integer greater than, equal to, or less than zero, according
+    *          as the object pointed to by s1 is greater than, equal to, or
+    *          less than the object pointed to by s2.
+    */
+extern __declspec(__nothrow) int strcmp(const char * /*s1*/, const char * /*s2*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * compares the string pointed to by s1 to the string pointed to by s2.
+    * Returns: an integer greater than, equal to, or less than zero, according
+    *          as the string pointed to by s1 is greater than, equal to, or
+    *          less than the string pointed to by s2.
+    */
+extern __declspec(__nothrow) int strncmp(const char * /*s1*/, const char * /*s2*/, size_t /*n*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * compares not more than n characters (characters that follow a null
+    * character are not compared) from the array pointed to by s1 to the array
+    * pointed to by s2.
+    * Returns: an integer greater than, equal to, or less than zero, according
+    *          as the string pointed to by s1 is greater than, equal to, or
+    *          less than the string pointed to by s2.
+    */
+extern __declspec(__nothrow) int strcasecmp(const char * /*s1*/, const char * /*s2*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * compares the string pointed to by s1 to the string pointed to by s2,
+    * case-insensitively as defined by the current locale.
+    * Returns: an integer greater than, equal to, or less than zero, according
+    *          as the string pointed to by s1 is greater than, equal to, or
+    *          less than the string pointed to by s2.
+    */
+extern __declspec(__nothrow) int strncasecmp(const char * /*s1*/, const char * /*s2*/, size_t /*n*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * compares not more than n characters (characters that follow a null
+    * character are not compared) from the array pointed to by s1 to the array
+    * pointed to by s2, case-insensitively as defined by the current locale.
+    * Returns: an integer greater than, equal to, or less than zero, according
+    *          as the string pointed to by s1 is greater than, equal to, or
+    *          less than the string pointed to by s2.
+    */
+extern __declspec(__nothrow) int strcoll(const char * /*s1*/, const char * /*s2*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * compares the string pointed to by s1 to the string pointed to by s2, both
+    * interpreted as appropriate to the LC_COLLATE category of the current
+    * locale.
+    * Returns: an integer greater than, equal to, or less than zero, according
+    *          as the string pointed to by s1 is greater than, equal to, or
+    *          less than the string pointed to by s2 when both are interpreted
+    *          as appropriate to the current locale.
+    */
+
+extern __declspec(__nothrow) size_t strxfrm(char * __restrict /*s1*/, const char * __restrict /*s2*/, size_t /*n*/) __attribute__((__nonnull__(2)));
+   /*
+    * transforms the string pointed to by s2 and places the resulting string
+    * into the array pointed to by s1. The transformation function is such that
+    * if the strcmp function is applied to two transformed strings, it returns
+    * a value greater than, equal to or less than zero, corresponding to the
+    * result of the strcoll function applied to the same two original strings.
+    * No more than n characters are placed into the resulting array pointed to
+    * by s1, including the terminating null character. If n is zero, s1 is
+    * permitted to be a null pointer. If copying takes place between objects
+    * that overlap, the behaviour is undefined.
+    * Returns: The length of the transformed string is returned (not including
+    *          the terminating null character). If the value returned is n or
+    *          more, the contents of the array pointed to by s1 are
+    *          indeterminate.
+    */
+
+
+# 193 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\string.h"
+extern __declspec(__nothrow) void *memchr(const void * /*s*/, int /*c*/, size_t /*n*/) __attribute__((__nonnull__(1)));
+
+   /*
+    * locates the first occurence of c (converted to an unsigned char) in the
+    * initial n characters (each interpreted as unsigned char) of the object
+    * pointed to by s.
+    * Returns: a pointer to the located character, or a null pointer if the
+    *          character does not occur in the object.
+    */
+
+# 209 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\string.h"
+extern __declspec(__nothrow) char *strchr(const char * /*s*/, int /*c*/) __attribute__((__nonnull__(1)));
+
+   /*
+    * locates the first occurence of c (converted to an char) in the string
+    * pointed to by s (including the terminating null character).
+    * Returns: a pointer to the located character, or a null pointer if the
+    *          character does not occur in the string.
+    */
+
+extern __declspec(__nothrow) size_t strcspn(const char * /*s1*/, const char * /*s2*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * computes the length of the initial segment of the string pointed to by s1
+    * which consists entirely of characters not from the string pointed to by
+    * s2. The terminating null character is not considered part of s2.
+    * Returns: the length of the segment.
+    */
+
+# 232 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\string.h"
+extern __declspec(__nothrow) char *strpbrk(const char * /*s1*/, const char * /*s2*/) __attribute__((__nonnull__(1,2)));
+
+   /*
+    * locates the first occurence in the string pointed to by s1 of any
+    * character from the string pointed to by s2.
+    * Returns: returns a pointer to the character, or a null pointer if no
+    *          character form s2 occurs in s1.
+    */
+
+# 247 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\string.h"
+extern __declspec(__nothrow) char *strrchr(const char * /*s*/, int /*c*/) __attribute__((__nonnull__(1)));
+
+   /*
+    * locates the last occurence of c (converted to a char) in the string
+    * pointed to by s. The terminating null character is considered part of
+    * the string.
+    * Returns: returns a pointer to the character, or a null pointer if c does
+    *          not occur in the string.
+    */
+
+extern __declspec(__nothrow) size_t strspn(const char * /*s1*/, const char * /*s2*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * computes the length of the initial segment of the string pointed to by s1
+    * which consists entirely of characters from the string pointed to by S2
+    * Returns: the length of the segment.
+    */
+
+# 270 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\string.h"
+extern __declspec(__nothrow) char *strstr(const char * /*s1*/, const char * /*s2*/) __attribute__((__nonnull__(1,2)));
+
+   /*
+    * locates the first occurence in the string pointed to by s1 of the
+    * sequence of characters (excluding the terminating null character) in the
+    * string pointed to by s2.
+    * Returns: a pointer to the located string, or a null pointer if the string
+    *          is not found.
+    */
+
+extern __declspec(__nothrow) char *strtok(char * __restrict /*s1*/, const char * __restrict /*s2*/) __attribute__((__nonnull__(2)));
+extern __declspec(__nothrow) char *_strtok_r(char * /*s1*/, const char * /*s2*/, char ** /*ptr*/) __attribute__((__nonnull__(2,3)));
+
+extern __declspec(__nothrow) char *strtok_r(char * /*s1*/, const char * /*s2*/, char ** /*ptr*/) __attribute__((__nonnull__(2,3)));
+
+   /*
+    * A sequence of calls to the strtok function breaks the string pointed to
+    * by s1 into a sequence of tokens, each of which is delimited by a
+    * character from the string pointed to by s2. The first call in the
+    * sequence has s1 as its first argument, and is followed by calls with a
+    * null pointer as their first argument. The separator string pointed to by
+    * s2 may be different from call to call.
+    * The first call in the sequence searches for the first character that is
+    * not contained in the current separator string s2. If no such character
+    * is found, then there are no tokens in s1 and the strtok function returns
+    * a null pointer. If such a character is found, it is the start of the
+    * first token.
+    * The strtok function then searches from there for a character that is
+    * contained in the current separator string. If no such character is found,
+    * the current token extends to the end of the string pointed to by s1, and
+    * subsequent searches for a token will fail. If such a character is found,
+    * it is overwritten by a null character, which terminates the current
+    * token. The strtok function saves a pointer to the following character,
+    * from which the next search for a token will start.
+    * Each subsequent call, with a null pointer as the value for the first
+    * argument, starts searching from the saved pointer and behaves as
+    * described above.
+    * Returns: pointer to the first character of a token, or a null pointer if
+    *          there is no token.
+    *
+    * strtok_r() is a common extension which works exactly like
+    * strtok(), but instead of storing its state in a hidden
+    * library variable, requires the user to pass in a pointer to a
+    * char * variable which will be used instead. Any sequence of
+    * calls to strtok_r() passing the same char ** pointer should
+    * behave exactly like the corresponding sequence of calls to
+    * strtok(). This means that strtok_r() can safely be used in
+    * multi-threaded programs, and also that you can tokenise two
+    * strings in parallel.
+    */
+
+extern __declspec(__nothrow) void *memset(void * /*s*/, int /*c*/, size_t /*n*/) __attribute__((__nonnull__(1)));
+   /*
+    * copies the value of c (converted to an unsigned char) into each of the
+    * first n charactes of the object pointed to by s.
+    * Returns: the value of s.
+    */
+extern __declspec(__nothrow) char *strerror(int /*errnum*/);
+   /*
+    * maps the error number in errnum to an error message string.
+    * Returns: a pointer to the string, the contents of which are
+    *          implementation-defined. The array pointed to shall not be
+    *          modified by the program, but may be overwritten by a
+    *          subsequent call to the strerror function.
+    */
+extern __declspec(__nothrow) size_t strlen(const char * /*s*/) __attribute__((__nonnull__(1)));
+   /*
+    * computes the length of the string pointed to by s.
+    * Returns: the number of characters that precede the terminating null
+    *          character.
+    */
+
+extern __declspec(__nothrow) size_t strlcpy(char * /*dst*/, const char * /*src*/, size_t /*len*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * copies the string src into the string dst, using no more than
+    * len bytes of dst. Always null-terminates dst _within the
+    * length len (i.e. will copy at most len-1 bytes of string plus
+    * a NUL), unless len is actually zero.
+    * 
+    * Return value is the length of the string that _would_ have
+    * been written, i.e. the length of src. Thus, the operation
+    * succeeded without truncation if and only if ret < len;
+    * otherwise, the value in ret tells you how big to make dst if
+    * you decide to reallocate it. (That value does _not_ include
+    * the NUL.)
+    * 
+    * This is a BSD-derived library extension, which we are
+    * permitted to declare in a standard header because ISO defines
+    * function names beginning with 'str' as reserved for future
+    * expansion of <string.h>.
+    */
+
+extern __declspec(__nothrow) size_t strlcat(char * /*dst*/, const char * /*src*/, size_t /*len*/) __attribute__((__nonnull__(1,2)));
+   /*
+    * concatenates the string src to the string dst, using no more
+    * than len bytes of dst. Always null-terminates dst _within the
+    * length len (i.e. will copy at most len-1 bytes of string plus
+    * a NUL), unless len is actually zero.
+    * 
+    * Return value is the length of the string that _would_ have
+    * been written, i.e. the length of src plus the original length
+    * of dst. Thus, the operation succeeded without truncation if
+    * and only if ret < len; otherwise, the value in ret tells you
+    * how big to make dst if you decide to reallocate it. (That
+    * value does _not_ include the NUL.)
+    * 
+    * If no NUL is encountered within the first len bytes of dst,
+    * then the length of dst is considered to have been equal to
+    * len for the purposes of the return value (as if there were a
+    * NUL at dst[len]). Thus, the return value in this case is len
+    * + strlen(src).
+    * 
+    * This is a BSD-derived library extension, which we are
+    * permitted to declare in a standard header because ISO defines
+    * function names beginning with 'str' as reserved for future
+    * expansion of <string.h>.
+    */
+
+extern __declspec(__nothrow) void _membitcpybl(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+extern __declspec(__nothrow) void _membitcpybb(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+extern __declspec(__nothrow) void _membitcpyhl(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+extern __declspec(__nothrow) void _membitcpyhb(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+extern __declspec(__nothrow) void _membitcpywl(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+extern __declspec(__nothrow) void _membitcpywb(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+extern __declspec(__nothrow) void _membitmovebl(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+extern __declspec(__nothrow) void _membitmovebb(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+extern __declspec(__nothrow) void _membitmovehl(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+extern __declspec(__nothrow) void _membitmovehb(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+extern __declspec(__nothrow) void _membitmovewl(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+extern __declspec(__nothrow) void _membitmovewb(void * /*dest*/, const void * /*src*/, int /*destoffset*/, int /*srcoffset*/, size_t /*nbits*/) __attribute__((__nonnull__(1,2)));
+    /*
+     * Copies or moves a piece of memory from one place to another,
+     * with one-bit granularity. So you can start or finish a copy
+     * part way through a byte, and you can copy between regions
+     * with different alignment within a byte.
+     * 
+     * All these functions have the same prototype: two void *
+     * pointers for destination and source, then two integers
+     * giving the bit offset from those pointers, and finally the
+     * number of bits to copy.
+     * 
+     * Just like memcpy and memmove, the "cpy" functions copy as
+     * fast as they can in the assumption that the memory regions
+     * do not overlap, while the "move" functions cope correctly
+     * with overlap.
+     *
+     * Treating memory as a stream of individual bits requires
+     * defining a convention about what order those bits are
+     * considered to be arranged in. The above functions support
+     * multiple conventions:
+     * 
+     *  - the "bl" functions consider the unit of memory to be the
+     *    byte, and consider the bits within each byte to be
+     *    arranged in little-endian fashion, so that the LSB comes
+     *    first. (For example, membitcpybl(a,b,0,7,1) would copy
+     *    the MSB of the byte at b to the LSB of the byte at a.)
+     * 
+     *  - the "bb" functions consider the unit of memory to be the
+     *    byte, and consider the bits within each byte to be
+     *    arranged in big-endian fashion, so that the MSB comes
+     *    first.
+     * 
+     *  - the "hl" functions consider the unit of memory to be the
+     *    16-bit halfword, and consider the bits within each word
+     *    to be arranged in little-endian fashion.
+     * 
+     *  - the "hb" functions consider the unit of memory to be the
+     *    16-bit halfword, and consider the bits within each word
+     *    to be arranged in big-endian fashion.
+     * 
+     *  - the "wl" functions consider the unit of memory to be the
+     *    32-bit word, and consider the bits within each word to be
+     *    arranged in little-endian fashion.
+     * 
+     *  - the "wb" functions consider the unit of memory to be the
+     *    32-bit word, and consider the bits within each word to be
+     *    arranged in big-endian fashion.
+     */
+
+
+
+
+
+
+
+# 502 "D:\\Mobiletek\\L511\\L511-5\\OpenCPU\\Base_OG_SDK\\LYNQ_SDK_CAT1_ASRv12.01b02.00\\cross_tool\\win32\\DS-5v5.26.2\\sw\\ARMCompiler5.06u4\\bin\\..\\include\\string.h"
+
+
+
+/* end of string.h */
+
+# 22 "\\mbtk\\mqtt\\mqtt\\MQTTPacket.c"
+
+/**
+ * Encodes the message length according to the MQTT algorithm
+ * @param buf the buffer into which the encoded data is written
+ * @param length the length to be encoded
+ * @return the number of bytes written to buffer
+ */
+int MQTTPacket_encode(unsigned char* buf, int length)
+{
+	int rc = 0;
+
+	;
+	do
+	{
+		char d = length % 128;
+		length /= 128;
+		/* if there are more digits to encode, set the top bit of this digit */
+		if (length > 0)
+			d |= 0x80;
+		buf[rc++] = d;
+	} while (length > 0);
+	;
+	return rc;
+}
+
+
+/**
+ * Decodes the message length according to the MQTT algorithm
+ * @param getcharfn pointer to function to read the next character from the data source
+ * @param value the decoded length returned
+ * @return the number of bytes read from the socket
+ */
+int MQTTPacket_decode(int (*getcharfn)(unsigned char*, int), int* value)
+{
+	unsigned char c;
+	int multiplier = 1;
+	int len = 0;
+
+
+	;
+	*value = 0;
+	do
+	{
+		int rc = MQTTPACKET_READ_ERROR;
+
+		if (++len > 4)
+		{
+			rc = MQTTPACKET_READ_ERROR;	/* bad data */
+			goto exit;
+		}
+		rc = (*getcharfn)(&c, 1);
+		if (rc != 1)
+			goto exit;
+		*value += (c & 127) * multiplier;
+		multiplier *= 128;
+	} while ((c & 128) != 0);
+exit:
+	;
+	return len;
+}
+
+
+int MQTTPacket_len(int rem_len)
+{
+	rem_len += 1; /* header byte */
+
+	/* now remaining_length field */
+	if (rem_len < 128)
+		rem_len += 1;
+	else if (rem_len < 16384)
+		rem_len += 2;
+	else if (rem_len < 2097151)
+		rem_len += 3;
+	else
+		rem_len += 4;
+	return rem_len;
+}
+
+
+static unsigned char* bufptr;
+
+int bufchar(unsigned char* c, int count)
+{
+	int i;
+
+	for (i = 0; i < count; ++i)
+		*c = *bufptr++;
+	return count;
+}
+
+
+int MQTTPacket_decodeBuf(unsigned char* buf, int* value)
+{
+	bufptr = buf;
+	return MQTTPacket_decode(bufchar, value);
+}
+
+
+/**
+ * Calculates an integer from two bytes read from the input buffer
+ * @param pptr pointer to the input buffer - incremented by the number of bytes used & returned
+ * @return the integer value calculated
+ */
+int readInt(unsigned char** pptr)
+{
+	unsigned char* ptr = *pptr;
+	int len = 256*(*ptr) + (*(ptr+1));
+	*pptr += 2;
+	return len;
+}
+
+
+/**
+ * Reads one character from the input buffer.
+ * @param pptr pointer to the input buffer - incremented by the number of bytes used & returned
+ * @return the character read
+ */
+char readChar(unsigned char** pptr)
+{
+	char c = **pptr;
+	(*pptr)++;
+	return c;
+}
+
+
+/**
+ * Writes one character to an output buffer.
+ * @param pptr pointer to the output buffer - incremented by the number of bytes used & returned
+ * @param c the character to write
+ */
+void writeChar(unsigned char** pptr, char c)
+{
+	**pptr = c;
+	(*pptr)++;
+}
+
+
+/**
+ * Writes an integer as 2 bytes to an output buffer.
+ * @param pptr pointer to the output buffer - incremented by the number of bytes used & returned
+ * @param anInt the integer to write
+ */
+void writeInt(unsigned char** pptr, int anInt)
+{
+	**pptr = (unsigned char)(anInt / 256);
+	(*pptr)++;
+	**pptr = (unsigned char)(anInt % 256);
+	(*pptr)++;
+}
+
+
+/**
+ * Writes a "UTF" string to an output buffer.  Converts C string to length-delimited.
+ * @param pptr pointer to the output buffer - incremented by the number of bytes used & returned
+ * @param string the C string to write
+ */
+void writeCString(unsigned char** pptr, const char* string)
+{
+	int len = strlen(string);
+	writeInt(pptr, len);
+	memcpy(*pptr, string, len);
+	*pptr += len;
+}
+
+
+int getLenStringLen(char* ptr)
+{
+	int len = 256*((unsigned char)(*ptr)) + (unsigned char)(*(ptr+1));
+	return len;
+}
+
+
+void writeMQTTString(unsigned char** pptr, MQTTString mqttstring)
+{
+	if (mqttstring.lenstring.len > 0)
+	{
+		writeInt(pptr, mqttstring.lenstring.len);
+		memcpy(*pptr, mqttstring.lenstring.data, mqttstring.lenstring.len);
+		*pptr += mqttstring.lenstring.len;
+	}
+	else if (mqttstring.cstring)
+		writeCString(pptr, mqttstring.cstring);
+	else
+		writeInt(pptr, 0);
+}
+
+
+/**
+ * @param mqttstring the MQTTString structure into which the data is to be read
+ * @param pptr pointer to the output buffer - incremented by the number of bytes used & returned
+ * @param enddata pointer to the end of the data: do not read beyond
+ * @return 1 if successful, 0 if not
+ */
+int readMQTTLenString(MQTTString* mqttstring, unsigned char** pptr, unsigned char* enddata)
+{
+	int rc = 0;
+
+	;
+	/* the first two bytes are the length of the string */
+	if (enddata - (*pptr) > 1) /* enough length to read the integer? */
+	{
+		mqttstring->lenstring.len = readInt(pptr); /* increments pptr to point past length */
+		if (&(*pptr)[mqttstring->lenstring.len] <= enddata)
+		{
+			mqttstring->lenstring.data = (char*)*pptr;
+			*pptr += mqttstring->lenstring.len;
+			rc = 1;
+		}
+	}
+	mqttstring->cstring = 0;
+	;
+	return rc;
+}
+
+
+/**
+ * Return the length of the MQTTstring - C string if there is one, otherwise the length delimited string
+ * @param mqttstring the string to return the length of
+ * @return the length of the string
+ */
+int MQTTstrlen(MQTTString mqttstring)
+{
+	int rc = 0;
+
+	if (mqttstring.cstring)
+		rc = strlen(mqttstring.cstring);
+	else
+		rc = mqttstring.lenstring.len;
+	return rc;
+}
+
+
+/**
+ * Compares an MQTTString to a C string
+ * @param a the MQTTString to compare
+ * @param bptr the C string to compare
+ * @return boolean - equal or not
+ */
+int MQTTPacket_equals(MQTTString* a, char* bptr)
+{
+	int alen = 0,
+		blen = 0;
+	char *aptr;
+	
+	if (a->cstring)
+	{
+		aptr = a->cstring;
+		alen = strlen(a->cstring);
+	}
+	else
+	{
+		aptr = a->lenstring.data;
+		alen = a->lenstring.len;
+	}
+	blen = strlen(bptr);
+	
+	return (alen == blen) && (strncmp(aptr, bptr, alen) == 0);
+}
+
+
+/**
+ * Helper function to read packet data from some source into a buffer
+ * @param buf the buffer into which the packet will be serialized
+ * @param buflen the length in bytes of the supplied buffer
+ * @param getfn pointer to a function which will read any number of bytes from the needed source
+ * @return integer MQTT packet type, or -1 on error
+ * @note  the whole message must fit into the caller's buffer
+ */
+int MQTTPacket_read(unsigned char* buf, int buflen, int (*getfn)(unsigned char*, int))
+{
+	int rc = -1;
+	MQTTHeader header = {0};
+	int len = 0;
+	int rem_len = 0;
+
+	/* 1. read the header byte.  This has the packet type in it */
+	if ((*getfn)(buf, 1) != 1)
+		goto exit;
+
+	len = 1;
+	/* 2. read the remaining length.  This is variable in itself */
+	MQTTPacket_decode(getfn, &rem_len);
+	len += MQTTPacket_encode(buf + 1, rem_len); /* put the original remaining length back into the buffer */
+
+	/* 3. read the rest of the buffer using a callback to supply the rest of the data */
+	if((rem_len + len) > buflen)
+		goto exit;
+	if (rem_len && ((*getfn)(buf + len, rem_len) != rem_len))
+		goto exit;
+
+	header.byte = buf[0];
+	rc = header.bits.type;
+exit:
+	return rc;
+}
+
+/**
+ * Decodes the message length according to the MQTT algorithm, non-blocking
+ * @param trp pointer to a transport structure holding what is needed to solve getting data from it
+ * @param value the decoded length returned
+ * @return integer the number of bytes read from the socket, 0 for call again, or -1 on error
+ */
+static int MQTTPacket_decodenb(MQTTTransport *trp)
+{
+	unsigned char c;
+	int rc = MQTTPACKET_READ_ERROR;
+
+	;
+	if(trp->len == 0){		/* initialize on first call */
+		trp->multiplier = 1;
+		trp->rem_len = 0;
+	}
+	do {
+		int frc;
+		if (trp->len >= 4)
+			goto exit;
+		if ((frc=(*trp->getfn)(trp->sck, &c, 1)) == -1)
+			goto exit;
+		if (frc == 0){
+			rc = 0;
+			goto exit;
+		}
+		++(trp->len);
+		trp->rem_len += (c & 127) * trp->multiplier;
+		trp->multiplier *= 128;
+	} while ((c & 128) != 0);
+	rc = trp->len;
+exit:
+	;
+	return rc;
+}
+
+/**
+ * Helper function to read packet data from some source into a buffer, non-blocking
+ * @param buf the buffer into which the packet will be serialized
+ * @param buflen the length in bytes of the supplied buffer
+ * @param trp pointer to a transport structure holding what is needed to solve getting data from it
+ * @return integer MQTT packet type, 0 for call again, or -1 on error
+ * @note  the whole message must fit into the caller's buffer
+ */
+int MQTTPacket_readnb(unsigned char* buf, int buflen, MQTTTransport *trp)
+{
+	int rc = -1, frc;
+	MQTTHeader header = {0};
+
+	switch(trp->state){
+	default:
+		trp->state = 0;
+		/*FALLTHROUGH*/
+	case 0:
+		/* read the header byte.  This has the packet type in it */
+		if ((frc=(*trp->getfn)(trp->sck, buf, 1)) == -1)
+			goto exit;
+		if (frc == 0)
+			return 0;
+		trp->len = 0;
+		++trp->state;
+		/*FALLTHROUGH*/
+		/* read the remaining length.  This is variable in itself */
+	case 1:
+		if((frc=MQTTPacket_decodenb(trp)) == MQTTPACKET_READ_ERROR)
+			goto exit;
+		if(frc == 0)
+			return 0;
+		trp->len = 1 + MQTTPacket_encode(buf + 1, trp->rem_len); /* put the original remaining length back into the buffer */
+		if((trp->rem_len + trp->len) > buflen)
+			goto exit;
+		++trp->state;
+		/*FALLTHROUGH*/
+	case 2:
+		if(trp->rem_len){
+			/* read the rest of the buffer using a callback to supply the rest of the data */
+			if ((frc=(*trp->getfn)(trp->sck, buf + trp->len, trp->rem_len)) == -1)
+				goto exit;
+			if (frc == 0)
+				return 0;
+			trp->rem_len -= frc;
+			trp->len += frc;
+			if(trp->rem_len)
+				return 0;
+		}
+		header.byte = buf[0];
+		rc = header.bits.type;
+		break;
+	}
+
+exit:
+	trp->state = 0;
+	return rc;
+}
+

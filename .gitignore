@@ -1,0 +1,33 @@
+# Build outputs
+app/build/
+**/build/
+*.o
+*.obj
+*.a
+*.elf
+*.bin
+*.map
+*.hex
+*.img
+
+# Firmware/release packages
+app/release/
+kernel/OUTPUT_L511C_5S/
+kernel/releasepack/
+tools/fota_tool/
+
+# Logs
+*.log
+install_log.txt
+
+# IDE/editor
+.vscode/
+.qodo/
+
+# Secrets: per-device MQTT TLS client cert + private key
+# (template: app/demo/mqtt_demo/src/mqtt_device_certs.h.example)
+app/demo/mqtt_demo/src/mqtt_device_certs.h
+
+# OS cruft
+Thumbs.db
+.DS_Store

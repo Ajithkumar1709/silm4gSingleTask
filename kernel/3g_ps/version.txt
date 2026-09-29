@@ -1,0 +1,62 @@
+_______________Start Report : Sun Mar  8 15:11:43 2009 _______
+Release Summary
+PS-V8_2.00.001
+	 - Release Date:	Sun Mar  8 15:11:43 2009
+	 - Release Comments:
+		(from activity "fix for URRRBCPGCB" CQ00071497)
+		(from activity "disableAvailableHplmnCondForHplmnPlmnSearch" CQ00071493)
+----------------------------------------------------------
+BRIEF DESCRIPTION
+*********************
+	 - Total Integration activities in this release : 2
+	 - Total activities in this release : 2
+Activities Details:
+*******************
+		 - fix for URRRBCPGCB(CQ00071497)(1 files changed)
+		 - disableAvailableHplmnCondForHplmnPlmnSearch(CQ00071493)(1 files changed)
+----------------------------------------------------------
+DETAILED DESCRIPTION
+*********************
+---------------------------------------------------
+- Activity Name: fix for URRRBCPGCB (ID : CQ00071497)
+- Activate Date: 2009-03-05 19:48:32
+- Owner : baltalef
+- Files:
+	\3g_ps\rls\tplgsm\modem\psas\3g.mod\lib\src\urrmtc.c
+- Comments:
+		Diagnosis:
+		Resolution Details:
+---------------------------------------------------
+---------------------------------------------------
+- Activity Name: disableAvailableHplmnCondForHplmnPlmnSearch (ID : CQ00071493)
+- Activate Date: 2009-03-05 19:06:32
+- Owner : arahav
+- Files:
+	\3g_ps\rls\tplgsm\modem\psnas\ab.mod\lib\src\abmm_rmm.c
+- Comments:
+		Activity name: stopPendingEmergencyCallInM18
+		Activity type: Bug Fix
+		CQ #: CQ00071429
+		Risk (High/Medium/Low):    low
+		Testing (Module Test/Regression Test):    live NW with 2G SIM
+		Performed Code Review (Who?):    Tal Porat (before testing, when problem was observed so this code review is not the traditional...)
+		Requires Propagation:
+		Diagnosis:
+		          when 2G SIm that does not block 3G is inserted and networkmode = DUAL, UE will start from searching in 3G.
+		          if searched PLMN is found (in our case HPLMN) UE will start registration. as auth procedure fails, UE enters
+		          emergency and should try search on 2G.
+		          problem was condition that blocked this search: if HPLMN is available (on any RAT)-->dont try.
+		          this is wrong as availability of HPLMN should not block any PLMN search if needed for some reason, like in this case.
+		          availability of PLMN means we found it on last PLMN search.
+		          so, UE did not perform this search as it had this condition and always remained stuck on GSM.
+		Resolution Details:
+		                   this condition was deleted.
+		                   UE now searches 2G right after it receives reject on 3G.
+---------------------------------------------------
+Integration Activities:
+***********************
+Activity "deliver l1wlab_3g_ps.V8_2_1 on 3/8/2009 3:03:19 PM." (CQ00071624) contains:
+	disableAvailableHplmnCondForHplmnPlmnSearch (CQ00071493)
+Activity "deliver baltalef_3g_ps.V8_2 on 3/8/2009 3:07:56 PM." (CQ00071625) contains:
+	fix for URRRBCPGCB (CQ00071497)
+________________________END Baseline : PS-V8_2.00.001 ____________________________

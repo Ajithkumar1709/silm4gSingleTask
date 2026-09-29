@@ -1,0 +1,42 @@
+_______________Start Report : Wed Nov 23 14:23:48 2011 _______
+Release Summary
+TAVOR_ENV_01.125
+	 - Release Date:	Wed Nov 23 14:23:48 2011
+	 - Release Comments:
+		(from activity "support signal filtering set by prepass" CQ00190727)
+----------------------------------------------------------
+BRIEF DESCRIPTION
+*********************
+	 - Total Integration activities in this release : 1
+	 - Total activities in this release : 1
+Activities Details:
+*******************
+		 - support signal filtering set by prepass(CQ00190727)(4 files changed)
+----------------------------------------------------------
+DETAILED DESCRIPTION
+*********************
+---------------------------------------------------
+- Activity Name: support signal filtering set by prepass (ID : CQ00190727)
+- Activate Date: 2011-11-22 14:44:16
+- Owner : ykarni
+- Files:
+	\tavor\Arbel\build\mknvm.bat
+	\tavor\Arbel\build\inc_PS.mak
+	\tavor\Arbel\build\buildall.bat
+	\tavor\Arbel\build\Arbel.mak
+- Comments:
+		Signal filtering is set by prepass, by a given initiial signal files (text) provided to the build.
+		There is no need for updates of signal filtering in Giney tool (TTPCOM) when adding/removing signals.
+		Diagnosis:
+		          Default signal filtering table is built by prepass based on the actual signals in the relesae and a given
+		          input file for signal filtering (a text file that can have more / less signals then actually in the code).
+		          The Giney tool can not support more inforation per signal (like priority) which is needed for diag2.
+		Resolution Details:
+		                   Add build of signal filtering table to prepass, based on the signal in release and input file with default filter/dont filter signals.
+		                   The creation of NVM mdb and signal filtering table is done by prepass PPL exe called from the main 'target.mak'
+---------------------------------------------------
+Integration Activities:
+***********************
+Activity "deliver ykarni_tavor-02_d01 on 20111123.142209." (CQ00190931) contains:
+	support signal filtering set by prepass (CQ00190727)
+________________________END Baseline : TAVOR_ENV_01.125 ____________________________

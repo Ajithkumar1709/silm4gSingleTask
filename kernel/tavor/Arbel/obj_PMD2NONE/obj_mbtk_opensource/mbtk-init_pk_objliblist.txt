@@ -1,0 +1,5 @@
+\tavor\Arbel\obj_PMD2NONE\obj_mbtk_opensource\obj_mbtk_init/mbtk_cust_init.o 
+\tavor\Arbel\obj_PMD2NONE\obj_mbtk_opensource\obj_mbtk_init/mbtk_open_hal.o 
+\tavor\Arbel\obj_PMD2NONE\obj_mbtk_opensource\obj_mbtk_init/mbtk_aliyun_api.o 
+\tavor\Arbel\obj_PMD2NONE\obj_mbtk_opensource\obj_mbtk_init/mbtk_project_gpio_define.o 
+\tavor\Arbel\obj_PMD2NONE\obj_mbtk_opensource\obj_mbtk_init/mbtk_project_ssp_define.o 

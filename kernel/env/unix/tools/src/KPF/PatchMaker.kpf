@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="b1f516c2-58da-42c8-a957-4f796661717b" kpf_version="4" name="PatchMaker.kpf">
+<command cwd="%D" doNotOpenOutputWindow="0" env="" icon="chrome://komodo/content/icons/3d-color-picker.png" id="4bbe7d29-3c6c-43ec-8639-22b1c3b165f4" idref="40256313-2180-4f41-8220-5beeea6b50aa" insertOutput="0" keyboard_shortcut="Ctrl+D, T" name="perltidy" operateOnSelection="0" parseOutput="0" parseRegex="" runIn="command-output-window" showParsedOutputList="0">
+perltidy -b -anl -bbs -bbc -bbb -bli -bl -sbl %F</command>
+<command cwd="%D" doNotOpenOutputWindow="0" env="" icon="chrome://famfamfamsilk/skin/icons/application_go.png" id="65a10393-7bf8-4ef9-a922-d26f0c42b9ac" idref="40256313-2180-4f41-8220-5beeea6b50aa" insertOutput="0" keyboard_shortcut="" name="CheckOut" operateOnSelection="0" parseOutput="0" parseRegex="" runIn="command-output-window" showParsedOutputList="0">
+cleartool co -nc %F</command>
+<file id="dc7fb5ae-a71c-488c-b420-9221bb11b509" idref="7611dc49-d57d-4fe7-a1b9-e8b2f830f8a1" name="PatchMaker.perlapp" url="PatchMaker.perlapp">
+</file>
+<file id="3dd7bc41-5c30-42b9-a03a-4efbecccdba3" idref="7b528d50-d473-49ec-8f5d-cb957bd322cb" name="mklist.pm" url="file:///E:/env/win32/tools/src/PatchMaker/mklist.pm">
+</file>
+<folder id="40256313-2180-4f41-8220-5beeea6b50aa" idref="b1f516c2-58da-42c8-a957-4f796661717b" name="___Commands___">
+</folder>
+<file id="5cbce43a-c0ee-4445-89e7-d7d503446289" idref="b1f516c2-58da-42c8-a957-4f796661717b" name="PatchMaker.pl" url="file:///E:/env/win32/tools/src/PatchMaker.pl">
+</file>
+<folder id="7611dc49-d57d-4fe7-a1b9-e8b2f830f8a1" idref="b1f516c2-58da-42c8-a957-4f796661717b" name="___PerlAPP___">
+</folder>
+<livefolder id="7b528d50-d473-49ec-8f5d-cb957bd322cb" idref="b1f516c2-58da-42c8-a957-4f796661717b" name="PatchMaker" url="file:///E:/env/win32/tools/src/PatchMaker">
+</livefolder>
+<preference-set idref="223376da-378d-491a-9fa4-b3dcc1e3c6d4">
+<preference-set id="Invocations">
+<preference-set id="default">
+  <string id="cookieparams"></string>
+  <string id="cwd"></string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params"> show E:\Codebase Bssrch1</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+</preference-set>
+  <string id="lastInvocation">default</string>
+</preference-set>
+<preference-set idref="499e3915-e163-435e-a646-f1099c6a8143">
+<preference-set id="Invocations">
+<preference-set id="default">
+  <string id="cookieparams"></string>
+  <string id="cwd"></string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params"> show E:\Codebase Bssrch1</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+</preference-set>
+  <string id="lastInvocation">default</string>
+</preference-set>
+<preference-set idref="59ff3749-14a0-486c-82a6-58b2ecdf0d54">
+<preference-set id="Invocations">
+<preference-set id="MKCB mode">
+  <string id="cookieparams"></string>
+  <string id="cwd">E:\env\win32\tools\src</string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params">-d mkcb E:\l1p_fw_targets\tavor\obj_TAVOR_PV_CHIP_B0_M05_AI\code E:\Codebase</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+<preference-set id="MKLIST mode">
+  <string id="cookieparams"></string>
+  <string id="cwd">E:\env\win32\tools\src</string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params">mklist E:\l1p_fw_targets\tavor\bin\Tavor_PV_M05_AI_B0_Baseline.map E:\Codebase</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+<preference-set id="MKPATCH mode">
+  <string id="cookieparams"></string>
+  <string id="cwd">E:\env\win32\tools\src</string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params">mkpatch E:\l1p_fw_targets\tavor\obj_TAVOR_PV_CHIP_B0_M05_AI\code\CFW_EC_asm.asm E:\Codebase   "C:\Program Files\Marvell\MSASDK\3.3\\msa\ccMSA" E:\l1p_fw_targets\tavor\obj_TAVOR_PV_CHIP_B0_M05_AI\obj_cfw\obj_cfw_voice\obj_cfw_EC/CFW_EC_asm.doj</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment">CB_DEBUG=1
+</string>
+  <string id="warnings">enabled</string>
+</preference-set>
+<preference-set id="default">
+  <string id="cookieparams"></string>
+  <string id="cwd"></string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params"></string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+</preference-set>
+  <string id="lastInvocation">MKPATCH mode</string>
+</preference-set>
+<preference-set idref="5cbce43a-c0ee-4445-89e7-d7d503446289">
+<preference-set id="Invocations">
+<preference-set id="CALCSIZE mode">
+  <string id="cookieparams"></string>
+  <string id="cwd">E:\</string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params">calcsize E:\l1p_fw_targets\tavor\bin\TAVOR_PV_M05_B0_AI.map E:\Codebase</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment">CB_DEBUG=1
+</string>
+  <string id="warnings">enabled</string>
+</preference-set>
+<preference-set id="MKCB mode">
+  <string id="cookieparams"></string>
+  <string id="cwd">E:\env\win32\tools\src</string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params">mkcb E:\code_test E:\Codebase</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+<preference-set id="MKCHAIN mode">
+  <string id="cookieparams"></string>
+  <string id="cwd">E:\</string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params">mkchain  \Codebase E:\l1p_fw_targets\tavor\obj_TAVOR_PV_CHIP_B0_M05_AI\code "C:\Program Files\Marvell\MSASDK\3.3\\msa\ccMSA" "C:\Program Files\Marvell\MSASDK\3.3\\msa\ccMSA"</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment">CB_DEBUG=1
+</string>
+  <string id="warnings">enabled</string>
+</preference-set>
+<preference-set id="MKLIST mode">
+  <string id="cookieparams"></string>
+  <string id="cwd">E:\env\win32\tools\src</string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params">mklist E:\l1p_fw_targets\tavor\bin\Tavor_PV_M05_AI_B0_Baseline.map E:\Codebase</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+<preference-set id="MKPATCH mode">
+  <string id="cookieparams"></string>
+  <string id="cwd">E:\</string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params">mkpatch \\pt-dtl0130\Avishai\avishaiz_automated_rom9_PM214_test\test\CLSEstMat.s \\pt-dtl0130\Avishai\avishaiz_automated_rom9_PM214_test\CB_ROOT "" C \\pt-dtl0130\Avishai\avishaiz_automated_rom9_PM214_test\test PATCH notepad "a h u" "a f q"  "" notepad</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment">CB_DEBUG=1
+</string>
+  <string id="warnings">enabled</string>
+</preference-set>
+<preference-set id="MKTREE">
+  <string id="cookieparams"></string>
+  <string id="cwd">E:\</string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params">mktree  E:\l1p_fw_targets\tavor\build\p0.xrf \Codebase</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment">CB_DEBUG=1
+</string>
+  <string id="warnings">enabled</string>
+</preference-set>
+<preference-set id="SHOW mode">
+  <string id="cookieparams"></string>
+  <string id="cwd">E:\</string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params">show \Codebase :PhyCfgPrachAichTask</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment">CB_DEBUG=1
+</string>
+  <string id="warnings">enabled</string>
+</preference-set>
+<preference-set id="default">
+  <string id="cookieparams"></string>
+  <string id="cwd"></string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params"></string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+</preference-set>
+  <string id="lastInvocation">MKPATCH mode</string>
+</preference-set>
+<preference-set idref="5d9b6322-dbfc-42ba-8c6a-bc0e87b746de">
+<preference-set id="Invocations">
+<preference-set id="default">
+  <string id="cookieparams"></string>
+  <string id="cwd"></string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params">show E:\Codebase :Bssrch1Manager</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+</preference-set>
+  <string id="lastInvocation">default</string>
+</preference-set>
+<preference-set idref="7b528d50-d473-49ec-8f5d-cb957bd322cb">
+  <string id="import_exclude_matches">*.*~;*.bak;*.tmp;CVS;.#*;*.pyo;*.pyc;.svn;_svn;*%*;tmp*.html;.DS_Store;PatchMaker.kpf</string>
+  <string id="import_include_matches">*.pm</string>
+  <boolean id="import_live">0</boolean>
+  <boolean id="import_recursive">1</boolean>
+  <string id="import_type">useFolders</string>
+</preference-set>
+<preference-set idref="7b528d50-d473-49ec-8f5d-cb957bd322cb/calcsize.pm">
+<preference-set id="Invocations">
+<preference-set id="default">
+  <string id="cookieparams"></string>
+  <string id="cwd"></string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker\calcsize.pm</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params"></string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+</preference-set>
+  <string id="lastInvocation">default</string>
+</preference-set>
+<preference-set idref="7b528d50-d473-49ec-8f5d-cb957bd322cb/mkcb.pm">
+<preference-set id="Invocations">
+<preference-set id="default">
+  <string id="cookieparams"></string>
+  <string id="cwd"></string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker\mkcb.pm</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params"></string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+</preference-set>
+  <string id="lastInvocation">default</string>
+</preference-set>
+<preference-set idref="7b528d50-d473-49ec-8f5d-cb957bd322cb/mkchain.pm">
+<preference-set id="Invocations">
+<preference-set id="default">
+  <string id="cookieparams"></string>
+  <string id="cwd"></string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker\mkchain.pm</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params"></string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+</preference-set>
+  <string id="lastInvocation">default</string>
+</preference-set>
+<preference-set idref="7b528d50-d473-49ec-8f5d-cb957bd322cb/mkpatch.pm">
+<preference-set id="Invocations">
+<preference-set id="default">
+  <string id="cookieparams"></string>
+  <string id="cwd"></string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker\mkpatch.pm</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params"></string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+</preference-set>
+  <string id="lastInvocation">default</string>
+</preference-set>
+<preference-set idref="7b528d50-d473-49ec-8f5d-cb957bd322cb/mktree.pm">
+<preference-set id="Invocations">
+<preference-set id="default">
+  <string id="cookieparams"></string>
+  <string id="cwd"></string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker\mktree.pm</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params"></string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+</preference-set>
+  <string id="lastInvocation">default</string>
+</preference-set>
+<preference-set idref="7b528d50-d473-49ec-8f5d-cb957bd322cb/statemachine.pm">
+<preference-set id="Invocations">
+<preference-set id="default">
+  <string id="cookieparams"></string>
+  <string id="cwd"></string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker\statemachine.pm</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params"></string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+</preference-set>
+  <string id="lastInvocation">default</string>
+</preference-set>
+<preference-set idref="a9819094-bc55-4c68-bc0f-87a1d77b5e2b">
+<preference-set id="Invocations">
+<preference-set id="default">
+  <string id="cookieparams"></string>
+  <string id="cwd"></string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params">show E:\Codebase :Bssrch1Manager</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+</preference-set>
+  <string id="lastInvocation">default</string>
+</preference-set>
+<preference-set idref="b1f516c2-58da-42c8-a957-4f796661717b">
+  <string id="import_dirname">E:\env\win32\tools\src\PatchMaker</string>
+  <string id="import_exclude_matches">*.*~;*.bak;*.tmp;CVS;.#*;*.pyo;*.pyc;.svn;_svn;*%*;tmp*.html;.DS_Store;PatchMaker.kpf</string>
+  <string id="import_include_matches"></string>
+  <boolean id="import_live">0</boolean>
+  <boolean id="import_recursive">1</boolean>
+  <string id="import_type">useFolders</string>
+  <string id="perlExtraPaths"></string>
+</preference-set>
+<preference-set idref="cb235f0a-d506-4c92-a8ea-84ec1b863c8b">
+<preference-set id="Invocations">
+<preference-set id="default">
+  <string id="cookieparams"></string>
+  <string id="cwd"></string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params">show E:\Codebase Bssrch1</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+</preference-set>
+  <string id="lastInvocation">default</string>
+</preference-set>
+<preference-set idref="cf160a1a-fdf1-4d76-88f8-b642098bf52f">
+<preference-set id="Invocations">
+<preference-set id="default">
+  <string id="cookieparams"></string>
+  <string id="cwd"></string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params"> show E:\Codebase Bssrch1</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+</preference-set>
+  <string id="lastInvocation">default</string>
+</preference-set>
+<preference-set idref="d6d52a40-fefa-4eed-91a6-09c5085209f2">
+<preference-set id="Invocations">
+<preference-set id="default">
+  <string id="cookieparams"></string>
+  <string id="cwd">E:\</string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params">show E:\Codebase Bssrch1</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+</preference-set>
+  <string id="lastInvocation">default</string>
+</preference-set>
+<preference-set idref="df9edfe6-0424-403c-8c70-0d7f7f9aa56c">
+<preference-set id="Invocations">
+<preference-set id="MKCB mode">
+  <string id="cookieparams"></string>
+  <string id="cwd">E:\env\win32\tools\src</string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params">-d mkcb E:\l1p_fw_targets\tavor\obj_TAVOR_PV_CHIP_B0_M05_AI\code E:\Codebase</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+<preference-set id="MKLIST mode">
+  <string id="cookieparams"></string>
+  <string id="cwd">E:\env\win32\tools\src</string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params">mklist E:\l1p_fw_targets\tavor\bin\Tavor_PV_M05_AI_B0_Baseline.map E:\Codebase</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+<preference-set id="MKPATCH mode">
+  <string id="cookieparams"></string>
+  <string id="cwd">E:\env\win32\tools\src</string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params">mkpatch E:\l1p_fw_targets\tavor\obj_TAVOR_PV_CHIP_B0_M05_AI\code\CFW_EC_asm.asm E:\Codebase   "C:\Program Files\Marvell\MSASDK\3.3\\msa\ccMSA" E:\l1p_fw_targets\tavor\obj_TAVOR_PV_CHIP_B0_M05_AI\obj_cfw\obj_cfw_voice\obj_cfw_EC/CFW_EC_asm.doj</string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment">CB_DEBUG=1
+</string>
+  <string id="warnings">enabled</string>
+</preference-set>
+<preference-set id="default">
+  <string id="cookieparams"></string>
+  <string id="cwd"></string>
+  <long id="debugger.io-port">9011</long>
+  <string id="documentRoot"></string>
+  <string id="executable-params"></string>
+  <string id="filename">E:\env\win32\tools\src\PatchMaker.pl</string>
+  <string id="getparams"></string>
+  <string id="language">Perl</string>
+  <string id="mpostparams"></string>
+  <string id="params"></string>
+  <string id="postparams"></string>
+  <string id="posttype">application/x-www-form-urlencoded</string>
+  <string id="request-method">GET</string>
+  <boolean id="show-dialog">1</boolean>
+  <boolean id="sim-cgi">0</boolean>
+  <boolean id="use-console">0</boolean>
+  <string id="userCGIEnvironment"></string>
+  <string id="userEnvironment"></string>
+  <string id="warnings">enabled</string>
+</preference-set>
+</preference-set>
+  <string id="lastInvocation">MKPATCH mode</string>
+</preference-set>
+</project>

@@ -1,0 +1,9 @@
+
+/* SDK ID */
+
+#ifndef AISOUND_5_0_SDK_CONSISTENCE__H
+#define AISOUND_5_0_SDK_CONSISTENCE__H
+
+#define AISOUND_SDK_USERID ((ivCStrA)"\x33\x34\x66\x36\x61\x35\x62\x33\x35\x39\x34\x38\x34\x38\x65\x63\x61\x36\x39\x34\x34\x39\x35\x38\x38\x36\x66\x64\x66\x65\x66\x33")
+#endif /* !AISOUND_SDK_CONSISTENCE__H */
+

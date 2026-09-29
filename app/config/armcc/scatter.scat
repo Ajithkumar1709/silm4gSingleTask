@@ -1,0 +1,38 @@
+#! armcc -E -I .\
+
+#include "scatt_inc.h"
+
+APP  APP_ROM_ADDR
+{
+  APP_INIT +0   
+  {
+    api_init.o  (INIT, +First)
+  }
+  
+  APP_STUB  APP_RAM_ADDR
+  {
+	sdk_api_stub_armcc.o (table_stub, +First)
+  }
+  
+  APP_STUB_C  +0
+ {
+	sdk_api_stub_c_armcc.o (table_stub_c, +First)
+ }
+
+  APP_CODE_IN_RW  +0
+  {
+	*.o   (+CODE)
+	.ANY	(+CODE)
+	* (+RO)
+  }
+
+  APP_RW +0
+  {
+	.ANY 	(+RW)
+	.ANY  (+ZI)
+  }
+
+ 
+}
+
+

@@ -1,0 +1,48 @@
+RELEASE NOTES
+
+__________________________________________________
+
+
+Package:        genlib/qmgr - QMgr Package
+Version:        PK_QMGR_0.0.1
+Date:           August 31, 2001
+Released by:	Tammy Yee
+
+Reason for release:    First release of new QMgr package.
+
+FILE INFORMATION
+
+New Files:     	qmgr.c, qmgr.h    
+Obsolete Files: 
+
+API CHANGES
+
+New Functions: 	Refer to the QMgr Package API document version 0.1.
+Changed Functions: 
+Changed Functionality: 
+Tune File Changes: 
+
+SCR FIXES
+
+CCD00000760 - qmgr package needs to be created.
+
+
+DOCUMENTATION
+Latest version of documents:
+
+SRS:    
+API:    QMgr Package API Specification Version 0.1 August 31, 2001
+HLD:    
+UTP:    
+
+
+NOTES:
+The new files were copied from /components/isolib.  They were then
+called iqmgr.c (/main/2) and iqmgr.h (/main/2).  
+
+The QMgr package depends on the min_max package.  Currently, this
+package is release on the cg_intg branch with the label PK_MIN_MAX_0.0.1
+__________________________________________________
+
+Intel   Confidential    1 of 1
+

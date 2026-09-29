@@ -1,0 +1,18 @@
+config BOT_PLATFORM_L50X_THREADX
+    bool "L50x"
+    help
+        device l50x
+
+if BOT_PLATFORM_L50X_THREADX
+    config BOT_PLATFORM_SYMBEL_RENAME_CONFIG
+        bool "enable rdefine symbl"
+        default n
+        help
+            enable rdefine symbl, according to bot.sym
+        
+    config BOT_PLATFORM_MULTI_LIB_CONFIG
+        bool "enable multy libs"
+        default n
+        help
+            enable multy libs
+endif

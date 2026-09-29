@@ -1,0 +1,2 @@
+#define APP_ROM_ADDR  0x805C6000
+#define APP_RAM_ADDR  0x7e400000

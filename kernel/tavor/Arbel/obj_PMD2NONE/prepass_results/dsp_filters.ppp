@@ -1,0 +1,572 @@
+# 1 "\\tavor\\Arbel\\src\\dsp_filters.c"
+/*------------------------------------------------------------
+(C) Copyright [2006-2008] Marvell International Ltd.
+All Rights Reserved
+------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------------------------------------------
+INTEL CONFIDENTIAL
+Copyright 2006 Intel Corporation All Rights Reserved.
+The source code contained or described herein and all documents related to the source code ("Material") are owned
+by Intel Corporation or its suppliers or licensors. Title to the Material remains with Intel Corporation or
+its suppliers and licensors. The Material contains trade secrets and proprietary and confidential information of
+Intel or its suppliers and licensors. The Material is protected by worldwide copyright and trade secret laws and
+treaty provisions. No part of the Material may be used, copied, reproduced, modified, published, uploaded, posted,
+transmitted, distributed, or disclosed in any way without Intel's prior express written permission.
+
+No license under any patent, copyright, trade secret or other intellectual property right is granted to or
+conferred upon you by disclosure or delivery of the Materials, either expressly, by implication, inducement,
+estoppel or otherwise. Any license under such intellectual property rights must be express and approved by
+Intel in writing.
+-------------------------------------------------------------------------------------------------------------------*/
+# 1 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\IPCCommFilters.h"
+/*------------------------------------------------------------
+(C) Copyright [2006-2008] Marvell International Ltd.
+All Rights Reserved
+------------------------------------------------------------*/
+
+
+
+
+
+# 1 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\global_types.h"
+/*------------------------------------------------------------
+(C) Copyright [2006-2008] Marvell International Ltd.
+All Rights Reserved
+------------------------------------------------------------*/
+
+/****************************************************************************
+ *
+ * Name:          global_types.h
+ *
+ * Description:   Standard type definitions
+ *
+ ****************************************************************************
+ *
+ *
+ *
+ *
+ ****************************************************************************
+ *                  Copyright (c) Intel 2000
+ ***************************************************************************/
+
+
+
+
+# 1 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\gbl_types.h"
+/*------------------------------------------------------------
+(C) Copyright [2006-2008] Marvell International Ltd.
+All Rights Reserved
+------------------------------------------------------------*/
+
+/* ============================================================================
+File        : gbl_types.h
+Description : Global types file for testing the
+              os/kal package.
+
+Notes       : This file is only used to test the compilation and
+              archiving for the os/kal package.
+
+Copyright 2001, Intel Corporation, All rights reserved.
+============================================================================ */
+
+
+
+
+/* Use the Xscale environment types */
+# 1 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\xscale_types.h"
+/*------------------------------------------------------------
+(C) Copyright [2006-2008] Marvell International Ltd.
+All Rights Reserved
+------------------------------------------------------------*/
+
+/* ===========================================================================
+File        : xscale_types.h
+Description : Global types file for the Xscale environment.
+
+Notes       : This file is designed for use in the arm environment
+              and is referenced from the gbl_types.h file. Use of
+			  this file requires ENV_XSCALE to be defined in xscale_env.mak.
+              
+Copyright 2001, Intel Corporation, All rights reserved.
+=========================================================================== */
+
+
+
+
+typedef unsigned char	BOOL;
+typedef unsigned char   UINT8;
+typedef unsigned short  UINT16;
+typedef unsigned long   UINT32;
+
+typedef char            CHAR;
+typedef signed char     INT8;
+typedef signed short    INT16;
+typedef signed long     INT32;
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*                         end of xscale_types.h
+--------------------------------------------------------------------------- */
+
+
+
+# 23 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\gbl_types.h"
+
+
+/* Use the NordHeim environment types */
+
+
+
+
+/* Use the Arm environment types */
+
+
+
+
+/* Use the Gnu environment types */
+
+
+
+
+/* Use the Microsoft Visual C environment types */
+
+
+
+
+  /* Standard typedefs */
+  typedef unsigned char   Bool;         /* Boolean                        */
+
+  /* Standard typedefs - to retain compatibility with TDMA */
+  typedef UINT8           		 BYTE;         			/* Unsigned 8-bit quantity        */
+  typedef UINT8            		 UBYTE;        			/* Unsigned 8-bit quantity        */
+  typedef UINT16          		 UWORD;        			/* Unsigned 16-bit quantity       */
+  typedef UINT16          		 WORD;         			/* Unsigned 16-bit quantity       */
+  typedef INT16           		 SWORD;        			/* Signed 16-bit quantity         */
+  typedef UINT32                 DWORD;        			/* Unsigned 32-bit quantity       */
+  typedef unsigned long long     UINT64;                /* Unsigned 64-bit quantity       */
+  typedef void* 		         VOID_PTR;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* A NULL value is required such that it is not mistaken for a valid */
+  /* value which includes values in the range of modulo 64. */
+
+
+  /* Definition of NULL is required */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*                      end of gbl_types.h
+--------------------------------------------------------------------------- */
+
+
+
+# 25 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\global_types.h"
+# 1 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\utils.h"
+/*------------------------------------------------------------
+(C) Copyright [2006-2008] Marvell International Ltd.
+All Rights Reserved
+------------------------------------------------------------*/
+
+//Copyright 2005, Intel Corporation, All rights reserved.
+/************************************************************************/
+/*   Utils.h - 															*/
+/* 																		*/
+/************************************************************************/
+
+
+
+
+
+
+
+
+# 1 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\global_types.h"
+/*------------------------------------------------------------
+(C) Copyright [2006-2008] Marvell International Ltd.
+All Rights Reserved
+------------------------------------------------------------*/
+
+/****************************************************************************
+ *
+ * Name:          global_types.h
+ *
+ * Description:   Standard type definitions
+ *
+ ****************************************************************************
+ *
+ *
+ *
+ *
+ ****************************************************************************
+ *                  Copyright (c) Intel 2000
+ ***************************************************************************/
+
+# 61 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\global_types.h"
+
+# 20 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\utils.h"
+//should be used in BootLoader & Flasher ONLY
+//#define LOW_LEVEL_ASSERTS_ONLY
+
+//#if defined (_TAVOR_HARBELL_) || defined(SILICON_PV2)
+
+// To Be Deleted...
+
+
+
+
+typedef enum
+{
+	CPU_HERMON_B0 = 0,
+	CPU_HERMON_B1,
+	CPU_HERMON_B2,
+	CPU_HERMON_B3,
+	CPU_HERMON_TCB874,
+	CPU_HERMONL_A0,
+	CPU_HERMONC_A0,
+	CPU_HERMON_TCC874,
+	CPU_HERMONEL_A0,
+	CPU_MANITOBA_OTHER,
+	CPU_BVD,
+	CPU_TAVOR_A0,
+	CPU_TAVOR_B0,
+	CPU_TAVOR_B1,
+	CPU_TAVOR_B2,
+	CPU_TAVOR_PV_A0,
+	CPU_TAVOR_PV_B0,
+	CPU_TAVOR_PV_C0,
+	CPU_TTC,
+	CPU_OTHER
+}CPU_Version;  //if this enum changed, update also the CPU_Version_str[]
+
+// Returns the CPU version according to the above list
+CPU_Version GetCpuVersion(void);
+
+typedef enum CPU_family_tag
+{
+	CPU_TAVOR_PV2,		//Z0, A0, B0
+	CPU_TAVOR_MG1,		// Z0=A0, A1, B0
+	CPU_TAVOR_MG2,		// A0
+	CPU_ESHEL,		// A0
+	CPU_NEVO,		// A0
+	CPU_ESHEL_LTE,	// A0
+	CPU_FAMILY_UNKN
+}CPU_family;
+
+CPU_family GetCpuFamily(void);
+// Returns the original CPSR
+// exp: old_level = disableInterrupts();
+// old_level MUST be local automatic variable !!
+unsigned long disableInterrupts(void);
+
+// Returns the original CPSR
+// exp: old_level = enableInterrupts();
+// old_level MUST be local automatic variable !!
+unsigned long enableInterrupts(void);
+
+// Restores the IF bits in the CPSR to that value of the CPSR passed.
+// The latter should be obtained from the enable/disable functions
+// exp: restoreInterrupts(old_level);
+// old_level MUST be local automatic variable !!
+void restoreInterrupts(unsigned long ir);
+
+// Count Leading Zeros
+// Returns: 0 for 0x8xxxxxxx; 1 for 0x04xxxxxx; 31 for 0x00000001; 32 for 0
+int _clz(unsigned long x);
+
+// revert
+// Returns: reverted endian value.change the order of bytes in the 32bit parameter from big to little endian and vice versa.
+unsigned long _rev(unsigned long x);
+
+// CP14 functions
+void _xsFreqChange(void);
+
+// Enter idle mode
+void _xsGoIdle(void); //just idle the Xscale core
+void setIdle(void);   //same as previous
+void setIdleExt(UINT32 newXPCR, UINT32 oldXPCR); //idle the core with shutting down the MEMC and modifying PMU.XPCR
+
+//
+// General: soft-restart the image
+//
+void doRestart(void);
+
+// Function analog of ASSERT
+void fatalError(int condition);
+
+
+// Assert macros
+
+
+extern void utilsAssertFail(const char      *cond,
+                            const char      *file,
+                            signed short    line,
+                            unsigned char   allowDiag);
+//regular ASSERTs
+# 126 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\utils.h"
+
+# 139 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\utils.h"
+
+# 148 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\utils.h"
+
+# 156 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\utils.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// CP14: Performance monitoring unit access
+//
+
+// Read/Set PMNC (Control Register, see Elkart core EAS chapter 8)
+// Here are the bit definitions:
+# 182 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\utils.h"
+
+
+
+void   cp14SetPMNC(UINT32 value);
+UINT32 cp14ReadPMNC(void);
+
+// Read the Clock Counter register (core clock or same/64 depending on the PMNC_CCNT_DIV64 bit - below)
+UINT32 cp_ReadCCNT(void);  // NEW generic name. OLD & NEW are aliased
+UINT32 cp14ReadCCNT(void); // OLD non-generic name, to be obsolete.
+UINT32 cp14SetCCNT(UINT32 value);
+UINT32  cp14ReadEVTSEL(void);
+void  cp14SetEVTSEL(UINT32 value);
+
+UINT32 getCpRateKHz(void); // returns CP-counter rate in kHz or 0-unknown/default. Depends upon Core frequency
+
+
+//
+// CP6: WS Primary INTC co-processor bus access
+//
+
+UINT32 cp6ReadICPR(void);
+UINT32 cp6ReadICIP(void);
+UINT32 cp6ReadICFP(void);
+UINT32 cp6ReadICHP(void);
+UINT32 cp6ReadICMR(void);
+void cp6WriteICMR(UINT32 value);
+
+
+
+
+
+
+
+//#if defined (_TAVOR_HARBELL_)|| defined(SILICON_PV2)
+
+//ON-CHIP trace buffer is not supported on TAVOR A0 but on B0 only with JTAG protocol
+// Let's put macro-stubs meanwhile
+
+
+
+//#define ReadTBREG(x)                0
+//#define ReadCHKPT1(x)               0
+//#define ReadCHKPT0(x)               0
+# 241 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\utils.h"
+
+// CPSR mode
+# 254 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\utils.h"
+
+
+UINT32 ReadSP(void);
+UINT32 Read_SPSR(void);
+UINT32 ReadCPSR(void);
+UINT32 ReadMode_R13(UINT32 mode);
+UINT32 ReadMode_R14(UINT32 mode);
+
+void SetSPAddress(UINT32 address);
+
+// Set SP for the CPU mode specified by CPSR
+void SetMode_R13(UINT32 mode, UINT32 sp);
+
+// Set SP and SL (v7) for the current CPU mode
+void SetSystemStack(UINT32 sp, UINT32 limit);
+
+// Reads the r0-r14,pc,cpsr values into the given buffer (see EE_RegInfo_Data_t)
+void   ReadRegisterContext(UINT32* pBuffer);
+
+// Restores r0-r13,pc,cpsr values from the given buffer (see EE_RegInfo_Data_t)
+// LR is not restored!
+// Jumps to pBuffer->PC
+void   RestoreRegisterContext(UINT32* pBuffer);
+
+// Restores r0-r12 values from the given buffer (see EE_RegInfo_Data_t)
+// r13, LR, CPSR are not restored!
+// Returns from exception mode and jumps to pBuffer->PC
+void   RestoreRegisterContextEx(UINT32* pBuffer, UINT32 setExcModeSP);
+
+//#if !defined (_TAVOR_HARBELL_) && !defined(SILICON_PV2) /* XSCALE only */
+# 306 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\utils.h"
+
+void	doTurboFrequencyChange(UINT32 fBit,UINT32 tBit);
+UINT32	GetTurboFrequencyChangeCfgBits(void *pRegAddress);
+UINT32	RunOperationUnderSpecificStack_ASM(void *pFuncAddress,void *pStackAddress, UINT32 funcParam1);
+
+
+
+
+
+
+
+# 26 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\global_types.h"
+
+  /* Standard typedefs */
+  typedef volatile UINT8  *V_UINT8_PTR;  /* Ptr to volatile unsigned 8-bit quantity       */
+  typedef volatile UINT16 *V_UINT16_PTR; /* Ptr to volatile unsigned 16-bit quantity       */
+  typedef volatile UINT32 *V_UINT32_PTR; /* Ptr to volatile unsigned 32-bit quantity       */
+
+  typedef unsigned int    U32Bits;
+  typedef BOOL BOOLEAN;
+
+
+  typedef const char *    SwVersion;
+
+
+
+  /* Handy macros */
+
+
+
+
+
+  /* Bit fields macros */
+  // Yaeli Karni - need to work also when number GT 32 ! (march 06)
+
+
+//strncat by shashal 
+
+
+
+ 
+
+
+
+
+
+
+
+# 11 "\\3g_ps\\rls\\tplgsm\\bldstore\\hsiupdlibdev\\build\\lib\\hsiupdlibdev_BldIncCache\\IPCCommFilters.h"
+
+//ICAT EXPORTED STRUCT
+typedef struct
+{
+  UINT16 opcode;
+  UINT16 filter;
+} IPC_Filter_ts;
+
+
+
+
+void filterPlpMessage(IPC_Filter_ts* pFilter, int len);    //len - in bytes
+void filterPlpCommand(IPC_Filter_ts* pFilter, int len);    //len - in bytes
+void ipcReadAndSendIpcFilter(void);
+void ipcClearIpcFilters(UINT8 clrType);
+
+
+
+# 22 "\\tavor\\Arbel\\src\\dsp_filters.c"
+
+
+
+
+/*******************************************************************************
+* Function: setupDspFilters
+********************************************************************************
+* Description: Sets up the DSP filters (DSP CMD and DSP MSG filters):
+*             1. Sets up the default filters; these are imported from
+*                two h-files produced automatically from the corrsponding .txt
+*                files. Automatic conversion is done at every build in order
+*                to make sure filter files are applied even if older than the
+*                build derived objects.
+*             2. Looks up for NVM files for DSP CMD and DSP MSG filters
+*                and applies these "on top" of the defaults.
+*                Note: entries for every opcode in the NVM override the default
+*                while entries for all other opcodes default is retained.
+* Parameters:
+*                None
+* Return value:
+*                None
+* Notes:
+*                An empty implementation is supplied for application-side builds
+*******************************************************************************/
+
+void setupDspFilters(void)
+{
+	static const IPC_Filter_ts dspMessageFilters[]=
+	{
+		/* Import the filter produced from the txt-file */
+# 1 "\\tavor\\Arbel\\obj_PMD2NONE\\inc\\DSP_Filter_file.h"
+{ 0x0005, 0x0100 },{ 0x0040, 0x0100 },{ 0x0041, 0x0100 },{ 0x0045, 0x0100 },{ 0x0047, 0x0100 },{ 0x00ee, 0x0100 },{ 0x00b7, 0x0100 },{ 0x00ff, 0x0100 }
+# 53 "\\tavor\\Arbel\\src\\dsp_filters.c"
+	};
+
+	static const IPC_Filter_ts dspCommandFilters[]=
+	{
+		/* Import the filter produced from the txt-file */
+# 1 "\\tavor\\Arbel\\obj_PMD2NONE\\inc\\DSP_Cmd_Filter_file.h"
+{ 0x000a, 0x0100 },{ 0x000b, 0x0100 },{ 0x0043, 0x0100 }
+# 59 "\\tavor\\Arbel\\src\\dsp_filters.c"
+	};
+
+	filterPlpMessage((IPC_Filter_ts*)dspMessageFilters,sizeof(dspMessageFilters));
+	filterPlpCommand((IPC_Filter_ts*)dspCommandFilters,sizeof(dspCommandFilters));
+
+
+
+
+
+} /* setupDspFilters() */

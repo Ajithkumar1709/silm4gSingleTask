@@ -1,0 +1,24 @@
+# Kconfig - app target configuration options
+
+choice 
+	prompt "APP Target Selection" 
+	default L511C_5S
+
+	#####################
+	#L511C_5S
+	#####################
+	config L511C_5S
+		bool "L511C_5S"
+	#####################
+	#L511C_5SK
+	#####################
+	config L511C_5SK
+		bool "L511C_5SK"
+		
+	#####################
+	#L511C_5C
+	#####################
+	config L511C_5C
+		bool "L511C_5C"	
+		
+endchoice

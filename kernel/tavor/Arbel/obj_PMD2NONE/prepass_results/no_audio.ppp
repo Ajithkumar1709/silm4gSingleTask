@@ -1,0 +1,86 @@
+# 1 "\\tavor\\Arbel\\src\\no_audio.c"
+/*------------------------------------------------------------
+(C) Copyright [2006-2008] Marvell International Ltd.
+All Rights Reserved
+------------------------------------------------------------*/
+
+
+int amrBindConnectionClose ( void ) { return 0 ; }
+int amrBindConnectionEstablish ( void ) { return 0 ; }
+int amrBindTxFrame ( void ) { return 0 ; }
+int audioGsmResume ( void ) { return 0 ; }
+
+int ACMAudioDeviceDisable ( void ) { return 0 ; }
+int ACMAudioDeviceEnable ( void ) { return 0 ; }
+int ACMAudioDeviceMute ( void ) { return 0 ; }
+int ACMAudioDeviceVolumeSet ( void ) { return 0 ; }
+int ACMAudioFormatSupported ( void ) { return 0 ; }
+int ACMAudioStreamInStart ( void ) { return 0 ; }
+int ACMAudioStreamInStop ( void ) { return 0 ; }
+int ACMAudioStreamOutStart ( void ) { return 0 ; }
+int ACMAudioStreamOutStop ( void ) { return 0 ; }
+int audioDownLink20msCB ( void ) { return 0 ; }
+int amrResume ( void ) { return 0 ; }
+int amrRxFrame ( void ) { return 0 ; }
+int amrServiceActivate ( void ) { return 0 ; }
+int amrServiceDeActivate ( void ) { return 0 ; }
+int amrSourceRateControl ( void ) { return 0 ; }
+int amrSuspend ( void ) { return 0 ; }
+void audioGsmResumeCB(void) { return; }
+void audioGsmSuspendCB(void) { return; }
+void audioPhase1Init(void) { return;}
+void audioPhase2Init(void) {return;}
+void audioServerPhase2Init(void) {return;}
+void MuteVoicepath(void)	{return;}
+void sacNotifyAudioConnected(void)	{return;}
+void LteVoiceSuspend(void)	{return;}
+void LteVoiceResume(void)	{return;}
+void SetAudioVoLTE(unsigned int volteModeToUse) { return; }
+void vpathVocoderControl_Env(void *data) { return; }
+
+
+
+
+
+
+/*****************************************************************
+* CI Server Stub Init  will be called by MslInit function
+* Initialize and create Task, Message queue and FSM descriptor
+*****************************************************************/
+void ACMAudioDTMFTone_Start(void)
+{
+    return;
+}
+
+void ACMAudioDTMFTone_Stop(void)
+{
+    return;
+}
+
+void AudioPatch_DisablePcmStream(void)
+{
+	//DisablePcmStream (0, SCENARIO_VOICE_CALL_BASIC);
+}
+
+void DisablePhonePcm(void)
+{
+    /************************************************************
+     Jackie : NOT needed any more
+
+     Use more general method:vpathStop notify AP to disable audio device
+    *************************************************************/
+    //DisablePcmStream (0, SCENARIO_VOICE_CALL_BASIC);
+ 	return;
+}
+
+void EnablePhonePcm(void)
+{
+    /************************************************************
+     Jackie : NOT needed any more
+
+     Use more general method:vpathStart notify AP to enable audio device
+    *************************************************************/
+	//EnablePcmStream (0, SCENARIO_VOICE_CALL_BASIC);
+
+ 	return;
+}

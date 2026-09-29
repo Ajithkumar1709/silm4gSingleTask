@@ -1,0 +1,12 @@
+!if 0
+------------------------------------------------------------
+(C) Copyright [2006-2008] Marvell International Ltd.
+All Rights Reserved
+------------------------------------------------------------
+!endif
+
+!if 0
+Copyright (C) 2002 Intel Corporation.  All rights reserved.
+!endif
+DIRS= \
+   src

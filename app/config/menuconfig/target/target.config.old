@@ -1,0 +1,43 @@
+#
+# Automatically generated file; DO NOT EDIT.
+# MobileTek OpenCPU APP Configuration
+#
+
+#
+# APP Target Configurations
+#
+# CONFIG_CHIP_1602 is not set
+# CONFIG_CHIP_1603 is not set
+# CONFIG_CHIP_1606 is not set
+# CONFIG_CHIP_1607 is not set
+CONFIG_CHIP_1605=y
+CONFIG_L511C_5S=y
+# CONFIG_L511C_5SK is not set
+# CONFIG_L511C_5C is not set
+
+#
+# APP Function Configurations
+#
+CONFIG_AUDIO_SUPPORT=y
+# CONFIG_RECORD_SUPPORT is not set
+# CONFIG_AMR_SUPPORT is not set
+# CONFIG_MP3_SUPPORT is not set
+# CONFIG_LCD_SUPPORT is not set
+# CONFIG_CAM_SUPPORT is not set
+# CONFIG_AIDIALOG_SUPPORT is not set
+
+#
+# Third Party Function Configurations
+#
+# CONFIG_MAAS_SUPPORT is not set
+# CONFIG_AZURE_SUPPORT is not set
+# CONFIG_QCLOUD_SUPPORT is not set
+# CONFIG_TTS_SUPPORT is not set
+# CONFIG_CJSON_SUPPORT is not set
+# CONFIG_AMAZON_SUPPORT is not set
+# CONFIG_SIMCOM_SUPPORT is not set
+
+#
+# Other Configurations
+#
+CONFIG_IS_XIP=y

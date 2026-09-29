@@ -1,0 +1,61 @@
+/*------------------------------------------------------------
+(C) Copyright [2006-2008] Marvell International Ltd.
+All Rights Reserved
+------------------------------------------------------------*/
+
+/*--------------------------------------------------------------------------------------------------------------------
+INTEL CONFIDENTIAL
+Copyright 2006 Intel Corporation All Rights Reserved.
+The source code contained or described herein and all documents related to the source code (“Material”) are owned
+by Intel Corporation or its suppliers or licensors. Title to the Material remains with Intel Corporation or
+its suppliers and licensors. The Material contains trade secrets and proprietary and confidential information of
+Intel or its suppliers and licensors. The Material is protected by worldwide copyright and trade secret laws and
+treaty provisions. No part of the Material may be used, copied, reproduced, modified, published, uploaded, posted,
+transmitted, distributed, or disclosed in any way without Intel’s prior express written permission.
+
+No license under any patent, copyright, trade secret or other intellectual property right is granted to or
+conferred upon you by disclosure or delivery of the Materials, either expressly, by implication, inducement,
+estoppel or otherwise. Any license under such intellectual property rights must be express and approved by
+Intel in writing.
+-------------------------------------------------------------------------------------------------------------------*/
+
+
+/**********************************************************************
+ *
+ * Filename: sys_version.h
+ *
+ * Programmers:  NONE
+ *
+ * Description:  SYSTEM release information
+ *
+ * Cautions:     THIS FILE IS AOUTOGENERATED. MANUAL CHANGES ARE ALLOWED
+ *               BUT THEY WILL BE REMOVED IN THE NEXT RELEASE.
+ *
+ **********************************************************************/
+#ifndef SYS_VERSION_H
+#define SYS_VERSION_H
+
+#if __ARMCC_VERSION < 400000
+# error NOT RVCT 4.1
+#endif
+
+#define RELEASE_TYPE(T) _RELEASE_TYPE(T)
+#define _RELEASE_TYPE(T) #T
+
+#define SYSTEM_RELEASE_NAME "FIELD#RELEASE_NAME" RELEASE_TYPE(RLS_TYPE)
+
+#define SYSTEM_RELEASE_LETTER "FIELD#01"
+#define SYSTEM_MAJOR_NUMBER "FIELD#02"
+#define SYSTEM_MINOR_NUMBER "FIELD#03"
+#define SYSTEM_BUILD_NUMBER ""
+
+/* defined SVN for IMEISV, value is decimal 0..98, 99 is reselved*/
+#define SYSTEM_IMEI_SV 1
+
+#define SYSTEM_RELEASE_CREATION_DATE "FIELD#DATE"
+
+#define SYSTEM_RELEASE_COMMENTS "system build"
+
+
+#endif /* SYS_VERSION_H */
+

@@ -1,0 +1,6 @@
+\tavor\Arbel\obj_PMD2NONE\obj_mbtk_opensource\obj_mbtk_cust_api/customer_api.o 
+\tavor\Arbel\obj_PMD2NONE\obj_mbtk_opensource\obj_mbtk_cust_api/verno.o 
+\tavor\Arbel\obj_PMD2NONE\obj_mbtk_opensource\obj_mbtk_cust_api/sdk_api_stub_table_c.o 
+\tavor\Arbel\obj_PMD2NONE\obj_mbtk_opensource\obj_mbtk_cust_api/customer_api_hdl.o 
+\tavor\Arbel\obj_PMD2NONE\obj_mbtk_opensource\obj_mbtk_cust_api/customer_common.o 
+\tavor\Arbel\obj_PMD2NONE\obj_mbtk_opensource\obj_mbtk_cust_api/customer_api_atok.o 

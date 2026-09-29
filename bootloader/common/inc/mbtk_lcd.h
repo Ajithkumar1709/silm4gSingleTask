@@ -1,0 +1,80 @@
+#ifndef _MBTK_LCD_H_
+#define _MBTK_LCD_H_
+#ifdef __cplusplus
+	extern "C" {
+#endif
+
+
+typedef enum MBTK_SPI_LCD_CLK_ENUM {
+	MBTK_SPI_LCD_CLK_5_2M = 5200,
+	MBTK_SPI_LCD_CLK_6_5M = 6500,
+	MBTK_SPI_LCD_CLK_13M = 13000,
+	MBTK_SPI_LCD_CLK_26M = 26000,
+	MBTK_SPI_LCD_CLK_52M = 52000,
+	MBTK_SPI_LCD_CLK_3_25M=3250, // the following three options is only for craneM
+	MBTK_SPI_LCD_CLK_1_625M=1625,
+	MBTK_SPI_LCD_CLK_812_5k=812,
+	MBTK_SPI_CLK_LIMIT
+}MBTK_SPI_LCD_CLK_E;
+
+enum {
+    MBTK_LCD_CMD = 0,
+    MBTK_LCD_DATA,
+    MBTK_LCD_DELAY,
+};
+
+enum{
+	MBTK_SPI_FORMAT_RGB565 = 0,
+	MBTK_SPI_FORMAT_RGB666 = 1,
+	MBTK_SPI_FORMAT_RGB666_2_3 = 2,
+	MBTK_SPI_FORMAT_RGB888 = 3,
+	MBTK_SPI_FORMAT_RGB888_2_3 = 4,
+	MBTK_SPI_FORMAT_LIMIT
+};
+
+enum{
+	MBTK_SPI_EDGE_RISING = 0,
+	MBTK_SPI_EDGE_FALLING = 1,
+	MBTK_SPI_EDGE_LIMIT
+};
+
+enum{
+	MBTK_SPI_ENDIAN_LSB = 0,
+	MBTK_SPI_ENDIAN_MSB = 1,
+	MBTK_SPI_ENDIAN_LIMIT
+};
+
+enum{
+	MBTK_LCD_CAP_NORMALE = 0,
+	MBTK_LCD_CAP_FAKE = 1,
+	MBTK_LCD_CAP_POWERON = 2,
+	MBTK_LCD_CAP_NOTE = 4, /*has no te signal*/
+	MBTK_LCD_CAP_LIMIT
+};
+
+
+typedef enum
+{
+    LCD_SLEEP,
+    LCD_WAKE_UP,
+} MBTK_LCD_SLEEP;
+
+#define LCD_CMD_COL_ADDR_SET    0x2A
+#define LCD_CMD_ROW_ADDR_SET    0x2B
+#define LCD_CMD_FRAME_MEM_WR    0x2C
+
+
+
+enum{
+	LCD_TYPE_RGB = 0,
+	LCD_TYPE_FSTN = 1,
+	LCD_TYPE_LIMIT
+};
+
+
+#ifdef __cplusplus
+	} /*"C" */
+#endif
+	
+#endif /* _MBTK_LCD_H_ */
+

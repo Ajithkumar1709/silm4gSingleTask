@@ -1,0 +1,32 @@
+#!C:\Program Files\ActiveState Perl Dev Kit 8.0\bin\perlapp-gui.exe
+PAP-Version: 1.0
+Packer: C:\Program Files\ActiveState Perl Dev Kit 8.0\bin\perlapp.exe
+Script: ..\cba.pl
+Cwd: M:\kirils_cba-01.02_DEV-2\env\win32\tools\src\KPF
+Clean: 1
+Date: 2011-03-08 17:21:40
+Debug: 
+Dependent: 0
+Dyndll: 0
+Exe: ..\..\cba.exe
+Force: 1
+Gui: 0
+Hostname: PT-LT0297
+No-Compress: 0
+No-Logo: 0
+Runlib: 
+Shared: none
+Tmpdir: 
+Verbose: 0
+Version-Comments: 
+Version-CompanyName: Marvell
+Version-FileDescription: CBA Command Line Tool
+Version-FileVersion: 0.3
+Version-InternalName: 
+Version-LegalCopyright: (C) Copyright [2011] Marvell International Ltd. All Rights Reserved.
+Version-LegalTrademarks: 
+Version-OriginalFilename: 
+Version-ProductName: CBA Command Line Tool
+Version-ProductVersion: 0.3
+Warnings: 1
+Xclude: 0

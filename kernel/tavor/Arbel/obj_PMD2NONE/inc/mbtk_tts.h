@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <stdlib.h> 
+#include <string.h>
+#include <assert.h>
+
+#include <time.h>
+
+
+#ifdef MBTK_TTS_SUPPORT
+
+#define MBTK_TTS_VOLUME_MIN         -32768
+#define MBTK_TTS_VOLUME_NORMAL      0
+#define MBTK_TTS_VOLUME_MAX         +32767
+
+
+#define MBTK_PCM_8K_SIZE                320
+#define MBTK_PCM_16K_SIZE               640
+#define MBTK_TTS_DATA_BUF_SIZE          10*MBTK_PCM_16K_SIZE
+
+typedef enum
+{
+    MBTK_PCM_PLAY_LEV0,   //poc
+    MBTK_PCM_PLAY_LEV1,   //tts
+    MBTK_PCM_PLAY_LEV_MAX
+}mbtk_pcm_play_pri;
+
+typedef enum
+{
+    MBTK_TTS_TYPE_NONE,
+    MBTK_TTS_TYPE_UTF16LE,    /* UTF-16 little-endian */
+    MBTK_TTS_TYPE_GBK,        /* GBK */
+    MBTK_TTS_TYPE_GB2312,     /* GB2312 */
+    MBTK_TTS_TYPE_UTF8,       /* UTF-8 */
+    MBTK_TTS_TYPE_UTF16BE,    /* UTF-16 big-endian */
+}mbtk_tts_type_t;
+typedef enum
+{
+    MBTK_TTS_ROLE_AUTO,                  /* role automatically */
+    MBTK_TTS_ROLE_FEMALE,                /* say words by female voice */
+    MBTK_TTS_ROLE_MALE,                  /* say words by male voice */
+} mbtk_tts_role_type_t;
+
+
+//ÓÅÏÈ¼¶
+//lev0Î»×î¸ßÓÅÏÈ¼¶£¬
+//MBTK_PCM_PLAY_LEV1  ÓÃÓÚpocµÄtts²¥±¨  (²»ÄÜ±»Í¬ÓÅÏÈ¼¶´ò¶Ï)
+//MBTK_PCM_PLAY_LEV2  ÓÃÓÚ²Ëµ¥Ö®ÀàµÄ²¥±¨(¿ÉÒÔ±»Í¬¼¶ÓÅÏÈ¼¶´ò¶Ï)
+
+typedef void(*m_tts_status_cb)(int type);
+
+/*****************************************************************************
+* DESCRIPTION
+*    This API is to play tts
+*
+* PARAMETERS
+*    from  : [IN]     0 tts    1 menu tts
+*
+* RETURN VALUES
+*
+* example:
+*    unsigned short strText_GBK[100] = {"2019-05-24, this is a test package,µç»°ºÅÂë1234567890"};
+*    mbtk_tts_spk(strText_GBK, strlen(strText_GBK),TTS_TYPE_GBK);
+*
+*    unsigned short pTextBuf_U16[6]={0}£»
+*    pTextBuf_U16[0] = 0x4e00; //Ò»
+*    pTextBuf_U16[1] = 0x4e8c; //¶þ
+*    pTextBuf_U16[2] = 0x4e09; //Èý
+*    pTextBuf_U16[3] = 0x0000;
+*    mbtk_tts_spk(pTextBuf_U16, 3,TTS_TYPE_UTF16LE);
+*****************************************************************************/
+int mbtk_tts_spk(char *txt, uint16 txt_len, int data_type, uint8 from);
+
+int mbtk_tts_init(void);
+int mbtk_tts_stop(void);
+
+int mbtk_tts_set_cb(m_tts_status_cb cb);
+int mbtk_tts_set_volume(int volume);
+int mbtk_tts_set_speed(int speed);
+int mbtk_tts_set_role(int type);
+int mbtk_tts_set_vemode(int vemode);
+int mbtk_tts_set_pitch(int pitch);
+
+uint8_t mbtk_get_tts_status(void);
+int mbtk_tts_get_volume(void);
+int mbtk_tts_get_speed(void);
+int mbtk_tts_get_role_type(void);
+int mbtk_tts_get_vemode(void);
+int mbtk_tts_get_pitch(void);
+
+int mbtk_tts_get_play_status(void);
+
+#endif /*MBTK_TTS_SUPPORT*/

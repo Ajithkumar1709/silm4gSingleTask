@@ -1,0 +1,697 @@
+# 1 "\\mbtk\\init\\mbtk_cust_init.c"
+
+# 1 "\\tavor\\Arbel\\obj_PMD2NONE\\inc\\mbtk_pub_type.h"
+/***************************************************************************
+*
+*                         FILENAME
+*
+*                Copyright (c) 2020 mbtk
+*
+*****************************************************************************/
+
+
+
+# 1 "\\hop\\telephony\\atparser\\inc\\stdbool.h"
+/* stdbool.h: ISO/IEC 9899:1999 (C99), section 7.16 */
+
+/* Copyright (C) ARM Ltd., 2002
+ * All rights reserved
+ * RCS $Revision: 102466 $
+ * Checkin $Date: 2006-08-23 11:37:17 +0100 (Wed, 23 Aug 2006) $
+ * Revising $Author: drodgman $
+ */
+
+
+
+
+
+   	
+
+
+
+//    typedef int _Bool;
+
+
+# 12 "\\tavor\\Arbel\\obj_PMD2NONE\\inc\\mbtk_pub_type.h"
+/***************************************************************************
+* Macros
+***************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***************************************************************************
+* Types
+***************************************************************************/
+
+typedef unsigned char				u8;
+	typedef unsigned short				u16;
+	typedef unsigned char				uint8;
+	typedef unsigned short				uint16;
+	
+	typedef unsigned int				u32;
+	typedef unsigned int				uint;
+	typedef unsigned int				uint32;
+	
+	typedef unsigned long long			u64;
+	typedef unsigned long long			uint64;
+	
+	typedef unsigned int				uint_t;
+	typedef unsigned char				uint8_t;
+	typedef unsigned short				uint16_t;
+	typedef unsigned int				uint32_t;
+	typedef unsigned long long			uint64_t;
+	
+	typedef unsigned int				uint_t;
+	typedef unsigned char				uint_8;
+	typedef unsigned short				uint_16;
+	typedef unsigned int				uint_32;
+	typedef unsigned long long			uint_64;
+	
+	typedef signed char 				int8;
+	typedef signed short				int16;
+	typedef signed int					int32;
+	typedef signed int					int_32;
+	typedef signed long long			int64;
+	
+	typedef signed char 				int8_t;
+	typedef signed short				int16_t;
+	typedef signed int					int32_t;
+	typedef signed long long			int64_t;
+	//typedef long						  intptr_t;
+	
+	typedef unsigned char				UINT8;
+	typedef unsigned short				UINT16;
+	typedef unsigned int				UINT;
+
+
+	typedef unsigned int				UINT32;
+
+	typedef unsigned long long			UINT64;
+	typedef int 						INT;
+
+
+	typedef char						INT8;
+
+	typedef short						INT16;
+
+
+
+	typedef int 						INT32;
+
+
+	typedef long long					INT64;
+	
+	typedef unsigned char				U8;
+	typedef unsigned short				U16;
+
+
+
+	typedef unsigned int				U32;
+	typedef int 						S32;
+
+	typedef unsigned long long			U64;
+	
+	typedef char						S8;
+	typedef short						S16;
+
+	typedef long long					S64;
+	
+	typedef char						s8;
+	typedef short						s16;
+	typedef int 						s32;
+	
+	typedef unsigned int				size_t;
+	
+	typedef char						ascii;
+	typedef unsigned char				byte;			/*	unsigned 8-bit data 	*/
+	typedef unsigned short				word;			/*	unsigned 16-bit data	*/
+	typedef unsigned long				dword;			/*	unsigned 32-bit data	*/
+	
+	typedef unsigned char				BYTE;
+	typedef char						CHAR;
+	typedef unsigned short				WCHAR;
+	typedef unsigned short				WORD;
+
+
+	typedef signed int					WORD32;
+	typedef unsigned int				UWORD32;
+
+	//typedef unsigned long				DWORD;
+	
+	typedef unsigned short				RESID;
+
+	typedef float						float32;
+	typedef float						FLOAT;
+	typedef double						DOUBLE;
+	typedef UINT8*						PUINT8;
+	typedef INT32*						PINT32;
+	typedef UINT16* 					PUINT16;
+	typedef INT16*						PINT16;
+	typedef CHAR *						PCHAR;
+	typedef void*						PVOID;
+	typedef char *						PS8;
+	typedef unsigned char * 			PU8;
+	typedef short * 					PS16; 
+	typedef unsigned short *			PU16;
+	typedef int *						PS32;
+	typedef unsigned int *				PU32;
+	typedef unsigned short				pBOOL; 
+	
+	typedef volatile unsigned char		REG8;
+	typedef volatile unsigned short 	REG16;
+	typedef volatile unsigned int		REG32;
+	
+	typedef unsigned char			kal_uint8;
+	typedef signed char 			kal_int8;
+	typedef char					kal_char;
+	typedef unsigned short			kal_wchar;
+	
+	typedef unsigned short int		kal_uint16;
+	typedef signed short int		kal_int16;
+	
+	typedef unsigned int			kal_uint32;
+	typedef signed int				kal_int32;
+	
+	typedef unsigned int			HRES;
+	typedef unsigned int			HAO;
+	
+	typedef unsigned char       u8_t;
+	
+	typedef unsigned short      u16_t;
+
+//	typedef unsigned int   		u32_t; 
+
+
+
+
+typedef u32 mbtk_mutex;
+typedef u32 mbtk_sema;
+
+
+# 3 "\\mbtk\\init\\mbtk_cust_init.c"
+//#include "mbtk_os.h"
+# 1 "\\tavor\\Arbel\\obj_PMD2NONE\\inc\\mbtk_gpio.h"
+
+// jx.jiang   2020.8.26
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+typedef enum 
+{
+	mbtk_pin_not_assigned = -1,
+	mbtk_pin_1=0,  mbtk_pin_2,  mbtk_pin_3,  mbtk_pin_4,  mbtk_pin_5,  mbtk_pin_6,  mbtk_pin_7,  mbtk_pin_8,  
+	mbtk_pin_9,  mbtk_pin_10, mbtk_pin_11, mbtk_pin_12, mbtk_pin_13, mbtk_pin_14, mbtk_pin_15, mbtk_pin_16, 
+	mbtk_pin_17, mbtk_pin_18, mbtk_pin_19, mbtk_pin_20, mbtk_pin_21, mbtk_pin_22, mbtk_pin_23, mbtk_pin_24, 
+	mbtk_pin_25, mbtk_pin_26, mbtk_pin_27, mbtk_pin_28, mbtk_pin_29, mbtk_pin_30, mbtk_pin_31, mbtk_pin_32,
+	mbtk_pin_33, mbtk_pin_34, mbtk_pin_35, mbtk_pin_36, mbtk_pin_37, mbtk_pin_38, mbtk_pin_39, mbtk_pin_40,
+	mbtk_pin_41, mbtk_pin_42, mbtk_pin_43, mbtk_pin_44, mbtk_pin_45, mbtk_pin_46, mbtk_pin_47, mbtk_pin_48,
+	mbtk_pin_49, mbtk_pin_50, mbtk_pin_51, mbtk_pin_52, mbtk_pin_53, mbtk_pin_54, mbtk_pin_55, mbtk_pin_56,
+	mbtk_pin_57, mbtk_pin_58, mbtk_pin_59, mbtk_pin_60, mbtk_pin_61, mbtk_pin_62, mbtk_pin_63, mbtk_pin_64,
+	mbtk_pin_65, mbtk_pin_66, mbtk_pin_67, mbtk_pin_68, mbtk_pin_69, mbtk_pin_70, mbtk_pin_71, mbtk_pin_72,
+	mbtk_pin_73, mbtk_pin_74, mbtk_pin_75, mbtk_pin_76, mbtk_pin_77, mbtk_pin_78, mbtk_pin_79, mbtk_pin_80,
+	mbtk_pin_81, mbtk_pin_82, mbtk_pin_83, mbtk_pin_84, mbtk_pin_85, mbtk_pin_86, mbtk_pin_87, mbtk_pin_88,
+	mbtk_pin_89, mbtk_pin_90, mbtk_pin_91, mbtk_pin_92, mbtk_pin_93, mbtk_pin_94, mbtk_pin_95, mbtk_pin_96,
+	mbtk_pin_97, mbtk_pin_98, mbtk_pin_99, mbtk_pin_100, mbtk_pin_101, mbtk_pin_102, mbtk_pin_103, mbtk_pin_104,
+	mbtk_pin_105, mbtk_pin_106, mbtk_pin_107, mbtk_pin_108, mbtk_pin_109, mbtk_pin_110, mbtk_pin_111, mbtk_pin_112,
+	mbtk_pin_113, mbtk_pin_114, mbtk_pin_115, mbtk_pin_116, mbtk_pin_117, mbtk_pin_118, mbtk_pin_119, mbtk_pin_120,
+	mbtk_pin_121, mbtk_pin_122, mbtk_pin_123, mbtk_pin_124, mbtk_pin_125, mbtk_pin_126, mbtk_pin_127,
+	mbtk_pin_128, mbtk_pin_129, mbtk_pin_130, mbtk_pin_131, mbtk_pin_132, mbtk_pin_133, mbtk_pin_134, mbtk_pin_135,
+
+	mbtk_pin_max_amout
+	
+}mbtk_pin_num_enum;
+
+typedef enum 
+{
+	mbtk_gpio_not_assigned = -1,
+ 	mbtk_gpio_0=0,mbtk_gpio_1,  mbtk_gpio_2,  mbtk_gpio_3,  mbtk_gpio_4,  mbtk_gpio_5,  mbtk_gpio_6,  mbtk_gpio_7,
+ 	mbtk_gpio_8,  mbtk_gpio_9,  mbtk_gpio_10, mbtk_gpio_11, mbtk_gpio_12, mbtk_gpio_13, mbtk_gpio_14, mbtk_gpio_15,
+ 	mbtk_gpio_16, mbtk_gpio_17, mbtk_gpio_18, mbtk_gpio_19, mbtk_gpio_20, mbtk_gpio_21, mbtk_gpio_22, mbtk_gpio_23,
+ 	mbtk_gpio_24, mbtk_gpio_25, mbtk_gpio_26, mbtk_gpio_27, mbtk_gpio_28, mbtk_gpio_29, mbtk_gpio_30, mbtk_gpio_31,
+ 	mbtk_gpio_32, mbtk_gpio_33, mbtk_gpio_34, mbtk_gpio_35, mbtk_gpio_36, mbtk_gpio_37, mbtk_gpio_38, mbtk_gpio_39,
+ 	mbtk_gpio_40, mbtk_gpio_41, mbtk_gpio_42, mbtk_gpio_43, mbtk_gpio_44, mbtk_gpio_45, mbtk_gpio_46, mbtk_gpio_47,
+ 	mbtk_gpio_48, mbtk_gpio_49, mbtk_gpio_50, mbtk_gpio_51, mbtk_gpio_52, mbtk_gpio_53, mbtk_gpio_54, mbtk_gpio_55,
+ 	mbtk_gpio_56, mbtk_gpio_57, mbtk_gpio_58, mbtk_gpio_59, mbtk_gpio_60, mbtk_gpio_61, mbtk_gpio_62, mbtk_gpio_63,
+	mbtk_gpio_64, mbtk_gpio_65, mbtk_gpio_66, mbtk_gpio_67, mbtk_gpio_68, mbtk_gpio_69, mbtk_gpio_70, mbtk_gpio_71,
+	mbtk_gpio_72, mbtk_gpio_73, mbtk_gpio_74, mbtk_gpio_75, mbtk_gpio_76, mbtk_gpio_77, mbtk_gpio_78, mbtk_gpio_79,
+	mbtk_gpio_80, mbtk_gpio_81, mbtk_gpio_82, mbtk_gpio_83, mbtk_gpio_84, mbtk_gpio_85, mbtk_gpio_86, mbtk_gpio_87,
+	mbtk_gpio_88, mbtk_gpio_89, mbtk_gpio_90, mbtk_gpio_91, mbtk_gpio_92, mbtk_gpio_93, mbtk_gpio_94, mbtk_gpio_95,
+	mbtk_gpio_96, mbtk_gpio_97, mbtk_gpio_98, mbtk_gpio_99, mbtk_gpio_100, mbtk_gpio_101, mbtk_gpio_102, mbtk_gpio_103,
+	mbtk_gpio_104, mbtk_gpio_105, mbtk_gpio_106, mbtk_gpio_107, mbtk_gpio_108, mbtk_gpio_109, mbtk_gpio_110, mbtk_gpio_111,
+	mbtk_gpio_112, mbtk_gpio_113, mbtk_gpio_114, mbtk_gpio_115, mbtk_gpio_116, mbtk_gpio_117, mbtk_gpio_118, mbtk_gpio_119,
+	mbtk_gpio_120, mbtk_gpio_121, mbtk_gpio_122, mbtk_gpio_123, mbtk_gpio_124, mbtk_gpio_125, mbtk_gpio_126, mbtk_gpio_127,
+ 	mbtk_gpio_max_amount_of_pins
+}mbtk_gpio_num_enum;
+
+
+typedef enum 
+{
+    MBTK_OK  = 0,
+	MBTK_ERROR_PARA1 = -1,
+	MBTK_ERROR_PARA2 =  -2,
+	MBTK_ERROR_PARA3 = -3,
+	MBTK_ERROR_PLATFORM_NOT_SUPPORT = -4,
+	MBTk_ERROR_UNDFINED_PIN = -5,
+    MBTK_ERROR_PROJECT_NO_SUPPORT = -6,
+    MBTK_ERROR_UNKNOWN = -7
+}MBTK_RETURN_PARA;
+
+
+// enum and struct dec
+
+typedef void (*mbtk_gpio_isr_callback)(void);
+
+
+typedef enum 
+{
+	mbtk_gpio_config_maf0=0,
+	mbtk_gpio_config_maf1,
+	mbtk_gpio_config_maf2,
+	mbtk_gpio_config_maf3,
+	mbtk_gpio_config_maf4,
+	mbtk_gpio_config_maf5,
+	mbtk_gpio_config_maf6,
+	mbtk_gpio_config_maf7
+}mbtk_gpio_config_af_enum;
+
+
+typedef enum 
+{
+	mbtk_gpio_config_pull_none,
+	mbtk_gpio_config_pull_low,
+	mbtk_gpio_config_pull_high,
+	mbtk_gpio_config_pull_both
+}mbtk_gpio_config_pull_enum;
+
+
+typedef enum 
+{
+	mbtk_gpio_config_sleep_none,
+	mbtk_gpio_config_sleep_dir,   // not use usual
+	mbtk_gpio_config_sleep_data,  // not use usual
+	mbtk_gpio_config_sleep_float, // not use usual
+	mbtk_gpio_config_sleep_out_high,
+	mbtk_gpio_config_sleep_out_low
+}mbtk_gpio_config_sleep_enum;
+
+
+typedef enum 
+{
+	mbtk_gpio_config_edge_none,
+	mbtk_gpio_config_edge_rise,
+	mbtk_gpio_config_edge_fall,
+	mbtk_gpio_config_edge_both
+}mbtk_gpio_config_edge_enum;
+
+
+typedef struct 
+{
+	mbtk_gpio_config_af_enum gpio_af_num;
+	mbtk_gpio_config_pull_enum gpio_pull;
+	mbtk_gpio_config_sleep_enum gpio_sleep;
+	mbtk_gpio_config_edge_enum gpio_edge;
+}mbtk_pin_config_struct;
+
+
+typedef enum
+{
+	mbtk_gpio_dir_input,
+	mbtk_gpio_dir_output
+}mbtk_pin_dir_enum;
+
+
+typedef enum 
+{
+	mbtk_gpio_pulldown_disable,
+	mbtk_gpio_pull_enable,
+	mbtk_gpio_down_enable
+}mbtk_pin_pulldown_enum;
+
+
+typedef enum 
+{
+	mbtk_gpio_level_low,
+	mbtk_gpio_level_high
+}mbtk_pin_level_enum;
+
+
+typedef enum 
+{
+	mbtk_gpio_no_detection,
+	mbtk_gpio_rising_edge,
+	mbtk_gpio_falling_edge,
+	mbtk_gpio_both_edge
+}mbtk_pin_edge_enum;
+
+
+
+typedef struct 
+{
+	mbtk_pin_num_enum mbtk_pin_num;
+	mbtk_gpio_num_enum mbtk_gpio_num;
+	int mbtk_gpio_mfpr_num;
+}mbtk_pin_map_struct;
+
+
+
+typedef enum 
+{
+  mbtk_adc_1 = 0xd1, //need larger then "mbtk_pin_max_amout"
+  mbtk_adc_2 = 0xd2,
+  mbtk_adc_3 = 0xd3,
+  mbtk_adc_RTP = 0xd6, //need larger then "mbtk_pin_max_amout"
+  mbtk_adc_RTN = 0xd7,
+}mbtk_adc_num_enum;
+
+typedef enum 
+{
+  mbtk_ldo_1 = 0xF1, //need larger then "mbtk_pin_max_amout"
+  mbtk_ldo_2 = 0xF2,
+  mbtk_ldo_3 = 0xF3,
+  mbtk_ldo_4 = 0xF4,
+  mbtk_ldo_5 = 0xF5,
+  mbtk_ldo_6 = 0xF6,  
+  mbtk_ldo_7 = 0xF7,
+  mbtk_ldo_8 = 0xF8,
+  mbtk_ldo_max = 0xFF  
+}mbtk_ldo_num_enum;
+
+
+
+typedef enum 
+{
+    MBTK_STATUS_PIN = 0,
+	MBTK_NET_STATUS_LED_PIN,
+	MBTK_NET_MODE_LED_PIN,
+	MBTK_WAKEUP_IN_PIN,
+	MBTK_AP_READY_PIN,
+	MBTK_FLIGTH_MODE_PIN,
+	MBTK_WAKEOUT_PIN,
+	MBTK_USIM_DET,
+	MBTK_CP_UART_RXD,
+	MBTK_CP_UART_TXD,
+	MBTK_CP_UART_CTS,
+	MBTK_CP_UART_RTS,
+	MBTK_CP_UART_DTR,
+	MBTK_CP_UART_RI,
+	MBTK_CP_UART_DCD,
+	MBTK_AP_UART1_TXD,
+	MBTK_AP_UART1_RXD,
+	MBTK_GPS_RXD_PIN,
+	MBTK_GPS_TXD_PIN,
+	MBTK_I2C_SDA_PIN,
+	MBTK_I2C_SCL_PIN,
+	MBTK_LCD_TE_PIN,
+	MBTK_LCD_CS_PIN,
+	MBTK_LCD_SPI_RS,
+	MBTK_LCD_SPI_RST,
+	MBTK_LCD_SPI_DOUT,
+	MBTK_LCD_SPI_CLK,
+	MBTK_LCD_LCD_VDDIO,
+	MBTK_CAM_I2C_SCL,
+	MBTK_CAM_I2C_SDA,
+	MBTK_CAM_SPI_MCLK,
+	MBTK_CAM_SPI_CLK,
+	MBTK_CAM_SPI_DATA0,
+	MBTK_CAM_SPI_DATA1,
+	MBTK_CAM_PWDN1,
+	MBTK_CAM_VDD,
+	MBTK_PCM_SYNC,
+	MBTK_PCM_RXD,
+	MBTK_PCM_TXD,
+	MBTK_PCM_CLK,
+	MBTK_GPS_UART_RXD,
+	MBTK_GPS_UART_TXD,
+	MBTK_GPS_RST,
+	MBTK_GPS_SLEEP_EN,
+	MBTK_HOST_WAKE_GPS,
+	MBTK_GPS_WAKE_HOST,
+	MBTK_GPS_32K,
+	MBTK_GPS_BLINK,
+	MBTK_GPS_LNA_EN,
+	MBTK_AUDIO_PA_EN,
+	MBTk_SPI_CLK,
+	MBTK_SPI_DOUT,
+	MBTK_SPI_DIN,
+	MBTK_SPI_CS,
+	MBTK_GPIO_PIN_1,
+	MBTK_GPIO_PIN_2,
+	
+	MBTK_MAX_GPIO_FUNC_PIN,   //PLEASE ADD GPIO DEFINE ON ABOVER
+	MBTK_ADC1_PIN,
+	MBTK_ADC2_PIN,
+	MBTK_ADC3_PIN,
+	MBTK_MAX_FUNC_PIN
+}mbtk_project_function_pin_enum;
+
+// mbtk_gpio_apis
+
+int mbtk_pin_config(mbtk_pin_num_enum pin_num, mbtk_pin_config_struct *config);
+
+int mbtk_set_pin_dir(mbtk_pin_num_enum pin_num, mbtk_pin_dir_enum dir);
+
+int mbtk_get_pin_dir(mbtk_pin_num_enum pin_num, mbtk_pin_dir_enum *dir);
+
+int mbtk_set_pin_level(mbtk_pin_num_enum pin_num, mbtk_pin_level_enum level);
+
+int mbtk_get_pin_level(mbtk_pin_num_enum pin_num, mbtk_pin_level_enum *level);
+
+int mbtk_set_pin_pull(mbtk_pin_num_enum pin_num, mbtk_pin_pulldown_enum pull);
+
+int mbtk_enable_pin_edge_detect(mbtk_pin_num_enum pin_num, mbtk_pin_edge_enum edge);
+
+int mbtk_diable_pin_edge_detect(mbtk_pin_num_enum pin_num, mbtk_pin_edge_enum edge);
+
+int mbtk_pin_bind_irq_callback(mbtk_pin_num_enum pin_num, mbtk_gpio_isr_callback callbackfunc);
+
+int mbtk_pin_bind_wakeup_callback(mbtk_pin_num_enum pin_num, mbtk_gpio_isr_callback callbackfunc);
+
+int mbtk_enable_pin_wakeup_edge_detect(mbtk_pin_num_enum pin_num, mbtk_gpio_config_edge_enum edge);
+
+int mbtk_diable_pin_wakeup_edge_detect(mbtk_pin_num_enum pin_num, mbtk_gpio_config_edge_enum edge);
+
+int mbtk_pin_debind_irq_callbcak(mbtk_pin_num_enum pin_num);
+
+int mbtk_pin_debind_wakeup_callback(mbtk_pin_num_enum pin_num);
+
+extern void RTI_LOG(const char* fmt, ...);
+
+
+# 5 "\\mbtk\\init\\mbtk_cust_init.c"
+# 1 "\\tavor\\Arbel\\obj_PMD2NONE\\inc\\mbtk_uart.h"
+
+
+
+
+typedef enum   /* The number of ports in the UART  */
+{
+    OL_UART_PORT_FFUART,
+    OL_UART_PORT_BTUART,
+    OL_UART_PORT_STUART,
+    OL_UART_PORT_UART4,
+
+	OL_UART_PORT_CDCUART,
+
+    OL_NUMBER_OF_PORTS
+}MBTK_UART_Port;
+
+typedef enum     /* The Operation Mode that the UART could work */
+{
+    OL_UART_BYTE_CTL,              /* non fifo mode */
+    OL_UART_FIFO_CTL,              /*  fifo mode */
+    OL_UART_DMA_CTL                /* DMA mode */
+}OL_UART_OpMode;
+
+
+typedef enum   /* All the UART Baud Rate that the UART Package supplay */
+{
+    OL_UART_BAUD_150       = 150,
+    OL_UART_BAUD_300       = 300,
+    OL_UART_BAUD_600       = 600,
+    OL_UART_BAUD_1200      = 1200,
+    OL_UART_BAUD_2400      = 2400,
+    OL_UART_BAUD_3600      = 3600,
+    OL_UART_BAUD_4800      = 4800,
+    OL_UART_BAUD_7200      = 7200,
+    OL_UART_BAUD_9600      = 9600,
+    OL_UART_BAUD_14400     = 14400,
+    OL_UART_BAUD_19200     = 19200,
+    OL_UART_BAUD_28800     = 28800,
+    OL_UART_BAUD_38400     = 38400,
+    OL_UART_BAUD_57600     = 57600,
+    OL_UART_BAUD_115200    = 115200,
+    OL_UART_BAUD_230400    = 230400,
+    OL_UART_BAUD_256000    = 256000,
+    OL_UART_BAUD_460800    = 460800,
+    OL_UART_BAUD_921600    = 921600,
+    OL_UART_MAX_NUM_BAUD
+}OL_UART_BaudRates;
+
+typedef enum  /* The Word Len of the UART Frame Format  */
+{
+    OL_UART_WORD_LEN_5,                /* set Word Lengto to 5 Bits         */
+    OL_UART_WORD_LEN_6,                /* set Word Lengto to 6 Bits         */
+    OL_UART_WORD_LEN_7,                /* set Word Lengto to 7 Bits         */
+    OL_UART_WORD_LEN_8                 /* set Word Lengto to 8 Bits         */
+}OL_UART_WordLen;
+
+
+typedef enum  /* The Stop Bits of the UART Frame Format */
+{
+    OL_UART_ONE_STOP_BIT,
+    OL_UART_ONE_HALF_OR_TWO_STOP_BITS
+}OL_UART_StopBits;
+
+typedef enum  /* The Parity Bits of the UART Frame Format */
+{
+	OL_UART_NO_PARITY_BITS = 0,
+	OL_UART_ODD_PARITY_SELECT = 1,
+	OL_UART_EVEN_PARITY_SELECT = 3,
+}OL_UART_ParityTBits;
+
+typedef enum
+{
+	OL_UART_CTL_CLEAR_RX,
+	OL_UART_CTL_CLEAR_TX,
+	OL_UART_CTL_RX_STATUS,
+	OL_UART_CTL_TX_STATUS,
+}OL_UART_IO_CTL;
+
+typedef enum
+{
+	OL_UART_DELAY_MODE1,
+	OL_UART_DELAY_MODE2,
+	OL_UART_DELAY_MODE_MAX,
+}OL_UART_DELAY_MODE;
+
+typedef void (*OL_UART_CB)(MBTK_UART_Port p);
+
+
+typedef struct   /* This is structure of the UART Configuration  */
+{
+    OL_UART_OpMode              opMode;             /* fifo mode, non fifo mode or DMA for basic interface*/
+    OL_UART_BaudRates	     baudRate;			/* the rate of the transmit and the receive up to 111520 (default - 9600).*/
+    OL_UART_WordLen	     numDataBits;		/* 5, 6, 7, or 8 number of data bits in the UART data frame (default - 8). */
+    OL_UART_ParityTBits	     parityBitType;		/* Even, Odd or no-parity bit type in the UART data frame (default - Non). */
+	OL_UART_StopBits         stopBit;      //0  one  1  ONE_HALF 
+    _Bool                    flowControl;       /* enable Auto flow Control - TRUE, disable Auto flow Control - FALSE  */
+	_Bool    			is_int;
+	OL_UART_CB   rd_cb;
+	OL_UART_CB   td_cb;
+}OL_UART_DCB;
+
+typedef enum	// change the order -1 to +
+{
+    OL_UART_RC_OK                              =   1,      /* 1 - no errors                                            */
+
+    OL_UART_RC_PORT_NUM_ERROR                  =   -100,   /* -100 - Error in the UART port number                     */
+    OL_UART_RC_NO_DATA_TO_READ,                            /* -99 -  Eror no data to read from the FIFO UART           */
+    OL_UART_RC_ILLEGAL_BAUD_RATE,                          /* -98 -  Error in the UART Bayd Rate                       */
+    OL_UART_RC_UART_PARITY_BITS_ERROR,                     /* -97 - Error in parity bit                                */
+    OL_UART_RC_UART_ONE_STOP_BIT_ERROR,                    /* -96 - Error in one stop bit                              */
+    OL_UART_RC_ONE_HALF_OR_TWO_STOP_BIT_ERROR,             /* -95 - Error in two stop bit                              */
+    OL_UART_RC_BAD_INTERFACE_TYPE,                         /* -94 - Error in the Interface Type                        */
+    OL_UART_RC_UART_NOT_AVAILABLE,                         /* -93 - Error in try to open UART that is open             */
+    OL_UART_RC_NO_DATA_TO_WRITE,                           /* -92 - Error No data to writ the len = 0                  */
+    OL_UART_RC_NOT_ALL_BYTE_WRITTEN,                       /* -91 - Error Not all the Byte write to the UART FIFO      */
+    OL_UART_RC_ISR_ALREADY_BIND,                           /* -90 - Error try to bind ISR for Basic Interface          */
+    OL_UART_RC_WRONG_ISR_UNBIND,                           /* -89 - Error in the UnBind ISR for Basic Interface        */
+    OL_UART_RC_FIFO_NOT_EMPTY,                             /* -88 - Error, the UART FIFO not empty                     */
+    OL_UART_RC_UART_OPEN,                                  /* -87 - Error try chance the configurr when the UART open  */
+    OL_UART_RC_GPIO_ERR,                                   /* -86 - Error in the Configure of the GPIO                 */
+    OL_UART_RC_IRDA_CONFIG_ERR                             /* -85 - Illegal IrDA configuration                         */
+}OL_UART_ReturnCode;
+	
+
+
+OL_UART_ReturnCode ol_Uart_Open(MBTK_UART_Port portNumber);
+OL_UART_ReturnCode ol_Uart_Close(MBTK_UART_Port portNumber);
+OL_UART_ReturnCode ol_Uart_Write(MBTK_UART_Port portNumber, const unsigned char *data, unsigned length);
+OL_UART_ReturnCode ol_Uart_Read(MBTK_UART_Port portNumber, unsigned char *data, unsigned length, unsigned short *read_len);
+OL_UART_ReturnCode ol_Uart_GetDcb(MBTK_UART_Port portNumber,OL_UART_DCB *dcb);
+OL_UART_ReturnCode ol_Uart_SetDcb(MBTK_UART_Port portNumber,OL_UART_DCB *dcb);
+OL_UART_ReturnCode ol_Uart_Control(MBTK_UART_Port portNumber,OL_UART_IO_CTL cmd,void *parma);
+OL_UART_ReturnCode ol_Uart_Rx_Seting(MBTK_UART_Port portNumber,unsigned char delay_mode,unsigned int time);
+
+
+
+# 6 "\\mbtk\\init\\mbtk_cust_init.c"
+
+
+void mbtk_cust_cinit1_init(void)
+{
+	//这里添加cinit1阶段需要执行操作
+	//系统分区资源初始化阶段
+
+
+}
+
+
+void mbtk_cust_cinit2_init(void)
+{
+	//这里添加客户cinit2阶段初始化代码
+	//os初始化阶段，还未完成
+
+	
+
+}
+
+
+
+void mbtk_cust_task_init(void)
+{
+	//os初始化已完成，task建立阶段
+	//这里添加客户task的初始化代码
+
+
+}
+
+# 73 "\\mbtk\\init\\mbtk_cust_init.c"
+
+
+
+void mbtk_uart_open_hook(int port_num)
+{
+# 98 "\\mbtk\\init\\mbtk_cust_init.c"
+  
+}
+
+
+
+
+
+char *mbtk_get_ati_ver_str(void)
+{
+	return "";
+}
