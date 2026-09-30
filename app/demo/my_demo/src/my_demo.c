@@ -27,6 +27,9 @@ mbtk_msgqref mqttProcessQueue=NULL;
 #define MY_DEMO_CONNECT_RETRY_COUNT 3
 
 #define TIMERCALLBACKSEC 30
+/* timer period must match the seconds added per callback (1 tick = 5ms),
+ * independent of MY_DEMO_CYCLE_SLEEP_TICKS */
+#define TIMERCALLBACK_TICKS (TIMERCALLBACKSEC * 200)
 static volatile uint32_t periodicCounter = 0;
 static volatile unsigned char perodicStatus = false;
 
@@ -38,7 +41,7 @@ static void timecallBack(uint32_t arg)
 {
     (void)arg;
     periodicCounter += TIMERCALLBACKSEC;
-    if (configStore.periodicTime <= periodicCounter) {
+    if (storedDatas.periodicTime <= periodicCounter) {
         perodicStatus = true;
         periodicCounter = 0;
     }
@@ -50,17 +53,20 @@ static void timecallBack(uint32_t arg)
  * Poll for a short bounded time instead of checking once, so we don't fall
  * back to utc=0 (renders as 1970-01-01 on the dashboard) just because NTP
  * hadn't finished yet. */
-static uint32_t getUtcTimeWaitForSync(void)
+#define NTP_WAIT_RETRY_DEFAULT 20   /* 20 * 100ms = up to 2s */
+#define NTP_WAIT_RETRY_BOOTON  100  /* 100 * 100ms = up to 10s */
+
+static uint32_t getUtcTimeWaitForSync(int maxRetry)
 {
     int retry;
 
-    for (retry = 0; retry < 20; retry++) { /* 20 * 100ms = up to 2s */
+    for (retry = 0; retry < maxRetry; retry++) {
         if (ol_ntp_get_status() == 1) {
             return (uint32_t)ol_ntp_get_utc_time();
         }
         ol_os_task_sleep(20); // 100ms (1 tick = 5ms)
     }
-    op_uart_printf("-1-mydemo:NTP not synced after 2s wait, sending utc=0\r\n");
+    op_uart_printf("-1-mydemo:NTP not synced after %d00ms wait, utc=0\r\n", maxRetry);
     return 0;
 }
 
@@ -144,7 +150,7 @@ void my_demo(void *arg)
     dataStore_init();
 
     ol_os_timer_creat(&periodicTimerRef);
-    ol_os_timer_start(periodicTimerRef, MY_DEMO_CYCLE_SLEEP_TICKS, MY_DEMO_CYCLE_SLEEP_TICKS, timecallBack, 0);
+    ol_os_timer_start(periodicTimerRef, TIMERCALLBACK_TICKS, TIMERCALLBACK_TICKS, timecallBack, 0);
 
     /* No fixed-duration "deep sleep for N seconds" API exists in this SDK.
      * This only lets the RTOS idle loop opportunistically drop into low
@@ -154,15 +160,50 @@ void my_demo(void *arg)
     while (1) {
 
 //================================measuring pvc and checking if packet needs to be sent===============================
-        op_uart_printf("-1-mydemo:my_demo Process:configStore.Minvoltage=%d,configStore.Minpower=%d,configStore.periodicTime=%d",configStore.Minvoltage,configStore.Minpower,configStore.periodicTime);
+        op_uart_printf("-1-mydemo:my_demo Process:storedDatas.Minvoltage=%d,storedDatas.Minpower=%d,storedDatas.periodicTime=%d",storedDatas.Minvoltage,storedDatas.Minpower,storedDatas.periodicTime);
         op_uart_printf("-1-mydemo:periodicCounter=%lu\r\n", periodicCounter);
 
         pvc = pvc_measure();
         op_uart_printf("-1-mydemo:pvc voltage=%d, power=%d, batVolt=%d\r\n",(int)pvc.voltage, (int)pvc.power, (int)pvc.batVolt);
-        serveTransmitPkt = lampMonitor_isPacketSendRequired(pvc.voltage, pvc.power, pvc.batVolt, perodicStatus, configStore.Minpower, configStore.Minvoltage);
-        serveTransmitPkt.utc = getUtcTimeWaitForSync();
+        serveTransmitPkt = lampMonitor_isPacketSendRequired(pvc.voltage, pvc.power, pvc.batVolt, perodicStatus, storedDatas.Minpower, storedDatas.Minvoltage);
+        serveTransmitPkt.utc = getUtcTimeWaitForSync(NTP_WAIT_RETRY_DEFAULT);
         serveTransmitPkt.current = (uint32_t)pvc.current;
         mqttConnectedToserver = false;
+
+        /* On first boot NTP is only kicked off inside networkCheckRecovery()
+         * (mqttTask.c), which normally runs after the packet is stored, so the
+         * boot packet always got utc=0. For PKT_BOOTON, connect first, wait for
+         * NTP, and only store once we have a real time. Otherwise skip this
+         * cycle and re-arm the boot packet so it is retried next cycle. */
+        if ((serveTransmitPkt.pktType == PKT_BOOTON) && (serveTransmitPkt.utc == 0)) {
+            op_uart_printf("-1-mydemo:PKT_BOOTON utc=0, connecting to sync NTP first\r\n");
+            for (retry = 0; retry < MY_DEMO_CONNECT_RETRY_COUNT; retry++) {
+                if (networkCheckRecovery(&client) == 0) {
+                    mqttConnectedToserver = true;
+                    break;
+                }
+            }
+            if (mqttConnectedToserver) {
+                serveTransmitPkt.utc = getUtcTimeWaitForSync(NTP_WAIT_RETRY_BOOTON);
+            }
+            if (serveTransmitPkt.utc == 0) {
+                op_uart_printf("-1-mydemo:PKT_BOOTON NTP not synced, not storing, retry next cycle\r\n");
+                lampMonitor_requestBootOnPkt();
+                serveTransmitPkt.pktType = PKT_NONE;
+                mqttConnectedToserver = false;
+            }
+        }
+
+        /* Daily limit reached: drop the packet (not stored, not sent) until
+         * the IST day changes and the counter resets. */
+        if (serveTransmitPkt.pktType && !maxPayLoadChecker()) {
+            op_uart_printf("-1-mydemo:daily max payload reached, dropping pktType=%d\r\n", serveTransmitPkt.pktType);
+            if (serveTransmitPkt.pktType == PKT_LIVE) {
+                perodicStatus = false;
+            }
+            serveTransmitPkt.pktType = PKT_NONE;
+            mqttConnectedToserver = false;
+        }
 //if packet needs to be sent, connect mqtt
         if (serveTransmitPkt.pktType) {
              if (serveTransmitPkt.pktType == PKT_LIVE) {
@@ -198,9 +239,12 @@ void my_demo(void *arg)
             op_uart_printf("-1-mydemo:pktType=%d -> publish telemetry\r\n", serveTransmitPkt.pktType);
             op_uart_printf("-1-mydemo:before publish, mqttQueue index=%d dataSize=%d fsUpdateRequired=%d\r\n",
                            mqttQueue.mqttFsInfo.index, mqttQueue.dataSize, mqttQueue.mqttFsInfo.fsUpdateRequired);
-            if ((mqtt_publish(client, mqttQueue.data, mqttQueue.dataSize, mqttQueue.topic) == 0)&& (mqttQueue.mqttFsInfo.fsUpdateRequired)) {
-                op_uart_printf("-1-mydemo:publish succeeded, marking index=%d uploaded\r\n", mqttQueue.mqttFsInfo.index);
-                fsDataUpdateUploadState(mqttQueue.mqttFsInfo.index);
+            if (mqtt_publish(client, mqttQueue.data, mqttQueue.dataSize, mqttQueue.topic) == 0) {
+                maxPayLoadCount();
+                if (mqttQueue.mqttFsInfo.fsUpdateRequired) {
+                    op_uart_printf("-1-mydemo:publish succeeded, marking index=%d uploaded\r\n", mqttQueue.mqttFsInfo.index);
+                    fsDataUpdateUploadState(mqttQueue.mqttFsInfo.index);
+                }
             }
 
 

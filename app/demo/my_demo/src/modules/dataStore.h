@@ -7,7 +7,7 @@
 
 #define D_FILE_INDEXUSED      1
 #define D_FILE_INDEXNOTUSED   5
-/* C:/U: NVM partition is only ~172KB total, shared with configStore.bin,
+/* C:/U: NVM partition is only ~172KB total, shared with storedDatas.bin,
  * its backup, and OTA state -- keep this log's footprint modest so it
  * doesn't crowd out everything else sharing the partition.
  * 14 * sizeof(fsDataBackUp_t) = 3710 bytes. */

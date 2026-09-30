@@ -9,7 +9,7 @@
 #include "memoryHandle.h"
 #include "otaHandler.h"
 
-extern configStore_t configStore;
+extern storedDatas_t storedDatas;
 
 #define OTA_FILE_NAME_MAX 64
 static char otaFileName[OTA_FILE_NAME_MAX] = {0};
@@ -89,7 +89,7 @@ int jsonextract(char *data)
 		if (jsoneq(data, &t[i], "minV") == 0)                   
         {
             sprintf(vv,"%.*s", t[i + 1].end - t[i + 1].start,data + t[i + 1].start);
-            configStore.Minvoltage=atoi(vv);
+            storedDatas.Minvoltage=atoi(vv);
             changed = 1;
             i++;
         }
@@ -98,7 +98,7 @@ int jsonextract(char *data)
 		if (jsoneq(data, &t[i], "minW") == 0)                    
         {
             sprintf(vv,"%.*s", t[i + 1].end - t[i + 1].start,data + t[i + 1].start);
-            configStore.Minpower=atoi(vv);
+            storedDatas.Minpower=atoi(vv);
             changed = 1;
             i++;
         }
@@ -107,7 +107,16 @@ int jsonextract(char *data)
       if (jsoneq(data, &t[i], "pint") == 0)
         {
             sprintf(vv,"%.*s", t[i + 1].end - t[i + 1].start,data + t[i + 1].start);
-            configStore.periodicTime=atoi(vv);
+            storedDatas.periodicTime=atoi(vv);
+            changed = 1;
+            i++;
+        }
+
+    //************maxPayload************
+      if (jsoneq(data, &t[i], "maxPayload") == 0)
+        {
+            sprintf(vv,"%.*s", t[i + 1].end - t[i + 1].start,data + t[i + 1].start);
+            storedDatas.maxPayload=atoi(vv);
             changed = 1;
             i++;
         }

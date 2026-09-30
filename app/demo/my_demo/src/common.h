@@ -19,6 +19,7 @@
 #define JSON_DATA_MAX_SIZE 225
 #define D_FIVESEC_TIME  5
 #define PERIODIC_DURATION  3600
+#define MAX_PAYLOAD_PER_DAY 100   /* default daily telemetry limit, 0 = no limit */
 typedef uint8_t U1 ;
 typedef uint32_t U4 ;
 typedef uint16_t U2 ;
@@ -73,10 +74,13 @@ typedef struct __attribute__((packed)){
 uint32_t Minvoltage;
 uint32_t Minpower;
 uint32_t periodicTime;
+uint32_t maxPayload;
+uint32_t maxPayloadCounter;
+uint32_t currentDay;
 uint8_t firstBoot;
 uint8_t lastFaultStatus;
 uint8_t checksum;
-}configStore_t;
+}storedDatas_t;
 
 
 

@@ -12,7 +12,7 @@ void periodicTask(void *arg)
         op_uart_printf("-1-periodicTask:my periodicCount=%lu\r\n",periodicCounter);
         periodicCounter++;
         FivesecComCounter++;
-      if (periodicCounter >= (configStore.periodicTime)) {
+      if (periodicCounter >= (storedDatas.periodicTime)) {
         ilmQueue.dataSize = 1;
         ilmQueue.pktType = D_PERIODIC_INTERVAL;
         if (mainProcessQueue != NULL) {

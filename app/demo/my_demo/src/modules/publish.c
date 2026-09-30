@@ -39,7 +39,7 @@ JsonExtractData_t JsonExtractData;
 
 char* extractJsonConfigAttributesData(uint8_t *data, uint8_t dataSize) {
  static char configJsonBuffer[200];
- configStore_t configData;
+ storedDatas_t configData;
 
  op_uart_printf("-1-publish:enter extractJsonConfigAttributesData\r\n");
  memset(configJsonBuffer, 0, sizeof(configJsonBuffer));
@@ -48,10 +48,11 @@ char* extractJsonConfigAttributesData(uint8_t *data, uint8_t dataSize) {
 
  sprintf(
    configJsonBuffer,
-   "{\"minVoltage\":%lu,\"minCurrent\":%lu,\"periodicTime\":%lu}",
+   "{\"minVoltage\":%lu,\"minCurrent\":%lu,\"periodicTime\":%lu,\"maxPayload\":%lu}",
    configData.Minvoltage,
    configData.Minpower,
-   configData.periodicTime
+   configData.periodicTime,
+   configData.maxPayload
  );
  return configJsonBuffer;
 }
@@ -100,7 +101,7 @@ mqttQueue_t publishattributesPacketCcidImsiJson(void)
 mqttQueue_t publish_req_shared_attributes_JSON(void)
 {
   mqttQueue_t mqttSendData;
-  char bufferSA[] = "{\"sharedKeys\":\"minV,minW,pint,firmwareVersion\"}";
+  char bufferSA[] = "{\"sharedKeys\":\"minV,minW,pint,maxPayload,firmwareVersion\"}";
 
   memset(&mqttSendData, 0, sizeof(mqttSendData));
   memcpy(mqttSendData.data, bufferSA, strlen(bufferSA));

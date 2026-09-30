@@ -1,6 +1,7 @@
 #include "dataStore.h"
 #include "mbtk_comm_api.h"
 #include "ol_flash_fs.h"
+#include "memoryHandle.h"
 #include <string.h>
 
 static char dataLogFile[] = "C:/dataLogds.txt";
@@ -280,6 +281,10 @@ void payLoadAutoUpload(U2 currentFileIndex, mqtt_client_t *client)
             if ((crc_temp != 0) && (fileData.crc != 0)) {
                 if (crc_temp == fileData.crc) {
                     if (fileData.uploadStatus == D_NOTUPLOADED) {
+                        if (!maxPayLoadChecker()) {
+                            op_uart_printf("-1-dataStore:daily max payload reached, stop backlog upload\r\n");
+                            break;
+                        }
                         op_uart_printf("-1-dataStore:fsAutoUpload index=%d\r\n", index);
                         memset(mqttSendData.data, 0, sizeof(mqttSendData.data));
                         memcpy(mqttSendData.data, fileData.data, fileData.dataLength);
@@ -295,6 +300,7 @@ void payLoadAutoUpload(U2 currentFileIndex, mqtt_client_t *client)
                          * as the rest of this file already does. */
                         if (mqtt_publish(client, mqttSendData.data, mqttSendData.dataSize, mqttSendData.topic) == 0) {
                             fsDataUpdateUploadState(index);
+                            maxPayLoadCount();
                         }
                         ol_os_task_sleep(200); /* 5s @ 5ms/tick */
                     }

@@ -141,13 +141,13 @@ pvc_t pvc_measure(void)
             current_insta = (current_temp[i] / 1000.0f) - current_miDmA;
             current_adcsample += current_insta * current_insta;
 
-            power += (((current_insta / 1.0f) * 1000.0f) / 10.0f) *
+            power += (((current_insta / 1.0f) * 1000.0f) / 68.0f) *
                      ((voltage_insta * 440000.0f) /330.0f);
         }
         powerAvg += (power / 80);
 
         voltage += (sqrt(voltage_adcsample / 80) * 440000.0f) / 330.0f;
-        current += (((sqrt(current_adcsample / 80)) / 1.0f) * 1000.0f) / 10.0f;
+        current += (((sqrt(current_adcsample / 80)) / 1.0f) * 1000.0f) / 68.0f;
     }
 
     op_uart_printf("pvc_measure: avg 80-sample loop elapsed=%ums (tick, target=25ms)\r\n",
